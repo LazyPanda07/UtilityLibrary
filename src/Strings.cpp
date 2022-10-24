@@ -13,10 +13,10 @@ namespace utility
 		{
 			string result(source);
 
-			return replaceAllRef(result, oldValue, newValue);
+			return replaceAllByRef(result, oldValue, newValue);
 		}
 
-		string& replaceAllRef(string& source, string_view oldValue, string_view newValue)
+		string& replaceAllByRef(string& source, string_view oldValue, string_view newValue)
 		{
 			boyer_moore_horspool_searcher oldValueSearcher(oldValue.begin(), oldValue.end());
 
