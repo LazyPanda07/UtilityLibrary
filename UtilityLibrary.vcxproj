@@ -83,10 +83,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Files.cpp" />
+    <ClCompile Include="src\Strings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Concepts.h" />
     <ClInclude Include="src\Files.h" />
+    <ClInclude Include="src\Strings.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Files.inl" />
