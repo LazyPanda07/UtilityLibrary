@@ -1,13 +1,12 @@
 #pragma once
 
+#if _HAS_CXX20
+
 #include <string>
 
-#if _HAS_CXX20
 #include <concepts>
 #include <ranges>
-#endif // _HAS_CXX20
 
-#if _HAS_CXX20
 namespace utility
 {
 	namespace concepts
@@ -17,6 +16,13 @@ namespace utility
 		{
 			static_cast<std::string>(value);
 		};
+
+		template<typename T>
+		concept StringViewConvertible = requires(T&& value)
+		{
+			static_cast<std::string_view>(value);
+		};
 	}
 }
+
 #endif // _HAS_CXX20
