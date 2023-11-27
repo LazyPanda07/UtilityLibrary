@@ -26,13 +26,10 @@ jobs:
     - name: Create zip
       shell: pwsh
       run: Compress-Archive -Path @("Debug", "DebugDLL", "Release", "ReleaseDLL", "ProductionRelease", "ProductionReleaseDLL") -DestinationPath UtilityLibrary_${{ env.UTILITY_LIBRARY_VERSION }}.zip
-
-    - name: Directory
-      run: dir
-
+      
     - name: Publish
       uses: svenstaro/upload-release-action@master
       with:
         tag: ${{ env.UTILITY_LIBRARY_VERSION }}
-        asset_name: UtilityLibrary_${{ env.UTILITY_LIBRARY_VERSION }}.zip
+        file: UtilityLibrary_${{ env.UTILITY_LIBRARY_VERSION }}.zip
     
