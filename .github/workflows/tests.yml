@@ -22,9 +22,3 @@ jobs:
       with:
         name: ${{ matrix.configuration }}
         workflow: build.yml
-
-    - name: Testing
-      run: echo "Testing"
-
-    - name: Downloaded artifacts
-      run: dir

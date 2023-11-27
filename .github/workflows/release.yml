@@ -3,16 +3,13 @@ name: Release
 on:
   workflow_run:
     workflows: ["Tests"]
-    branches: ["dev"]
+    branches: ["master"]
     types: 
       - completed
-
+      
 jobs:
   release:
     runs-on: windows-latest
-    strategy:
-      matrix:
-        configuration: [Debug, DebugDLL, Release, ReleaseDLL, ProductionRelease, ProductionReleaseDLL]
 
     steps:
     - uses: actions/checkout@v3
@@ -20,11 +17,10 @@ jobs:
     - name: Download artifacts
       uses: dawidd6/action-download-artifact@master
       with:
-        name: ${{ matrix.configuration }}
         workflow: build.yml
-
-    - name: Release
-      run: echo "Release"
+        
+    - name: Download folder
+      run: dir
 
     - name: Downloaded artifacts
-      run: dir
+      run: dir UtilityLibrary
