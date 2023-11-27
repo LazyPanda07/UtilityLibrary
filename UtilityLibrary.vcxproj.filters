@@ -23,21 +23,21 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Files.h">
+    <ClInclude Include="include\Files.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Concepts.h">
+    <ClInclude Include="include\Concepts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Strings.h">
+    <ClInclude Include="include\Strings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Defines.h">
+    <ClInclude Include="include\Defines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Files.inl">
+    <None Include="include\Files.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>

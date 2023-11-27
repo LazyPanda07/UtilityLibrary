@@ -29,7 +29,7 @@ jobs:
 
     - name: Create zip
       shell: pwsh
-      run: Compress-Archive -Path @("Debug", "DebugDLL", "Release", "ReleaseDLL", "ProductionRelease", "ProductionReleaseDLL") -DestinationPath ${{ env.UTILITY_LIBRARY_ARCHIVE_NAME }}
+      run: Compress-Archive -Path @("Debug", "DebugDLL", "Release", "ReleaseDLL", "ProductionRelease", "ProductionReleaseDLL", "include") -DestinationPath ${{ env.UTILITY_LIBRARY_ARCHIVE_NAME }}
       
     - name: Publish
       uses: svenstaro/upload-release-action@master
