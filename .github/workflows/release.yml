@@ -22,7 +22,5 @@ jobs:
     - name: Set release version
       shell: pwsh
       # run: echo "UTILITY_LIBRARY_VERSION=$($(Select-String -Path .\src\Defines.h -Pattern utilityLibraryVersion) -split '( = )')[2]" >> $GITHUB_ENV
-      run: echo "UTILITY_LIBRARY_VERSION=0.1.0" >> $GITHUB_ENV
-
-    - name: Test
-      run: echo ${{ env.UTILITY_LIBRARY_VERSION }}
+      run: echo $GITHUB_ENV
+      
