@@ -10,4 +10,4 @@
 #define UTILITY_LIBRARY_API
 #endif // UTILITY_LIBRARY_DLL
 
-static constexpr std::string_view utilityLibraryVersion = "0.1.0";
+static constexpr std::string_view utilityLibraryVersion = "0.2.0";
