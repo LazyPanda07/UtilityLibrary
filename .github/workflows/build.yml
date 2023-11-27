@@ -26,3 +26,9 @@ jobs:
       with: 
         name: ${{ matrix.configuration }}
         path: bin/${{ matrix.configuration }}-x64
+  
+  variables:
+    runs-on: windows-latest
+    steps:
+    - name: Variables
+      run: echo ${{ github.ref }}
