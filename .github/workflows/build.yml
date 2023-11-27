@@ -36,7 +36,7 @@ jobs:
     - name: Print branch
       run: echo ${{ env.CURRENT_BRANCH }}
 
-    - uses: LazyPanda07/extract-current-branch@v1
+    - uses: LazyPanda07/extract-current-branch@master
       with:
         variable-name: custom-branch
 
