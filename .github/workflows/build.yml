@@ -30,5 +30,8 @@ jobs:
   variables:
     runs-on: windows-latest
     steps:
+    - name: Test
+      uses: LazyPanda07/extract-current-branch@master
+
     - name: Variables
-      run: echo ${{ github.ref }}
+      run: echo ${{ env.CURRENT_BRANCH }}
