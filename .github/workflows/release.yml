@@ -21,7 +21,7 @@ jobs:
       
     - name: Set release version
       shell: pwsh
-      run: echo $($(Select-String -Path .\src\Defines.h -Pattern utilityLibraryVersion) -split "( = )")[2] >> $UTILITY_LIBRARY_VERSION
+      run: echo "UTILITY_LIBRARY_VERSION=$($(Select-String -Path .\src\Defines.h -Pattern utilityLibraryVersion) -split "( = )")[2]" >> $GITHUB_ENV
 
     - name: Test
       run: echo %UTILITY_LIBRARY_VERSION%
