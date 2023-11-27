@@ -30,15 +30,16 @@ jobs:
   variables:
     runs-on: windows-latest
     steps:
-    - name: Test
-      uses: LazyPanda07/extract-current-branch@master
+    - uses: actions/checkout@v3
+
+    - uses: LazyPanda07/extract-current-branch@v1
 
     - name: Print branch
-      run: echo ${{ env.CURRENT_BRANCH }}
+      run: echo ${{ env.CURRENT_BRANCH }} # print dev or distribute
 
-    - uses: LazyPanda07/extract-current-branch@master
+    - uses: LazyPanda07/extract-current-branch@v1
       with:
-        variable-name: custom-branch
+        variable-name: custom-branch # override default variable name to custom-branch
 
     - name: Print custom branch
-      run: echo ${{ env.custom-branch }}
+      run: echo ${{ env.custom-branch }} # print dev or distribute
