@@ -23,7 +23,7 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: msbuild -p:Configuration=${{ matrix.configuration }} -p:Platform=x64
 
-    - name: Upload
+    - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with: 
         name: ${{ matrix.configuration }}

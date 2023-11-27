@@ -1,0 +1,26 @@
+name: Distribute
+
+on:
+  push:
+    branches: ["master"]
+
+
+jobs:
+  distribute:
+    needs: build
+
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        configuration: [Debug, DebugDLL, Release, ReleaseDLL, ProductionRelease, ProductionReleaseDLL]
+
+    steps:
+    - uses: actions/checkout@v3
+  
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: ${{ matrix.configuration }}-x64
+
+    - name: Downloaded artifacts
+      run: dir
