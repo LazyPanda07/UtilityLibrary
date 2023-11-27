@@ -32,8 +32,13 @@ jobs:
     steps:
     - name: Test
       uses: LazyPanda07/extract-current-branch@master
-      with: 
-        variable-name: "branch"
 
-    - name: Variables
-      run: echo ${{ env.branch }}
+    - name: From CMD
+      run: echo %CURRENT_BRANCH%
+
+    - name: From env
+      run: echo ${{ env.CURRENT_BRANCH }}
+
+    - name: From PowerShell
+      shell: pwsh
+      run: echo $CURRENT_BRANCH
