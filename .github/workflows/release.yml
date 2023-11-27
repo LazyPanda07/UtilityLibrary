@@ -18,9 +18,14 @@ jobs:
       uses: dawidd6/action-download-artifact@master
       with:
         workflow: build.yml
-        
-    - name: Download folder
-      run: dir
+      
+    - name: Set release version
+      shell: pwsh
+      run: echo $($(Select-String -Path .\src\Defines.h -Pattern utilityLibraryVersion) -split "( = )")[2] >> $UTILITY_LIBRARY_VERSION
 
-    - name: Downloaded artifacts
-      run: dir UtilityLibrary
+    - name: Test
+      run: echo %UTILITY_LIBRARY_VERSION%
+
+    - name: Test Powershell
+      shell: pwsh
+      run: echo $UTILITY_LIBRARY_VERSION
