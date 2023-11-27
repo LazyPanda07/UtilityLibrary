@@ -32,6 +32,8 @@ jobs:
     steps:
     - name: Test
       uses: LazyPanda07/extract-current-branch@master
+      with: 
+        variable-name: "branch"
 
     - name: Variables
-      run: echo ${{ env.CURRENT_BRANCH }}
+      run: echo ${{ env.branch }}
