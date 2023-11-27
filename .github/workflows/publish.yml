@@ -19,17 +19,21 @@ jobs:
       with:
         workflow: build.yml
       
-    - name: Set release version
+    - name: Setup release version variable
       shell: pwsh
       run: echo "UTILITY_LIBRARY_VERSION=$($($(Select-String -Path .\src\Defines.h -Pattern utilityLibraryVersion) -split '( = )')[2].TrimEnd(';'))" >> $Env:GITHUB_ENV
       
+    - name: Setup archive name variable
+      shell: pwsh
+      run: echo "UTILITY_LIBRARY_ARCHIVE_NAME=UtilityLibrary_$(${{ env.UTILITY_LIBRARY_VERSION }}.Trim('\"')).zip" >> $Env:GITHUB_ENV
+
     - name: Create zip
       shell: pwsh
-      run: Compress-Archive -Path @("Debug", "DebugDLL", "Release", "ReleaseDLL", "ProductionRelease", "ProductionReleaseDLL") -DestinationPath UtilityLibrary_${{ env.UTILITY_LIBRARY_VERSION }}.zip
+      run: Compress-Archive -Path @("Debug", "DebugDLL", "Release", "ReleaseDLL", "ProductionRelease", "ProductionReleaseDLL") -DestinationPath ${{ env.UTILITY_LIBRARY_ARCHIVE_NAME }}
       
     - name: Publish
       uses: svenstaro/upload-release-action@master
       with:
         tag: ${{ env.UTILITY_LIBRARY_VERSION }}
-        file: UtilityLibrary_${{ env.UTILITY_LIBRARY_VERSION }}.zip
+        file: ${{ env.UTILITY_LIBRARY_ARCHIVE_NAME }}
     
