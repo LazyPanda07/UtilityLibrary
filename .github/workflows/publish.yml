@@ -21,7 +21,7 @@ jobs:
       
     - name: Setup release version variable
       shell: pwsh
-      run: echo "UTILITY_LIBRARY_VERSION=$($($($(Select-String -Path .\src\Defines.h -Pattern utilityLibraryVersion) -split '( = )')[2].TrimEnd(';')).Trim('\"'))" >> $Env:GITHUB_ENV
+      run: echo "UTILITY_LIBRARY_VERSION=$($($($(Select-String -Path .\include\Defines.h -Pattern utilityLibraryVersion) -split '( = )')[2].TrimEnd(';')).Trim('\"'))" >> $Env:GITHUB_ENV
       
     - name: Setup archive name variable
       shell: pwsh
