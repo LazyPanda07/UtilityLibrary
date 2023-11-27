@@ -33,12 +33,12 @@ jobs:
     - name: Test
       uses: LazyPanda07/extract-current-branch@master
 
-    - name: From CMD
-      run: echo %CURRENT_BRANCH%
-
-    - name: From env
+    - name: Print branch
       run: echo ${{ env.CURRENT_BRANCH }}
 
-    - name: From PowerShell
-      shell: pwsh
-      run: echo $CURRENT_BRANCH
+    - uses: LazyPanda07/extract-current-branch@v1
+      with:
+        variable-name: custom-branch
+
+    - name: Print custom branch
+      run: echo ${{ env.custom-branch }}
