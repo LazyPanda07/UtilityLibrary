@@ -34,6 +34,6 @@ jobs:
     - name: Publish
       uses: svenstaro/upload-release-action@master
       with:
-        tag: ${{ env.UTILITY_LIBRARY_VERSION }}
+        tag: v${{ env.UTILITY_LIBRARY_VERSION }}
         file: ${{ env.UTILITY_LIBRARY_ARCHIVE_NAME }}
     

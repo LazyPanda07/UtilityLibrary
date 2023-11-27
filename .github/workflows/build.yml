@@ -3,10 +3,7 @@ name: Build
 on:
   push:
     branches: ["master", "dev"]
-    
-permissions:
-  contents: read
-
+  
 jobs:
   build:
     runs-on: windows-latest
