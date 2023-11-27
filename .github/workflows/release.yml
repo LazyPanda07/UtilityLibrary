@@ -2,15 +2,13 @@ name: Release
 
 on:
   workflow_run:
-    workflows: ["Build", "Tests"]
+    workflows: ["Tests"]
     branches: ["dev"]
     types: 
       - completed
 
 jobs:
   release:
-    needs: build
-
     runs-on: windows-latest
     strategy:
       matrix:
@@ -22,7 +20,7 @@ jobs:
     - name: Download artifacts
       uses: dawidd6/action-download-artifact@master
       with:
-        name: ${{ matrix.configuration }}-x64
+        name: ${{ matrix.configuration }}
         workflow: build.yml
 
     - name: Release
