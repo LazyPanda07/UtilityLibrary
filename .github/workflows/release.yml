@@ -24,8 +24,4 @@ jobs:
       run: echo "UTILITY_LIBRARY_VERSION=$($(Select-String -Path .\src\Defines.h -Pattern utilityLibraryVersion) -split "( = )")[2]" >> $GITHUB_ENV
 
     - name: Test
-      run: echo %UTILITY_LIBRARY_VERSION%
-
-    - name: Test Powershell
-      shell: pwsh
-      run: echo $UTILITY_LIBRARY_VERSION
+      run: echo ${{ env.UTILITY_LIBRARY_VERSION }}
