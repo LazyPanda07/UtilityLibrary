@@ -26,6 +26,7 @@ jobs:
         name: ${{ matrix.configuration }}
         path: bin/${{ matrix.configuration }}-x64
 
+
   tests:
     runs-on: windows-latest
     needs: build
@@ -54,17 +55,14 @@ jobs:
           git clone https://github.com/google/googletest.git -b v1.14.x && cd googletest && mkdir build && cd build && `
           cmake -Dgtest_force_shared_crt=ON -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/tests/gtest .. && `
           msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 INSTALL.vcxproj
-
-    - name: Print
-      run: dir UtilityLibrary
-
+          
     - name: Tests
       working-directory: ${{ github.workspace }}/tests
       run: |
           mkdir build && cd build && cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ matrix.configuration }} .. && `
           msbuild /p:Configuration=${{ matrix.configuration }} /p:Platform=x64 UtilityLibraryTests.sln && `
-          cd ${{ matrix.configuration }} && UtilityLibraryTests.exe
-
+          cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && UtilityLibraryTests.exe
+          
 
   publish:
     runs-on: windows-latest
