@@ -59,7 +59,7 @@ jobs:
     - name: Tests
       working-directory: ${{ github.workspace }}/tests
       run: |
-          mkdir build && cd build && cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ matrix.configuration }} .. && `
+          mkdir build && cd build && cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ env.GOOGLE_TEST_CONFIGURATION }} .. && `
           msbuild /p:Configuration=${{ matrix.configuration }} /p:Platform=x64 UtilityLibraryTests.sln && `
           cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && UtilityLibraryTests.exe
           
