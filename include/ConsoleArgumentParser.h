@@ -30,6 +30,9 @@ namespace utility
 			template<typename T>
 			T get(std::string_view argumentName, const T& defaultValue = T(), std::errc* errorCode = nullptr) const;
 
+			template<>
+			bool get<bool>(std::string_view argumentName, const bool& defaultValue, std::errc* errorCode) const;
+
 			template<typename T>
 			std::vector<T> getValues(std::string_view argumentName) const;
 
