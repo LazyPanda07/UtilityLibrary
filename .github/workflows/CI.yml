@@ -40,7 +40,7 @@ jobs:
     needs: [build, tests]
 
     steps:
-    - uses: LazyPanda07/extract-current-branch
+    - uses: LazyPanda07/extract-current-branch@master
 
     - name: Publish
       if: ${{ env.CURRENT_BRANCH }} == master
