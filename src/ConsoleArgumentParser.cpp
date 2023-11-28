@@ -57,7 +57,7 @@ namespace utility
 		}
 
 		template<>
-		bool ConsoleArgumentParser::get(string_view argumentName, const bool& defaultValue, errc* errorCode) const
+		bool ConsoleArgumentParser::get<bool>(string_view argumentName, const bool& defaultValue, errc* errorCode) const
 		{
 			return ranges::find(values, argumentName) != values.end() || defaultValue;
 		}
