@@ -53,12 +53,9 @@ jobs:
       run: |
           cd tests && `
           git clone https://github.com/google/googletest.git -b v1.14.x && cd googletest && mkdir build && cd build && `
-          cmake -Dgtest_force_shared_crt=ON -DCMAKE_INSTALL_PREFIX=../../gtest .. && `
+          cmake -Dgtest_force_shared_crt=ON -DCMAKE_INSTALL_PREFIX=${{env.GITHUB_WORKSPACE}}/tests/gtest .. && `
           msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 INSTALL.vcxproj
-
-    - name: Directory
-      run: dir
-
+          
     - name: Tests directory
       run: dir tests
 
