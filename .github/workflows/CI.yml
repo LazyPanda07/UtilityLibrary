@@ -60,16 +60,24 @@ jobs:
       working-directory: ${{ github.workspace }}/tests
       run: |
           mkdir build && cd build && cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ env.GOOGLE_TEST_CONFIGURATION }} .. && `
-          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 UtilityLibraryTests.sln && `
-          cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && .\UtilityLibraryTests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 UtilityLibraryTests.sln && cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && `
+          .\UtilityLibraryTests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
     - name: Tests C++17
       working-directory: ${{ github.workspace }}/tests
       run: |
           rm build -r -force && `
           mkdir build && cd build && cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ env.GOOGLE_TEST_CONFIGURATION }} -DCXX_VERSION=17 .. && `
-          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 UtilityLibraryTests.sln && `
-          cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && .\UtilityLibraryTests.exe --int 1 --string data --bool --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 UtilityLibraryTests.sln && cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && `
+          .\UtilityLibraryTests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
+    - name: Test build without ConsoleArgumentParser
+      working-directory: ${{ github.workspace }}/tests
+      run: |
+          rm build -r -force && mkdir build && cd build && `
+          cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ env.GOOGLE_TEST_CONFIGURATION }} -DNO_CONSOLE_ARGUMENT_PARSER=ON .. && `
+          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 UtilityLibraryTests.sln && cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && `
+          .\UtilityLibraryTests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
           
 
   publish:

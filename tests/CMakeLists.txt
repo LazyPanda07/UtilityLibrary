@@ -10,7 +10,8 @@ add_executable(
 	TestCases/TestFiles.cpp
 )
 
-option(CXX_VERSION "C++ version" 20)
+set(CXX_VERSION "20" CACHE STRING "C++ version")
+option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD ${CXX_VERSION})
 
@@ -22,4 +23,8 @@ if(EXISTS "${TEST_LIBRARY_PATH}/UtilityLibrary.dll")
 	add_definitions(-DUTILITY_LIBRARY_DLL)
 	file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/${CONFIGURATION}/")
 	file(COPY_FILE "${TEST_LIBRARY_PATH}/UtilityLibrary.dll" "${CMAKE_BINARY_DIR}/${CONFIGURATION}/UtilityLibrary.dll")
+endif()
+
+if(${NO_CONSOLE_ARGUMENT_PARSER})
+	add_definitions(-DNO_CONSOLE_ARGUMENT_PARSER)
 endif()
