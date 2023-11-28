@@ -1,8 +1,8 @@
-name: Build
+name: CI
 
 on:
   push:
-    branches: ["master", "dev"]
+    branches: [master, dev]
   
 jobs:
   build:
@@ -63,11 +63,9 @@ jobs:
       run: echo "UTILITY_LIBRARY_ARCHIVE_NAME=UtilityLibrary_${{ env.UTILITY_LIBRARY_VERSION }}.zip" >> $Env:GITHUB_ENV
 
     - name: Download artifacts
+      if: ${{ env.CURRENT_BRANCH == 'master' }}
       uses: actions/download-artifact@v3
-
-    - name: Directory
-      run: dir
-
+      
     - name: Create zip
       if: ${{ env.CURRENT_BRANCH == 'master' }}
       shell: pwsh
