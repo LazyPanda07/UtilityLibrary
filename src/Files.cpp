@@ -15,12 +15,29 @@ namespace utility
 				throw runtime_error(format("File {} doesn't exist", pathToFile.string()));
 			}
 
-			return (ostringstream() << ifstream(pathToFile, mode).rdbuf()).str();
+			ifstream file(pathToFile, mode);
+
+			return readFile(file);
 		}
 
 		string readBinaryFile(const filesystem::path& pathToFile)
 		{
 			return readFile(pathToFile, ios::binary);
+		}
+
+		string readFile(ifstream& file)
+		{
+			if (!file.good())
+			{
+				throw runtime_error("Input file stream error");
+			}
+
+			if (!file.is_open())
+			{
+				throw runtime_error("Input file stream is closed");
+			}
+
+			return (ostringstream() << file.rdbuf()).str();
 		}
 	}
 }

@@ -31,6 +31,14 @@ namespace utility
 		*/
 		UTILITY_LIBRARY_API std::string readBinaryFile(const std::filesystem::path& pathToFile);
 
+		/**
+		 * @brief Read entire file
+		 * @param file Input file stream
+		 * @return 
+		 * @exception std::runtime_error
+		*/
+		UTILITY_LIBRARY_API std::string readFile(std::ifstream& file);
+
 #if _HAS_CXX20
 		/**
 		 * @brief Generate path from parameters

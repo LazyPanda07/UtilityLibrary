@@ -12,6 +12,9 @@ namespace utility
 {
 	namespace parsers
 	{
+		/**
+		 * @brief Console argument parser
+		*/
 		class UTILITY_LIBRARY_API ConsoleArgumentParser
 		{
 		private:

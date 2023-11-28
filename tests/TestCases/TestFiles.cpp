@@ -1,7 +1,7 @@
-#include <gtest/gtest.h>
-
 #include <vector>
 #include <queue>
+
+#include <gtest/gtest.h>
 
 #include "Files.h"
 #include "Utility.h"
@@ -11,8 +11,11 @@ using namespace std;
 TEST(Files, ReadFile)
 {
     string data = utility::testing::createRandomFile("test.txt");
+    ifstream file("test.txt");
 
     ASSERT_TRUE(data == utility::files::readFile("test.txt"));
+
+    ASSERT_TRUE(data == utility::files::readFile(file));
 
     data = utility::testing::createRandomBinaryFile("test.bin");
 

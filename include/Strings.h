@@ -28,7 +28,7 @@ namespace utility
 		UTILITY_LIBRARY_API std::string& replaceAllByRef(std::string& source, std::string_view oldValue, std::string_view newValue);
 
 		/**
-		 * @brief Split source with delimiter
+		 * @brief Split source with delimiter into vector
 		 * @param source 
 		 * @param delimiter 
 		 * @return 

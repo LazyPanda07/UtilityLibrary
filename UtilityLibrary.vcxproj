@@ -232,12 +232,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\ConsoleArgumentParser.cpp" />
+    <ClCompile Include="src\CSVParser.cpp" />
     <ClCompile Include="src\Files.cpp" />
     <ClCompile Include="src\Strings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ConsoleArgumentParser.h" />
     <ClInclude Include="include\Concepts.h" />
+    <ClInclude Include="include\CSVParser.h" />
     <ClInclude Include="include\Defines.h" />
     <ClInclude Include="include\Files.h" />
     <ClInclude Include="include\Strings.h" />
