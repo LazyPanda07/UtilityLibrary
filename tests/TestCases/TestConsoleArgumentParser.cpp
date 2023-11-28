@@ -8,7 +8,23 @@ using namespace std;
 #ifndef NO_CONSOLE_ARGUMENT_PARSER
 TEST(ConsoleArgumentParser, GetWarnings)
 {
+    static constexpr int warnings = 4;
     utility::parsers::ConsoleArgumentParser parser(globalArgc, globalArgv);
+
+    for (size_t i = 0; i < warnings; i++)
+    {
+        parser.get<int>("--test");   
+    }
+
+    ASSERT_TRUE(parser.getWarnings().size() == warnings);
+    ASSERT_TRUE(parser.getWarnings().empty());
+
+    for (size_t i = 0; i < warnings; i++)
+    {
+        parser.get<int>("--test");   
+    }
+
+    ASSERT_TRUE(parser.getWarnings(false).size() == parser.getWarnings(false).size());
 }
 
 TEST(ConsoleArgumentParser, Get)

@@ -40,6 +40,9 @@ bin/
 # VS folder
 .vs/
 
+# VS Code folder
+.vscode/
+
 # Tests CMake
 tests/build/
 tests/gtest/
