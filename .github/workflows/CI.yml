@@ -45,12 +45,16 @@ jobs:
       with: 
         name: ${{ matrix.configuration }}
 
+    - name: Setup GoogleTest configuration
+      shell: pwsh
+      run: echo "GOOGLE_TEST_CONFIGURATION=$(if ("${{ matrix.configuration }}".Contains("Release")) { echo "Release" } else { echo "Debug" })" >> $Env:GITHUB_ENV
+
     - name: Build GoogleTest
       run: |
           cd tests && `
           git clone https://github.com/google/googletest.git -b v1.14.x && cd googletest && mkdir build && cd build && `
           cmake -Dgtest_force_shared_crt=ON -DCMAKE_INSTALL_PREFIX=../../gtest .. && `
-          msbuild /p:Configuration=${{ matrix.configuration }} /p:Platform=x64 INSTALL.vcxproj
+          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 INSTALL.vcxproj
 
     - name: Directory
       run: dir
