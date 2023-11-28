@@ -8,17 +8,21 @@ namespace utility
 		{
 			T value = defaultValue;
 
-			auto [_, error] = std::from_chars(integralValue.data(), integralValue.data() + integralValue.size(), value);
+			std::from_chars_result result = std::from_chars(integralValue.data(), integralValue.data() + integralValue.size(), value);
 
 			if (errorCode)
 			{
-				*errorCode = error;
+				*errorCode = result.ec;
 			}
 			else
 			{
-				if (error != std::errc())
+				if (result.ec != std::errc())
 				{
-					warnings.push_back("Convert error code: " + std::to_string(static_cast<int>(error)));
+					std::string errorMessage("Convert error code: ");
+					
+					errorMessage += std::to_string(static_cast<int>(result.ec));
+
+					warnings.push_back(std::move(errorMessage));
 				}
 			}
 
