@@ -42,8 +42,18 @@ jobs:
       with: 
         name: ${{ matrix.configuration }}
 
+    - name: Build GoogleTest
+      working-directory: ${{env.GITHUB_WORKSPACE}}/tests
+      run: |
+          git clone https://github.com/google/googletest.git -b v1.14.x && cd googletest && mkdir build && cd build && \
+          cmake -Dgtest_force_shared_crt=ON -DCMAKE_INSTALL_PREFIX=../../gtest .. && \
+          msbuild /p:Configuration=${{ matrix.configuration }} /p:Platform=x64 INSTALL.vcxproj
+
     - name: Directory
       run: dir
+
+    - name: Tests directory
+      run: dir tests
 
   publish:
     runs-on: windows-latest
