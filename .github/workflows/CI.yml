@@ -36,6 +36,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+  
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@main
 
     - name: Download artifacts
       uses: actions/download-artifact@v3
