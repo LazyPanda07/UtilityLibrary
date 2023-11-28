@@ -1,18 +1,19 @@
 #include <gtest/gtest.h>
 
 #include "ConsoleArgumentParser.h"
+#include "Arguments.h"
 
 using namespace std;
 
 #ifndef NO_CONSOLE_ARGUMENT_PARSER
 TEST(ConsoleArgumentParser, GetWarnings)
 {
-    utility::parsers::ConsoleArgumentParser parser(__argc, __argv);
+    utility::parsers::ConsoleArgumentParser parser(globalArgc, globalArgv);
 }
 
 TEST(ConsoleArgumentParser, Get)
 {
-    utility::parsers::ConsoleArgumentParser parser(__argc, __argv);
+    utility::parsers::ConsoleArgumentParser parser(globalArgc, globalArgv);
 
     ASSERT_TRUE(parser.get<uint8_t>("--int"));
     ASSERT_TRUE(parser.get<uint16_t>("--int"));
@@ -33,7 +34,7 @@ TEST(ConsoleArgumentParser, Get)
 
 TEST(ConsoleArgumentParser, GetValues)
 {
-    utility::parsers::ConsoleArgumentParser parser(__argc, __argv);
+    utility::parsers::ConsoleArgumentParser parser(globalArgc, globalArgv);
 
     ASSERT_TRUE(parser.getValues<int32_t>("--values").size() == 6);
 }
