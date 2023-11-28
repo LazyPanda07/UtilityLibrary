@@ -30,8 +30,18 @@ jobs:
   tests:
     runs-on: windows-latest
     needs: build
+    strategy:
+      matrix:
+        configuration: [Debug, DebugDLL, Release, ReleaseDLL, ProductionRelease, ProductionReleaseDLL]
 
     steps:
+    - uses: actions/checkout@v3
+
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with: 
+        name: ${{ matrix.configuration }}
+
     - name: Directory
       run: dir
 
@@ -40,12 +50,27 @@ jobs:
     needs: [build, tests]
 
     steps:
+    - uses: actions/checkout@v3
+
     - uses: LazyPanda07/extract-current-branch@master
+
+    - name: Setup release version variable
+      shell: pwsh
+      run: echo "UTILITY_LIBRARY_VERSION=$($($($(Select-String -Path .\include\Defines.h -Pattern utilityLibraryVersion) -split '( = )')[2].TrimEnd(';')).Trim('\"'))" >> $Env:GITHUB_ENV
+      
+    - name: Setup archive name variable
+      shell: pwsh
+      run: echo "UTILITY_LIBRARY_ARCHIVE_NAME=UtilityLibrary_${{ env.UTILITY_LIBRARY_VERSION }}.zip" >> $Env:GITHUB_ENV
+
+    - name: Create zip
+      if: ${{ env.CURRENT_BRANCH == 'master' }}
+      shell: pwsh
+      run: Compress-Archive -Path @("Debug", "DebugDLL", "Release", "ReleaseDLL", "ProductionRelease", "ProductionReleaseDLL", "include") -DestinationPath ${{ env.UTILITY_LIBRARY_ARCHIVE_NAME }}
 
     - name: Publish
       if: ${{ env.CURRENT_BRANCH == 'master' }}
-      run: echo "master"
-
-    - name: Test
-      if: ${{ env.CURRENT_BRANCH == 'dev' }}
-      run: echo "dev"
+      uses: svenstaro/upload-release-action@master
+      with:
+        tag: v${{ env.UTILITY_LIBRARY_VERSION }}
+        file: ${{ env.UTILITY_LIBRARY_ARCHIVE_NAME }}
+        
