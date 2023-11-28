@@ -27,16 +27,35 @@ namespace utility
 		public:
 			ConsoleArgumentParser(int argc, char** argv);
 
+			/**
+			 * @brief Get warnings from get and getValues
+			 * @param clearWarnings Clear previous warnings
+			 * @return 
+			*/
 			std::vector<std::string> getWarnings(bool clearWarnings = true) const;
 
+			/**
+			 * @brief Get command line value
+			 * @tparam T 
+			 * @param argumentName 
+			 * @param defaultValue Returned value if can't find argumentName
+			 * @param errorCode Conversion error
+			 * @return 
+			*/
 			template<typename T>
 			T get(std::string_view argumentName, const T& defaultValue = T(), std::errc* errorCode = nullptr) const;
 
-			template<>
-			bool get<bool>(std::string_view argumentName, const bool& defaultValue, std::errc* errorCode) const;
-
+			/**
+			 * @brief Get all command line values with same argument name
+			 * @tparam T 
+			 * @param argumentName 
+			 * @return 
+			*/
 			template<typename T>
 			std::vector<T> getValues(std::string_view argumentName) const;
+
+			template<>
+			bool get<bool>(std::string_view argumentName, const bool& defaultValue, std::errc* errorCode) const;
 
 			~ConsoleArgumentParser() = default;
 		};

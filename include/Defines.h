@@ -9,7 +9,11 @@
 #pragma warning(disable: 4190)
 #pragma warning(disable: 4251)
 #else
+#define UTILITY_LIBRARY_API_FUNCTION
 #define UTILITY_LIBRARY_API
 #endif // UTILITY_LIBRARY_DLL
 
+/**
+ * @brief Current version of UtilityLibrary
+*/
 static constexpr std::string_view utilityLibraryVersion = "0.1.0";
