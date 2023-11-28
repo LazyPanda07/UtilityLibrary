@@ -4,7 +4,7 @@ namespace utility
 	namespace parsers
 	{
 		template<typename T>
-		T ConsoleArgumentParser::getIntegral(std::string_view integralValue, const T& defaultValue, std::errc* errorCode) const
+		T ConsoleArgumentParser::getNumeric(std::string_view integralValue, const T& defaultValue, std::errc* errorCode) const
 		{
 			T value = defaultValue;
 
@@ -37,16 +37,16 @@ namespace utility
 					return defaultValue;
 				}
 
-				return static_cast<T>(this->getIntegral<char>(*result, defaultValue, errorCode));
+				return static_cast<T>(this->getNumeric<char>(*result, defaultValue, errorCode));
 			}
-			else if constexpr (std::is_integral_v<T>)
+			else if constexpr (std::is_integral_v<T> || std::is_floating_point_v<T>)
 			{
 				if (!result)
 				{
 					return defaultValue;
 				}
 
-				return this->getIntegral<T>(*result, defaultValue, errorCode);
+				return this->getNumeric<T>(*result, defaultValue, errorCode);
 			}
 			else if constexpr (std::is_convertible_v<std::string, T>)
 			{
@@ -66,7 +66,7 @@ namespace utility
 		{
 			std::vector<T> result;
 
-			if constexpr (!std::is_integral_v<T> && !std::is_convertible_v<std::string, T>)
+			if constexpr (!std::is_integral_v<T> && !std::is_floating_point_v<T> && !std::is_convertible_v<std::string, T>)
 			{
 				[]<bool flag = false>()
 				{
@@ -87,7 +87,7 @@ namespace utility
 
 					if constexpr (std::is_integral_v<T>)
 					{
-						result.push_back(this->getIntegral<T>(*it));
+						result.push_back(this->getNumeric<T>(*it));
 					}
 					else if constexpr (std::is_convertible_v<std::string, T>)
 					{

@@ -45,6 +45,7 @@ TEST(ConsoleArgumentParser, Get)
     ASSERT_TRUE(parser.get<double>("--float"));
 
     ASSERT_TRUE(parser.get<string>("--string") == "data");
+    ASSERT_TRUE(parser.get<string_view>("--string") == "data");
 
     ASSERT_TRUE(parser.get<bool>("--bool"));
 

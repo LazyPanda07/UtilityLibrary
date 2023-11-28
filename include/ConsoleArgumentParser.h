@@ -20,7 +20,7 @@ namespace utility
 			std::optional<std::string_view> findValue(std::string_view argumentName) const;
 
 			template<typename T>
-			T getIntegral(std::string_view integralValue, const T& defaultValue = T(), std::errc* errorCode = nullptr) const;
+			T getNumeric(std::string_view integralValue, const T& defaultValue = T(), std::errc* errorCode = nullptr) const;
 
 		public:
 			ConsoleArgumentParser(int argc, char** argv);
