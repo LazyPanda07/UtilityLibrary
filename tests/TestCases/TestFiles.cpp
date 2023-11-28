@@ -4,8 +4,20 @@
 #include <queue>
 
 #include "Files.h"
+#include "Utility.h"
 
 using namespace std;
+
+TEST(Files, ReadFile)
+{
+    string data = utility::testing::createRandomFile("test.txt");
+
+    ASSERT_TRUE(data == utility::files::readFile("test.txt"));
+
+    data = utility::testing::createRandomBinaryFile("test.bin");
+
+    ASSERT_TRUE(data == utility::files::readBinaryFile("test.bin"));
+}
 
 TEST(Files, GeneratePath)
 {

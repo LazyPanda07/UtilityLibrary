@@ -8,11 +8,29 @@
 #endif // _HAS_CXX17
 
 #include "Concepts.h"
+#include "Defines.h"
 
 namespace utility
 {
 	namespace files
 	{
+		/**
+		 * @brief Read entire file
+		 * @param pathToFile Path to existing file
+		 * @param mode Open mode
+		 * @return 
+		 * @exception std::runtime_error
+		*/
+		UTILITY_LIBRARY_FUNCTION_API std::string readFile(const std::filesystem::path& pathToFile, std::ios::openmode mode = std::ios::in);
+
+		/**
+		 * @brief Read entire binary file
+		 * @param pathToFile Path to existing file
+		 * @return 
+		 * @exception std::runtime_error
+		*/
+		UTILITY_LIBRARY_FUNCTION_API std::string readBinaryFile(const std::filesystem::path& pathToFile);
+
 #if _HAS_CXX20
 		/**
 		 * @brief Generate path from parameters
@@ -34,7 +52,7 @@ namespace utility
 		*/
 		template<template<typename, typename...> typename Container, typename T, typename... Args> requires (std::ranges::range<Container<T, Args...>> && concepts::StringConvertible<T>)
 		std::filesystem::path generatePathContainer(const Container<T, Args...>& paths);
-#elif _HAS_CXX17
+#else
 		/**
 		 * @brief Generate path from parameters
 		 * @tparam Path 

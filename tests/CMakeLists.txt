@@ -4,7 +4,8 @@ project(UtilityLibraryTests)
 
 add_executable(
 	${PROJECT_NAME} 
-	Main.cpp 
+	Main.cpp
+	src/Utility.cpp
 	TestCases/TestStrings.cpp
 	TestCases/TestConsoleArgumentParser.cpp
 	TestCases/TestFiles.cpp
@@ -15,7 +16,7 @@ option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD ${CXX_VERSION})
 
-target_include_directories(${PROJECT_NAME} PRIVATE ../include gtest/include)
+target_include_directories(${PROJECT_NAME} PRIVATE include ../include gtest/include)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE "${TEST_LIBRARY_PATH}/UtilityLibrary.lib" ${CMAKE_SOURCE_DIR}/gtest/lib/gtest.lib ${CMAKE_SOURCE_DIR}/gtest/lib/gtest_main.lib)
 

@@ -23,7 +23,7 @@ namespace utility
 		{
 			return std::accumulate(paths.begin(), paths.end(), std::string(), [](const T& first, const T& second) { return first == "" ? second : first + '\\' + second; });
 		}
-#elif _HAS_CXX17
+#else
 		template<typename Path, typename... Args>
 		inline std::filesystem::path generatePath(Path&& path, Args&&... args)
 		{
