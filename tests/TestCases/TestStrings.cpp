@@ -18,3 +18,9 @@ TEST(Strings, Replace)
 
     ASSERT_TRUE(data == "xyzxyz");
 }
+
+TEST(Strings, Split)
+{
+    ASSERT_TRUE(utility::strings::split("qwe 123 890 xyz", " ").size() == 4);
+    ASSERT_TRUE(utility::strings::split("qwe<=>123<=>890<=>xyz", "<=>").size() == 4);
+}
