@@ -28,7 +28,7 @@ namespace utility
 			std::vector<std::string> getWarnings(bool clearWarnings = true) const;
 
 			template<typename T>
-			T get(std::string_view argumentName, const T& defaultValue = {}, std::errc* errorCode = nullptr) const;
+			T get(std::string_view argumentName, const T& defaultValue = T(), std::errc* errorCode = nullptr) const;
 
 			template<typename T>
 			std::vector<T> getValues(std::string_view argumentName) const;
