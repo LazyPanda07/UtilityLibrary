@@ -21,7 +21,7 @@ namespace utility
 		 * @return 
 		 * @exception std::runtime_error
 		*/
-		UTILITY_LIBRARY_FUNCTION_API std::string readFile(const std::filesystem::path& pathToFile, std::ios::openmode mode = std::ios::in);
+		UTILITY_LIBRARY_API std::string readFile(const std::filesystem::path& pathToFile, std::ios::openmode mode = std::ios::in);
 
 		/**
 		 * @brief Read entire binary file
@@ -29,7 +29,7 @@ namespace utility
 		 * @return 
 		 * @exception std::runtime_error
 		*/
-		UTILITY_LIBRARY_FUNCTION_API std::string readBinaryFile(const std::filesystem::path& pathToFile);
+		UTILITY_LIBRARY_API std::string readBinaryFile(const std::filesystem::path& pathToFile);
 
 #if _HAS_CXX20
 		/**
