@@ -21,6 +21,9 @@
     <ClCompile Include="src\Strings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\ConsoleArgumentParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Files.h">
@@ -35,9 +38,15 @@
     <ClInclude Include="include\Defines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\ConsoleArgumentParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\Files.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="include\ConsoleArgumentParser.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>

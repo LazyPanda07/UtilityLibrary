@@ -39,3 +39,6 @@ bin/
 
 # VS folder
 .vs/
+
+# Tests CMake
+tests/build/
