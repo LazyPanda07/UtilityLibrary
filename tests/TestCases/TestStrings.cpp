@@ -4,7 +4,7 @@
 
 using namespace std;
 
-TEST(TestStrings, Replace)
+TEST(Strings, Replace)
 {
     string data = "aaabbbcccaaabbbccc";
 

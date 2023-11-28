@@ -2,7 +2,12 @@ cmake_minimum_required(VERSION 3.27)
 
 project(UtilityLibraryTests)
 
-add_executable(${PROJECT_NAME} Main.cpp TestCases/TestStrings.cpp)
+add_executable(
+	${PROJECT_NAME} 
+	Main.cpp 
+	TestCases/TestStrings.cpp
+	TestCases/TestConsoleArgumentParser.cpp
+)
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
 

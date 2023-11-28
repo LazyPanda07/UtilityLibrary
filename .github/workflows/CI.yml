@@ -61,7 +61,7 @@ jobs:
       run: |
           mkdir build && cd build && cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ env.GOOGLE_TEST_CONFIGURATION }} .. && `
           msbuild /p:Configuration=${{ matrix.configuration }} /p:Platform=x64 UtilityLibraryTests.sln && `
-          cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && UtilityLibraryTests.exe
+          cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && .\UtilityLibraryTests.exe --int 1 --string data --bool
           
 
   publish:

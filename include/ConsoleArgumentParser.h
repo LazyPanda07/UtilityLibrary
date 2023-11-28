@@ -37,7 +37,6 @@ namespace utility
 		};
 	}
 }
-
 #endif // !NO_CONSOLE_ARGUMENT_PARSER
 
 #include "ConsoleArgumentParser.inl"
