@@ -12,5 +12,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE "${TEST_LIBRARY_PATH}/UtilityLibra
 
 if(EXISTS "${TEST_LIBRARY_PATH}/UtilityLibrary.dll")
 	add_definitions(-DUTILITY_LIBRARY_DLL)
-	file(COPY_FILE "${TEST_LIBRARY_PATH}/UtilityLibrary.dll" "${CMAKE_BINARY_DIR}/${CONFIGURATION}/UtilityLibrary.dll" ONLY_IF_DIFFERENT)
+	file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/${CONFIGURATION}/")
+	file(COPY_FILE "${TEST_LIBRARY_PATH}/UtilityLibrary.dll" "${CMAKE_BINARY_DIR}/${CONFIGURATION}/UtilityLibrary.dll")
 endif()
