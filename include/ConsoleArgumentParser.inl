@@ -78,7 +78,7 @@ namespace utility
 
 					if constexpr (std::is_integral_v<T>)
 					{
-						result.push_back(this->getIntegral(*it, {}));
+						result.push_back(this->getIntegral(*it));
 					}
 					else if constexpr (std::is_convertible_v<std::string, T>)
 					{
