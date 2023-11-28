@@ -52,7 +52,7 @@ namespace utility
 
 				return this->getNumeric<T>(*result, defaultValue, errorCode);
 			}
-			else if constexpr (std::is_convertible_v<std::string, T>)
+			else if constexpr (std::is_convertible_v<T, std::string>)
 			{
 				return result ? std::string(result->data()) : defaultValue;
 			}

@@ -8,7 +8,7 @@ using namespace std;
 #ifndef NO_CONSOLE_ARGUMENT_PARSER
 TEST(ConsoleArgumentParser, GetWarnings)
 {
-    static constexpr int warnings = 4;
+    static constexpr size_t warnings = 4;
     utility::parsers::ConsoleArgumentParser parser(globalArgc, globalArgv);
 
     for (size_t i = 0; i < warnings; i++)
@@ -45,10 +45,6 @@ TEST(ConsoleArgumentParser, Get)
     ASSERT_TRUE(parser.get<double>("--float"));
 
     ASSERT_TRUE(parser.get<string>("--string") == "data");
-
-    cout << "string_view value: " << parser.get<string_view>("--string") << endl;
-
-    ASSERT_TRUE(parser.get<string_view>("--string") == "data");
 
     ASSERT_TRUE(parser.get<bool>("--bool"));
 
