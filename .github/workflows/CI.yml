@@ -43,9 +43,9 @@ jobs:
     - uses: LazyPanda07/extract-current-branch@master
 
     - name: Publish
-      if: ${{ ${{ env.CURRENT_BRANCH }} == master }}
+      if: ${{ env.CURRENT_BRANCH == master }}
       run: echo "master"
 
     - name: Test
-      if: ${{ ${{ env.CURRENT_BRANCH }} == dev }}
+      if: ${{ env.CURRENT_BRANCH == dev }}
       run: echo "dev"
