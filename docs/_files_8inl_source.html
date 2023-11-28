@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.2.0</span>
    </div>
    <div id="projectbrief">Provides useful functions</div>
   </td>
@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('_files_8inl_source.html',''); initResi
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keywordflow">return</span> std::accumulate(paths.begin(), paths.end(), std::string(), [](<span class="keyword">const</span> T&amp; first, <span class="keyword">const</span> T&amp; second) { return first == <span class="stringliteral">&quot;&quot;</span> ? second : first + <span class="stringliteral">&#39;\\&#39;</span> + second; });</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        }</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#elif _HAS_CXX17</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#else</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Path, <span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">inline</span> std::filesystem::path generatePath(Path&amp;&amp; path, Args&amp;&amp;... args)</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        {</div>

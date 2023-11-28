@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['get_0',['get',['../classutility_1_1parsers_1_1_console_argument_parser.html#a56e95e5d9157d4912edc4828aa1c18c6',1,'utility::parsers::ConsoleArgumentParser']]],
-  ['getvalues_1',['getValues',['../classutility_1_1parsers_1_1_console_argument_parser.html#ae703b5fde8980798c35f2819cede7d1e',1,'utility::parsers::ConsoleArgumentParser']]],
-  ['getwarnings_2',['getWarnings',['../classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a',1,'utility::parsers::ConsoleArgumentParser']]]
+  ['csvparser_0',['csvparser',['../classutility_1_1parsers_1_1_c_s_v_parser.html#ad92b2c93a0b057d7c96a845d4a0eef26',1,'utility::parsers::CSVParser::CSVParser(const std::filesystem::path &amp;pathToCSVFile, std::string_view delimiter=&quot;,&quot;)'],['../classutility_1_1parsers_1_1_c_s_v_parser.html#a2a3decd9a7e1d3209bfec35ddeb42980',1,'utility::parsers::CSVParser::CSVParser(std::ifstream &amp;csvFile, std::string_view delimiter=&quot;,&quot;)']]]
 ];

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.2.0</span>
    </div>
    <div id="projectbrief">Provides useful functions</div>
   </td>
@@ -108,28 +108,35 @@ $(document).ready(function(){initNavTree('_files_8h_source.html',''); initResiza
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#endif </span><span class="comment">// _HAS_CXX17</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Concepts.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span>utility</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">namespace </span>files</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#if _HAS_CXX20</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">template</span>&lt;concepts::StringViewConvertible Path, concepts::StringViewConvertible... Args&gt;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        std::filesystem::path generatePath(Path&amp;&amp; path, Args&amp;&amp;... args);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>...&gt; <span class="keyword">typename</span> Container, <span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt; <span class="keyword">requires</span> (std::ranges::range&lt;Container&lt;T, Args...&gt;&gt; &amp;&amp; concepts::StringConvertible&lt;T&gt;)</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        std::filesystem::path generatePathContainer(<span class="keyword">const</span> Container&lt;T, Args...&gt;&amp; paths);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#elif _HAS_CXX17</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Path, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        std::filesystem::path generatePath(Path&amp;&amp; path, Args&amp;&amp;... args);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>...&gt; <span class="keyword">typename</span> Container, <span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        std::filesystem::path generatePathContainer(<span class="keyword">const</span> Container&lt;T, Args...&gt;&amp; paths);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif </span><span class="comment">// _HAS_CXX20</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#include &quot;Files.inl&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Defines.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span>utility</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">namespace </span>files</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        UTILITY_LIBRARY_API std::string readFile(<span class="keyword">const</span> std::filesystem::path&amp; pathToFile, std::ios::openmode mode = std::ios::in);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        UTILITY_LIBRARY_API std::string readBinaryFile(<span class="keyword">const</span> std::filesystem::path&amp; pathToFile);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        UTILITY_LIBRARY_API std::string readFile(std::ifstream&amp; file);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#if _HAS_CXX20</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keyword">template</span>&lt;concepts::StringViewConvertible Path, concepts::StringViewConvertible... Args&gt;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        std::filesystem::path generatePath(Path&amp;&amp; path, Args&amp;&amp;... args);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>...&gt; <span class="keyword">typename</span> Container, <span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt; <span class="keyword">requires</span> (std::ranges::range&lt;Container&lt;T, Args...&gt;&gt; &amp;&amp; concepts::StringConvertible&lt;T&gt;)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        std::filesystem::path generatePathContainer(<span class="keyword">const</span> Container&lt;T, Args...&gt;&amp; paths);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Path, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        std::filesystem::path generatePath(Path&amp;&amp; path, Args&amp;&amp;... args);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>...&gt; <span class="keyword">typename</span> Container, <span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        std::filesystem::path generatePathContainer(<span class="keyword">const</span> Container&lt;T, Args...&gt;&amp; paths);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif </span><span class="comment">// _HAS_CXX20</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#include &quot;Files.inl&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
