@@ -19,7 +19,7 @@ namespace utility
 		 }
 
 		template<template<typename, typename...> typename Container, typename T, typename... Args> requires (std::ranges::range<Container<T, Args...>> && concepts::StringConvertible<T>)
-		inline std::filesystem::path generatePath(const Container<T, Args...>& paths)
+		inline std::filesystem::path generatePathContainer(const Container<T, Args...>& paths)
 		{
 			return std::accumulate(paths.begin(), paths.end(), std::string(), [](const T& first, const T& second) { return first == "" ? second : first + '\\' + second; });
 		}
@@ -40,12 +40,12 @@ namespace utility
 		}
 
 		template<template<typename, typename...> typename Container, typename T, typename... Args>
-		inline std::filesystem::path generatePath(const Container<T, Args...>& paths)
+		inline std::filesystem::path generatePathContainer(const Container<T, Args...>& paths)
 		{
 			static_assert(std::is_convertible_v<T, std::string>, "T must be convertible to std::string");
 
 			return std::accumulate(paths.begin(), paths.end(), std::string(), [](const T& first, const T& second) { return first == "" ? second : first + '\\' + second; });
 		}
-#endif _HAS_CXX20
+#endif // _HAS_CXX20
 	}
 }

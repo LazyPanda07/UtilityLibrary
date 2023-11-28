@@ -5,12 +5,14 @@
 #include <optional>
 #include <charconv>
 
+#include "Defines.h"
+
 #ifndef NO_CONSOLE_ARGUMENT_PARSER
 namespace utility
 {
 	namespace parsers
 	{
-		class ConsoleArgumentParser
+		class UTILITY_LIBRARY_API ConsoleArgumentParser
 		{
 		private:
 			std::vector<std::string_view> values;

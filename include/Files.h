@@ -33,7 +33,7 @@ namespace utility
 		 * @return 
 		*/
 		template<template<typename, typename...> typename Container, typename T, typename... Args> requires (std::ranges::range<Container<T, Args...>> && concepts::StringConvertible<T>)
-		std::filesystem::path generatePath(const Container<T, Args...>& paths);
+		std::filesystem::path generatePathContainer(const Container<T, Args...>& paths);
 #elif _HAS_CXX17
 		/**
 		 * @brief Generate path from parameters
@@ -54,7 +54,7 @@ namespace utility
 		 * @return 
 		*/
 		template<template<typename, typename...> typename Container, typename T, typename... Args>
-		std::filesystem::path generatePath(const Container<T, Args...>& paths);
+		std::filesystem::path generatePathContainer(const Container<T, Args...>& paths);
 #endif // _HAS_CXX20
 	}
 }
