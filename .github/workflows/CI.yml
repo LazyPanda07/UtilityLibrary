@@ -23,23 +23,29 @@ jobs:
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
-      with: 
+      with:
         name: ${{ matrix.configuration }}
         path: bin/${{ matrix.configuration }}-x64
-  
-  variables:
+
+  tests:
     runs-on: windows-latest
+    needs: build
+
     steps:
-    - uses: actions/checkout@v3
+    - name: Directory
+      run: dir
 
-    - uses: LazyPanda07/extract-current-branch@v1.0.0
+  publish:
+    runs-on: windows-latest
+    needs: [build, tests]
 
-    - name: Print branch
-      run: echo ${{ env.CURRENT_BRANCH }} # print dev or distribute
+    steps:
+    - uses: LazyPanda07/extract-current-branch
 
-    - uses: LazyPanda07/extract-current-branch@v1.0.0
-      with:
-        variable-name: custom-branch # override default variable name to custom-branch
+    - name: Publish
+      if: ${{ env.CURRENT_BRANCH }} == master
+      run: echo "master"
 
-    - name: Print custom branch
-      run: echo ${{ env.custom-branch }} # print dev or distribute
+    - name: Test
+      if: ${{ env.CURRENT_BRANCH }} == dev
+      run: echo "dev"
