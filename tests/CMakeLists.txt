@@ -10,7 +10,9 @@ add_executable(
 	TestCases/TestFiles.cpp
 )
 
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
+option(CXX_VERSION "C++ version" 20)
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD ${CXX_VERSION})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ../include gtest/include)
 

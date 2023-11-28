@@ -30,7 +30,16 @@ namespace utility
 		{
 			std::optional<std::string_view> result = this->findValue(argumentName);
 
-			if constexpr (std::is_integral_v<T>)
+			if constexpr (std::is_same_v<int8_t, T> || std::is_same_v<uint8_t, T>)
+			{
+				if (!result)
+				{
+					return defaultValue;
+				}
+
+				return static_cast<T>(this->getIntegral<char>(*result, defaultValue, errorCode));
+			}
+			else if constexpr (std::is_integral_v<T>)
 			{
 				if (!result)
 				{
