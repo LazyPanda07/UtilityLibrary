@@ -24,7 +24,7 @@ namespace utility
 
 			for (const string& columnName : strings::split(line, delimiter))
 			{
-				csvData.emplace_back(columnName);
+				csvData.emplace_back(columnName, vector<string>());
 			}
 
 			while (getline(os, line))
