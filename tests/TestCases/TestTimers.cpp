@@ -22,7 +22,19 @@ TEST(Timers, Timer)
         out >> result;
     }
 
-    ASSERT_TRUE(result >= 1.0);
+    ASSERT_TRUE(result >= 1.0) << result;
+
+    {
+        stringbuf buffer;
+        iostream out(&buffer);
+        utility::timers::Timer timer(out, utility::timers::OutputTimeType::milliseconds);
+
+        this_thread::sleep_for(100ms);
+
+        out >> result;
+    }
+
+    ASSERT_TRUE(result >= 0.1) << result;
 }
 
 TEST(Timers, AccumulatingTimer)
@@ -35,7 +47,7 @@ TEST(Timers, AccumulatingTimer)
         this_thread::sleep_for(1s);
     }
 
-    ASSERT_TRUE(result >= 1.0);
+    ASSERT_TRUE(result >= 1.0) << result;
 
     {
         utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::seconds);
@@ -43,7 +55,7 @@ TEST(Timers, AccumulatingTimer)
         this_thread::sleep_for(1s);
     }
 
-    ASSERT_TRUE(result >= 2.0);
+    ASSERT_TRUE(result >= 2.0) << result;
 
     {
         utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::seconds);
@@ -51,5 +63,5 @@ TEST(Timers, AccumulatingTimer)
         this_thread::sleep_for(1s);
     }
 
-    ASSERT_TRUE(result >= 3.0);
+    ASSERT_TRUE(result >= 3.0) << result;
 }
