@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Defines.h"
-
+#ifndef NO_TIMERS
 #include <chrono>
+
+#include "Defines.h"
 
 namespace utility
 {
@@ -73,3 +74,4 @@ namespace utility
 		};
 	}
 }
+#endif // !NO_TIMERS

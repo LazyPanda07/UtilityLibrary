@@ -1,5 +1,6 @@
 #include "Timers.h"
 
+#ifndef NO_TIMERS
 #include <iostream>
 
 using namespace std;
@@ -15,7 +16,7 @@ namespace utility
 			type(type),
 			start(chrono::high_resolution_clock::now())
 		{
-			chrono::steady_clock::period::den;
+			
 		}
 
 		Timer::Timer(ostream& output, OutputTimeType type) :
@@ -98,3 +99,4 @@ __forceinline double calculateTime(const chrono::high_resolution_clock::time_poi
 
 	return resultTime / chrono::high_resolution_clock::period::den * coeffficient;
 }
+#endif // !NO_TIMERS

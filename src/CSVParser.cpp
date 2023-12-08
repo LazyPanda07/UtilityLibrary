@@ -1,11 +1,11 @@
 #include "CSVParser.h"
 
+#ifndef NO_CSV_PARSER
 #include "Files.h"
 #include "Strings.h"
 
 using namespace std;
 
-#ifndef NO_CSV_PARSER
 namespace utility
 {
 	namespace parsers

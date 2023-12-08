@@ -8,6 +8,7 @@
 
 using namespace std;
 
+#ifndef NO_TIMERS
 TEST(Timers, Timer)
 {
     double result;
@@ -57,12 +58,12 @@ TEST(Timers, Timer)
     {
         utility::timers::Timer timer(out, utility::timers::OutputTimeType::hours);
 
-        this_thread::sleep_for(0.01h);
+        this_thread::sleep_for(0.001h);
     }
 
     out >> result;
 
-    ASSERT_TRUE(result >= 36.0);
+    ASSERT_TRUE(result >= 3.6);
 }
 
 TEST(Timers, AccumulatingTimer)
@@ -104,8 +105,9 @@ TEST(Timers, AccumulatingTimer)
     {
         utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::hours);
 
-        this_thread::sleep_for(0.01h);
+        this_thread::sleep_for(0.001h);
     }
 
-    ASSERT_TRUE(result >= 45.0);
+    ASSERT_TRUE(result >= 12.6);
 }
+#endif

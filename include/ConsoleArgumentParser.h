@@ -1,5 +1,6 @@
 #pragma once
 
+#ifndef NO_CONSOLE_ARGUMENT_PARSER
 #include <vector>
 #include <string>
 #include <optional>
@@ -7,7 +8,6 @@
 
 #include "Defines.h"
 
-#ifndef NO_CONSOLE_ARGUMENT_PARSER
 namespace utility
 {
 	namespace parsers

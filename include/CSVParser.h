@@ -1,11 +1,11 @@
 #pragma once
 
+#ifndef NO_CSV_PARSER
 #include <filesystem>
 #include <fstream>
 
 #include "Defines.h"
 
-#ifndef NO_CSV_PARSER
 namespace utility
 {
 	namespace parsers
