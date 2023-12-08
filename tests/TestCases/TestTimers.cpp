@@ -10,48 +10,72 @@ using namespace std;
 
 TEST(Timers, Timer)
 {
-    cout << chrono::high_resolution_clock::period::den << endl;
-
     double result;
+    stringbuf buffer;
+    iostream out(&buffer);
 
     {
-        stringbuf buffer;
-        iostream out(&buffer);
+        utility::timers::Timer timer(out, utility::timers::OutputTimeType::milliseconds);
+
+        this_thread::sleep_for(1000ms);
+    }
+
+    out >> result;
+
+    ASSERT_TRUE(result >= 1.0);
+
+    {
         utility::timers::Timer timer(out, utility::timers::OutputTimeType::seconds);
 
         this_thread::sleep_for(1s);
-
-        out >> result;
     }
 
-    ASSERT_TRUE(result >= 1.0) << result;
+    out >> result;
+
+    ASSERT_TRUE(result >= 1.0);
 
     {
-        stringbuf buffer;
-        iostream out(&buffer);
-        utility::timers::Timer timer(out, utility::timers::OutputTimeType::milliseconds);
+        utility::timers::Timer timer(out, utility::timers::OutputTimeType::nanoseconds);
 
-        this_thread::sleep_for(100ms);
-
-        out >> result;
+        this_thread::sleep_for(1'000'000'000ns);
     }
 
-    ASSERT_TRUE(result >= 0.1) << result;
+    out >> result;
+
+    ASSERT_TRUE(result >= 1.0);
+
+    {
+        utility::timers::Timer timer(out, utility::timers::OutputTimeType::minutes);
+
+        this_thread::sleep_for(0.1min);
+    }
+
+    out >> result;
+
+    ASSERT_TRUE(result >= 6.0);
+    
+    {
+        utility::timers::Timer timer(out, utility::timers::OutputTimeType::hours);
+
+        this_thread::sleep_for(0.01h);
+    }
+
+    out >> result;
+
+    ASSERT_TRUE(result >= 36.0);
 }
 
 TEST(Timers, AccumulatingTimer)
 {
-    cout << chrono::high_resolution_clock::period::den << endl;
-
     double result = 0.0;
 
     {
-        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::seconds);
+        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::milliseconds);
 
-        this_thread::sleep_for(1s);
+        this_thread::sleep_for(1000ms);
     }
 
-    ASSERT_TRUE(result >= 1.0) << result;
+    ASSERT_TRUE(result >= 1.0);
 
     {
         utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::seconds);
@@ -59,13 +83,29 @@ TEST(Timers, AccumulatingTimer)
         this_thread::sleep_for(1s);
     }
 
-    ASSERT_TRUE(result >= 2.0) << result;
+    ASSERT_TRUE(result >= 2.0);
 
     {
-        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::seconds);
+        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::nanoseconds);
 
-        this_thread::sleep_for(1s);
+        this_thread::sleep_for(1'000'000'000ns);
     }
 
-    ASSERT_TRUE(result >= 3.0) << result;
+    ASSERT_TRUE(result >= 3.0);
+
+    {
+        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::minutes);
+
+        this_thread::sleep_for(0.1min);
+    }
+
+    ASSERT_TRUE(result >= 9.0);
+
+    {
+        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::hours);
+
+        this_thread::sleep_for(0.01h);
+    }
+
+    ASSERT_TRUE(result >= 45.0);
 }
