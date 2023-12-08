@@ -10,6 +10,8 @@ using namespace std;
 
 TEST(Timers, Timer)
 {
+    cout << chrono::high_resolution_clock::period::den << endl;
+
     double result;
 
     {
@@ -39,6 +41,8 @@ TEST(Timers, Timer)
 
 TEST(Timers, AccumulatingTimer)
 {
+    cout << chrono::high_resolution_clock::period::den << endl;
+
     double result = 0.0;
 
     {
