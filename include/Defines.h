@@ -14,4 +14,4 @@
 /**
  * @brief Current version of UtilityLibrary
 */
-static constexpr std::string_view utilityLibraryVersion = "0.2.0";
+static constexpr std::string_view utilityLibraryVersion = "0.3.0";

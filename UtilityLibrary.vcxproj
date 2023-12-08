@@ -234,6 +234,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Timers.cpp" />
     <ClCompile Include="src\ConsoleArgumentParser.cpp" />
     <ClCompile Include="src\CSVParser.cpp" />
     <ClCompile Include="src\Files.cpp" />
@@ -246,6 +247,7 @@
     <ClInclude Include="include\Defines.h" />
     <ClInclude Include="include\Files.h" />
     <ClInclude Include="include\Strings.h" />
+    <ClInclude Include="include\Timers.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\ConsoleArgumentParser.inl" />

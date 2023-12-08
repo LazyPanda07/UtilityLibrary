@@ -10,6 +10,7 @@ add_executable(
 	TestCases/TestCSVParser.cpp
 	TestCases/TestStrings.cpp
 	TestCases/TestFiles.cpp
+	TestCases/TestTimers.cpp
 )
 
 set(CXX_VERSION "20" CACHE STRING "C++ version")
