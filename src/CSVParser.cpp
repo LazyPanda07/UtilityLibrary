@@ -1,6 +1,8 @@
 #include "CSVParser.h"
 
 #ifndef NO_CSV_PARSER
+#include <format>
+
 #include "Files.h"
 #include "Strings.h"
 
