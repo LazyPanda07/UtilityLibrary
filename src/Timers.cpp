@@ -57,7 +57,7 @@ namespace utility
 	}
 }
 
-__forceinline double calculateTime(const chrono::high_resolution_clock::time_point& start, utility::timers::OutputTimeType type)
+inline double calculateTime(const chrono::high_resolution_clock::time_point& start, utility::timers::OutputTimeType type)
 {
 	chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::now();
 
