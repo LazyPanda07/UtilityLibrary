@@ -23,6 +23,11 @@ add_library(
 	src/Timers.cpp
 )
 
+target_include_directories(
+	${PROJECT_NAME} PRIVATE
+	include
+)
+
 install(
 	TARGETS ${PROJECT_NAME} 
 	ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
