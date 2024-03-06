@@ -3,6 +3,7 @@
 #ifndef NO_CSV_PARSER
 #include <filesystem>
 #include <fstream>
+#include <vector>
 
 #include "Defines.h"
 

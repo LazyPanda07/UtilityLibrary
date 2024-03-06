@@ -5,6 +5,7 @@
 #include <string>
 #include <optional>
 #include <charconv>
+#include <cstdint>
 
 #include "Defines.h"
 
@@ -57,8 +58,8 @@ namespace utility
 			template<typename T>
 			std::vector<T> getValues(std::string_view argumentName) const;
 
-			template<>
-			bool get<bool>(std::string_view argumentName, const bool& defaultValue, std::errc* errorCode) const;
+			/*template<>
+			bool get<bool>(std::string_view argumentName, const bool& defaultValue, std::errc* errorCode) const;*/
 
 			~ConsoleArgumentParser() = default;
 		};
