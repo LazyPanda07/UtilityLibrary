@@ -15,7 +15,7 @@ TEST(Files, ReadFile)
 
     ASSERT_TRUE(data == utility::files::readFile("test.txt"));
 
-    ASSERT_TRUE(data == utility::files::readFile(file));
+    ASSERT_TRUE(data == utility::files::readFileFromStream(file));
 
     data = utility::testing::createRandomBinaryFile("test.bin");
 

@@ -34,7 +34,7 @@ namespace utility
 		 * @return 
 		 * @exception std::runtime_error
 		*/
-		UTILITY_LIBRARY_API_FUNCTION std::string readFile(std::ifstream& file);
+		UTILITY_LIBRARY_API_FUNCTION std::string readFileFromStream(std::ifstream& file);
 
 		/**
 		 * @brief Generate path from parameters

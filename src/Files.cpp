@@ -17,7 +17,7 @@ namespace utility
 
 			ifstream file(pathToFile, mode);
 
-			return readFile(file);
+			return readFileFromStream(file);
 		}
 
 		string readBinaryFile(const filesystem::path& pathToFile)
@@ -25,7 +25,7 @@ namespace utility
 			return readFile(pathToFile, ios::binary);
 		}
 
-		string readFile(ifstream& file)
+		string readFileFromStream(ifstream& file)
 		{
 			if (!file.good())
 			{

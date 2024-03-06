@@ -59,7 +59,7 @@ namespace utility
 
 		CSVParser::CSVParser(ifstream& csvFile, string_view delimiter)
 		{
-			this->parse(files::readFile(csvFile), delimiter);
+			this->parse(files::readFileFromStream(csvFile), delimiter);
 		}
 
 		size_t CSVParser::size() const

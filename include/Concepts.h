@@ -1,7 +1,5 @@
 #pragma once
 
-#if _HAS_CXX20
-
 #include <string>
 
 #include <concepts>
@@ -24,5 +22,3 @@ namespace utility
 		};
 	}
 }
-
-#endif // _HAS_CXX20
