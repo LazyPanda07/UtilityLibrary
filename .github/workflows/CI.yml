@@ -15,7 +15,7 @@ jobs:
         shared: [[ON, DLL], [OFF, ""]]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
   
     - name: Enable NMake
       uses: ilammy/msvc-dev-cmd@v1.13.0
@@ -28,7 +28,7 @@ jobs:
           nmake install
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.configuration }}${{ matrix.shared[1] }}_Windows
         path: build/install-dir/
@@ -69,13 +69,13 @@ jobs:
         shared: [[ON, DLL], [OFF, ""]]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
   
     - name: Enable NMake
       uses: ilammy/msvc-dev-cmd@v1.13.0
 
     - name: Download artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with: 
         name: ${{ matrix.configuration }}${{ matrix.shared[1] }}_Windows
         path: UtilityLibrary
@@ -146,12 +146,93 @@ jobs:
           .\Tests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
 
-  publish:
-    runs-on: windows-latest
-    needs: [windows-tests]
+  linux-tests:
+    runs-on: ubuntu-latest
+    needs: linux-build
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        shared: [[ON, DLL], [OFF, ""]]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+  
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with: 
+        name: ${{ matrix.configuration }}${{ matrix.shared[1] }}_Linux
+        path: UtilityLibrary
+
+    - name: Get Google Test
+      uses: LazyPanda07/get-gtest@v1
+      with:
+        install-path: Tests/gtest
+        
+    - name: Build tests
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          mkdir build
+          cd build
+          cmake ..
+          make install -j $(nproc)
+
+    - name: Tests
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          cd build/bin
+          ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
+    - name: Build tests without ConsoleArgumentParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake -DNO_CONSOLE_ARGUMENT_PARSER=ON ..
+          make install -j $(nproc)
+
+    - name: Tests without ConsoleArgumentParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          cd build/bin
+          ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
+    - name: Build tests without CSVParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake -DNO_CSV_PARSER=ON ..
+          make install -j $(nproc)
+
+    - name: Tests without CSVParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          cd build/bin
+          ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+    
+    - name: Build tests without Timers
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake -DNO_TIMERS=ON ..
+          make install -j $(nproc)
+
+    - name: Tests without Timers
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          cd build/bin
+          ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
+  publish:
+    runs-on: windows-latest
+    needs: [windows-tests, linux-tests]
+
+    steps:
+    - uses: actions/checkout@v4
 
     - uses: LazyPanda07/extract-current-branch@master
 
@@ -165,7 +246,7 @@ jobs:
 
     - name: Download artifacts
       if: ${{ env.CURRENT_BRANCH == 'master' }}
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       
     - name: Create zip
       if: ${{ env.CURRENT_BRANCH == 'master' }}
