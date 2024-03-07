@@ -6,6 +6,7 @@
 #include <optional>
 #include <charconv>
 #include <cstdint>
+#include <algorithm>
 
 #include "Defines.h"
 

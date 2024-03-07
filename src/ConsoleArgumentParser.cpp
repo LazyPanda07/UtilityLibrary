@@ -1,7 +1,6 @@
 #include "ConsoleArgumentParser.h"
 
 #ifndef NO_CONSOLE_ARGUMENT_PARSER
-#include <algorithm>
 #include <format>
 
 using namespace std;
