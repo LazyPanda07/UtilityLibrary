@@ -55,12 +55,6 @@ namespace utility
 
 			return result;
 		}
-
-		template<>
-		bool ConsoleArgumentParser::get<bool>(string_view argumentName, const bool& defaultValue, errc* errorCode) const
-		{
-			return ranges::find(values, argumentName) != values.end() || defaultValue;
-		}
 	}
 }
 #endif // !NO_CONSOLE_ARGUMENT_PARSER
