@@ -8,8 +8,10 @@
 #else
 #define UTILITY_LIBRARY_API __declspec(dllexport)
 
-#pragma warning(disable: 4190)
+#pragma warning(disable: 4297)
 #pragma warning(disable: 4251)
+#pragma warning(disable: 4275)
+#pragma warning(disable: 4190)
 #endif
 
 #define UTILITY_LIBRARY_API_FUNCTION extern "C" UTILITY_LIBRARY_API

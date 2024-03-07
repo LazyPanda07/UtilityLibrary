@@ -74,9 +74,6 @@ jobs:
     - name: Enable NMake
       uses: ilammy/msvc-dev-cmd@v1.13.0
 
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@main
-
     - name: Download artifacts
       uses: actions/download-artifact@v3
       with: 
@@ -89,44 +86,64 @@ jobs:
         build-type: ${{ matrix.configuration }}
         install-path: Tests/gtest
         
-    - name: Tests C++20
-      working-directory: ${{ github.workspace }}/tests
+    - name: Build tests
+      working-directory: ${{ github.workspace }}/Tests
       run: |
-          mkdir build && cd build && cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ env.GOOGLE_TEST_CONFIGURATION }} .. && `
-          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 UtilityLibraryTests.sln && cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && `
-          .\UtilityLibraryTests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          mkdir build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -G "NMake Makefiles" ..
+          nmake install
 
-    - name: Tests C++17
-      working-directory: ${{ github.workspace }}/tests
+    - name: Tests
+      working-directory: ${{ github.workspace }}/Tests
       run: |
-          rm build -r -force && mkdir build && cd build && `
-          cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ env.GOOGLE_TEST_CONFIGURATION }} -DCXX_VERSION=17 .. && `
-          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 UtilityLibraryTests.sln && cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && `
-          .\UtilityLibraryTests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          cd build/bin
+          .\Tests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
-    - name: Test build without ConsoleArgumentParser
-      working-directory: ${{ github.workspace }}/tests
+    - name: Build tests without ConsoleArgumentParser
+      working-directory: ${{ github.workspace }}/Tests
       run: |
-          rm build -r -force && mkdir build && cd build && `
-          cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ env.GOOGLE_TEST_CONFIGURATION }} -DNO_CONSOLE_ARGUMENT_PARSER=ON .. && `
-          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 UtilityLibraryTests.sln && cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && `
-          .\UtilityLibraryTests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          rm build -r -force
+          mkdir build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DNO_CONSOLE_ARGUMENT_PARSER=ON -G "NMake Makefiles" ..
+          nmake install
 
-    - name: Test build without CSVParser
-      working-directory: ${{ github.workspace }}/tests
+    - name: Tests without ConsoleArgumentParser
+      working-directory: ${{ github.workspace }}/Tests
       run: |
-          rm build -r -force && mkdir build && cd build && `
-          cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ env.GOOGLE_TEST_CONFIGURATION }} -DNO_CSV_PARSER=ON .. && `
-          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 UtilityLibraryTests.sln && cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && `
-          .\UtilityLibraryTests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          cd build/bin
+          .\Tests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
+    - name: Build tests without CSVParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm build -r -force
+          mkdir build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DNO_CSV_PARSER=ON -G "NMake Makefiles" ..
+          nmake install
+
+    - name: Tests without CSVParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          cd build/bin
+          .\Tests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
     
-    - name: Test build without Timers
-      working-directory: ${{ github.workspace }}/tests
+    - name: Build tests without Timers
+      working-directory: ${{ github.workspace }}/Tests
       run: |
-          rm build -r -force && mkdir build && cd build && `
-          cmake -DTEST_LIBRARY_PATH=${{ github.workspace }}/UtilityLibrary -DCONFIGURATION=${{ env.GOOGLE_TEST_CONFIGURATION }} -DNO_TIMERS=ON .. && `
-          msbuild /p:Configuration=${{ env.GOOGLE_TEST_CONFIGURATION }} /p:Platform=x64 UtilityLibraryTests.sln && cd ${{ env.GOOGLE_TEST_CONFIGURATION }} && `
-          .\UtilityLibraryTests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          rm build -r -force
+          mkdir build
+          cd build
+          cmake  -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DNO_TIMERS=ON -G "NMake Makefiles" ..
+          nmake install
+
+    - name: Tests without Timers
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          cd build/bin
+          .\Tests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
 
   publish:

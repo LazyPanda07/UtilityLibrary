@@ -33,6 +33,11 @@ namespace utility
 		 * @param delimiter 
 		 * @return 
 		*/
+#ifdef __LINUX__
 		UTILITY_LIBRARY_API_FUNCTION std::vector<std::string> split(const std::string& source, std::string_view delimiter);
+#else
+		UTILITY_LIBRARY_API std::vector<std::string> split(const std::string& source, std::string_view delimiter);
+#endif
+		
 	}
 }

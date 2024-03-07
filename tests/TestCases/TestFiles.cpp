@@ -1,7 +1,7 @@
 #include <vector>
 #include <queue>
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 #include "Files.h"
 #include "Utility.h"

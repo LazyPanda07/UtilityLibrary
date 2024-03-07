@@ -1,6 +1,26 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.27.0)
 
-project(UtilityLibraryTests)
+set(CXX_VERSION "20" CACHE STRING "C++ version")
+set(TEST_LIBRARY_PATH ../UtilityLibrary)
+set(DLL ../UtilityLibrary)
+option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
+option(NO_CSV_PARSER "Remove CSVParser" OFF)
+
+if (UNIX)
+	set(DLL ${DLL}/lib/libUtilityLibrary.so)
+
+	add_definitions(-D__LINUX__)
+else ()
+	set(DLL ${DLL}/dll/UtilityLibrary.dll)
+endif (UNIX)
+
+if(EXISTS ${DLL})
+	add_definitions(-DUTILITY_LIBRARY_DLL)
+
+	install(FILES ${DLL} DESTINATION ${CMAKE_BINARY_DIR}/bin)
+endif()
+
+project(Tests)
 
 add_executable(
 	${PROJECT_NAME} 
@@ -13,23 +33,25 @@ add_executable(
 	TestCases/TestTimers.cpp
 )
 
-set(CXX_VERSION "20" CACHE STRING "C++ version")
-option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
-option(NO_CSV_PARSER "Remove CSVParser" OFF)
+target_include_directories(
+	${PROJECT_NAME} PRIVATE 
+	include 
+	../include
+	gtest/include
+)
 
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD ${CXX_VERSION})
+target_link_directories(
+	${PROJECT_NAME} PRIVATE
+	../UtilityLibrary/lib
+	gtest/lib
+)
 
-target_include_directories(${PROJECT_NAME} PRIVATE include ../include gtest/include)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE "${TEST_LIBRARY_PATH}/UtilityLibrary.lib" ${CMAKE_SOURCE_DIR}/gtest/lib/gtest.lib ${CMAKE_SOURCE_DIR}/gtest/lib/gtest_main.lib)
-
-file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/${CONFIGURATION}/")
-file(COPY_FILE "${CMAKE_SOURCE_DIR}/data/test.csv" "${CMAKE_BINARY_DIR}/${CONFIGURATION}/test.csv")
-
-if(EXISTS "${TEST_LIBRARY_PATH}/UtilityLibrary.dll")
-	add_definitions(-DUTILITY_LIBRARY_DLL)
-	file(COPY_FILE "${TEST_LIBRARY_PATH}/UtilityLibrary.dll" "${CMAKE_BINARY_DIR}/${CONFIGURATION}/UtilityLibrary.dll")
-endif()
+target_link_libraries(
+	${PROJECT_NAME} PRIVATE 
+	UtilityLibrary
+	gtest
+	gtest_main
+)
 
 if(${NO_CONSOLE_ARGUMENT_PARSER})
 	add_definitions(-DNO_CONSOLE_ARGUMENT_PARSER)
@@ -38,3 +60,6 @@ endif()
 if(${NO_CSV_PARSER})
 	add_definitions(-DNO_CSV_PARSER)
 endif()
+
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_BINARY_DIR}/bin)
+install(FILES data/test.csv DESTINATION ${CMAKE_BINARY_DIR}/bin)

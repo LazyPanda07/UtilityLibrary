@@ -1,7 +1,7 @@
 #include <string>
 #include <fstream>
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 #include "CSVParser.h"
 #include "Files.h"
