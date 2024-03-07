@@ -36,13 +36,13 @@ add_executable(
 target_include_directories(
 	${PROJECT_NAME} PRIVATE 
 	include 
-	../include
+	${CMAKE_SOURCE_DIR}/../include
 	gtest/include
 )
 
 target_link_directories(
 	${PROJECT_NAME} PRIVATE
-	../UtilityLibrary/lib
+	${CMAKE_SOURCE_DIR}/../UtilityLibrary/lib
 	gtest/lib
 )
 
