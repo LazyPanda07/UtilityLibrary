@@ -227,9 +227,100 @@ jobs:
           cd build/bin
           LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
+
+  memory-leak-tests:
+    runs-on: ubuntu-latest
+    needs: linux-build
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        shared: [[ON, DLL], [OFF, ""]]
+
+    steps:
+    - uses: actions/checkout@v4
+  
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with: 
+        name: ${{ matrix.configuration }}${{ matrix.shared[1] }}_Linux
+        path: UtilityLibrary
+
+    - name: Get Google Test
+      uses: LazyPanda07/get-gtest@v1
+      with:
+        install-path: Tests/gtest
+        
+    - name: Build tests
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          mkdir build
+          cd build
+          cmake ..
+          make install -j $(nproc)
+
+    - name: Tests
+      uses: LazyPanda07/check-memory-leaks@v1
+      with:
+        path: Tests/build/bin
+        name: Tests
+        pre-execute: export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$(pwd)
+        args: --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+        
+    - name: Build tests without ConsoleArgumentParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake -DNO_CONSOLE_ARGUMENT_PARSER=ON ..
+          make install -j $(nproc)
+
+    - name: Tests without ConsoleArgumentParser
+      uses: LazyPanda07/check-memory-leaks@v1
+      with:
+        path: Tests/build/bin
+        name: Tests
+        pre-execute: export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$(pwd)
+        args: --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
+    - name: Build tests without CSVParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake -DNO_CSV_PARSER=ON ..
+          make install -j $(nproc)
+
+    - name: Tests without CSVParser
+      uses: LazyPanda07/check-memory-leaks@v1
+      with:
+        path: Tests/build/bin
+        name: Tests
+        pre-execute: export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$(pwd)
+        args: --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+    
+    - name: Build tests without Timers
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake -DNO_TIMERS=ON ..
+          make install -j $(nproc)
+
+    - name: Tests without Timers
+      uses: LazyPanda07/check-memory-leaks@v1
+      with:
+        path: Tests/build/bin
+        name: Tests
+        pre-execute: export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$(pwd)
+        args: --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
+
   publish:
     runs-on: windows-latest
-    needs: [windows-tests, linux-tests]
+    needs: [windows-tests, linux-tests, memory-leak-tests]
 
     steps:
     - uses: actions/checkout@v4

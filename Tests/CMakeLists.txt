@@ -4,6 +4,7 @@ set(CMAKE_CXX_STANDARD "20" CACHE STRING "C++ version")
 set(DLL ${CMAKE_SOURCE_DIR}/../UtilityLibrary)
 option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
 option(NO_CSV_PARSER "Remove CSVParser" OFF)
+option(NO_TIMERS "Remove Timers" OFF)
 
 if (UNIX)
 	set(DLL ${DLL}/lib/libUtilityLibrary.so)
@@ -54,11 +55,15 @@ target_link_libraries(
 
 if(${NO_CONSOLE_ARGUMENT_PARSER})
 	add_definitions(-DNO_CONSOLE_ARGUMENT_PARSER)
-endif()
+endif ()
 
 if(${NO_CSV_PARSER})
 	add_definitions(-DNO_CSV_PARSER)
-endif()
+endif ()
+
+if (${NO_TIMERS})
+	add_definitions(-DNO_TIMERS)
+endif ()
 
 install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_BINARY_DIR}/bin)
 install(FILES data/test.csv DESTINATION ${CMAKE_BINARY_DIR}/bin)

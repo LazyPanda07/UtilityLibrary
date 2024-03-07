@@ -14,13 +14,13 @@ TEST(Files, ReadFile)
     string data = utility::testing::createRandomFile("test.txt");
     ifstream file("test.txt");
 
-    ASSERT_TRUE(data == utility::files::readFile("test.txt"));
+    ASSERT_EQ(data, utility::files::readFile("test.txt"));
 
-    ASSERT_TRUE(data == utility::files::readFileFromStream(file));
+    ASSERT_EQ(data, utility::files::readFileFromStream(file));
 
     data = utility::testing::createRandomBinaryFile("test.bin");
 
-    ASSERT_TRUE(data == utility::files::readBinaryFile("test.bin"));
+    ASSERT_EQ(data, utility::files::readBinaryFile("test.bin"));
 }
 
 TEST(Files, GeneratePath)
@@ -48,9 +48,9 @@ TEST(Files, GeneratePath)
     };
     filesystem::path reference = filesystem::path() / "/usr" / "stranger" / "home" / "Downloads";
    
-    ASSERT_TRUE(utility::files::generatePath("/usr", "stranger", "home", "Downloads") == reference);
+    ASSERT_EQ(utility::files::generatePath("/usr", "stranger", "home", "Downloads"), reference);
 
-    ASSERT_TRUE(utility::files::generatePathContainer(vectorPaths) == reference);
-    ASSERT_TRUE(utility::files::generatePathContainer(listPaths) == reference);
-    ASSERT_TRUE(utility::files::generatePathContainer(dequeuePaths) == reference);
+    ASSERT_EQ(utility::files::generatePathContainer(vectorPaths), reference);
+    ASSERT_EQ(utility::files::generatePathContainer(listPaths), reference);
+    ASSERT_EQ(utility::files::generatePathContainer(dequeuePaths), reference);
 }

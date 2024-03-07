@@ -16,7 +16,7 @@ TEST(ConsoleArgumentParser, GetWarnings)
         parser.get<int>("--test");   
     }
 
-    ASSERT_TRUE(parser.getWarnings().size() == warnings);
+    ASSERT_EQ(parser.getWarnings().size(), warnings);
     ASSERT_TRUE(parser.getWarnings().empty());
 
     for (size_t i = 0; i < warnings; i++)
@@ -24,7 +24,7 @@ TEST(ConsoleArgumentParser, GetWarnings)
         parser.get<int>("--test");   
     }
 
-    ASSERT_TRUE(parser.getWarnings(false).size() == parser.getWarnings(false).size());
+    ASSERT_EQ(parser.getWarnings(false).size(), parser.getWarnings(false).size());
 }
 
 TEST(ConsoleArgumentParser, Get)
@@ -72,6 +72,6 @@ TEST(ConsoleArgumentParser, GetValues)
 {
     utility::parsers::ConsoleArgumentParser parser(globalArgc, globalArgv);
 
-    ASSERT_TRUE(parser.getValues<int32_t>("--values").size() == 6);
+    ASSERT_EQ(parser.getValues<int32_t>("--values").size(), 6);
 }
 #endif // !NO_CONSOLE_ARGUMENT_PARSER
