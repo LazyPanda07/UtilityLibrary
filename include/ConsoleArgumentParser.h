@@ -64,7 +64,7 @@ namespace utility
 		template<>
 		inline bool ConsoleArgumentParser::get<bool>(std::string_view argumentName, const bool& defaultValue, std::errc* errorCode) const
 		{
-			return ranges::find(values, argumentName) != values.end() || defaultValue;
+			return std::ranges::find(values, argumentName) != values.end() || defaultValue;
 		}
 	}
 }
