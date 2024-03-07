@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.27.0)
 
 set(CMAKE_CXX_STANDARD "20" CACHE STRING "C++ version")
-set(TEST_LIBRARY_PATH ../UtilityLibrary)
-set(DLL ../UtilityLibrary)
+set(DLL ${CMAKE_SOURCE_DIR}/../UtilityLibrary)
 option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
 option(NO_CSV_PARSER "Remove CSVParser" OFF)
 
