@@ -60,6 +60,9 @@ namespace utility
 
 			~ConsoleArgumentParser() = default;
 		};
+
+		template<>
+		bool ConsoleArgumentParser::get<bool>(std::string_view argumentName, const bool& defaultValue, std::errc* errorCode) const;
 	}
 }
 #endif // !NO_CONSOLE_ARGUMENT_PARSER

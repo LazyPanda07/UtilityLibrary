@@ -6,7 +6,7 @@
 
 using namespace std;
 
-static mt19937 random(time(nullptr));
+static mt19937 randomGenerator(time(nullptr));
 
 namespace utility
 {
@@ -30,7 +30,7 @@ namespace utility
 
             for (size_t i = 0; i < size; i++)
             {
-                result += alphabet[random() % alphabet.size()];
+                result += alphabet[randomGenerator() % alphabet.size()];
             }
 
             file << result;
@@ -45,7 +45,7 @@ namespace utility
 
             for (size_t i = 0; i < size; i++)
             {
-                result += static_cast<char>(random() % 255);
+                result += static_cast<char>(randomGenerator() % 255);
             }
             
             file << result;
