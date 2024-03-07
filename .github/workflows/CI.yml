@@ -180,7 +180,7 @@ jobs:
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
-          ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
     - name: Build tests without ConsoleArgumentParser
       working-directory: ${{ github.workspace }}/Tests
@@ -195,7 +195,7 @@ jobs:
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
-          ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
     - name: Build tests without CSVParser
       working-directory: ${{ github.workspace }}/Tests
@@ -210,7 +210,7 @@ jobs:
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
-          ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
     
     - name: Build tests without Timers
       working-directory: ${{ github.workspace }}/Tests
@@ -225,7 +225,7 @@ jobs:
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
-          ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
   publish:
     runs-on: windows-latest
