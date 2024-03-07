@@ -98,6 +98,7 @@ $(document).ready(function(){initNavTree('_files_8h.html',''); initResizable(); 
 <div class="contents">
 <div class="textblock"><code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
 <code>#include &quot;<a class="el" href="_concepts_8h_source.html">Concepts.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_defines_8h_source.html">Defines.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_files_8inl_source.html">Files.inl</a>&quot;</code><br />
@@ -113,23 +114,24 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a44d2169135a5aae15c9b04b36d197149" id="r_a44d2169135a5aae15c9b04b36d197149"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#a44d2169135a5aae15c9b04b36d197149">utility::files::readFile</a> (const std::filesystem::path &amp;pathToFile, std::ios::openmode mode=std::ios::in)</td></tr>
-<tr class="memdesc:a44d2169135a5aae15c9b04b36d197149"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read entire file.  <br /></td></tr>
-<tr class="separator:a44d2169135a5aae15c9b04b36d197149"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e872726aaa9a2cacb28d29a11f02b79" id="r_a2e872726aaa9a2cacb28d29a11f02b79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#a2e872726aaa9a2cacb28d29a11f02b79">utility::files::readBinaryFile</a> (const std::filesystem::path &amp;pathToFile)</td></tr>
-<tr class="memdesc:a2e872726aaa9a2cacb28d29a11f02b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read entire binary file.  <br /></td></tr>
-<tr class="separator:a2e872726aaa9a2cacb28d29a11f02b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97296b4773d4727038ea0225f03fb974" id="r_a97296b4773d4727038ea0225f03fb974"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#a97296b4773d4727038ea0225f03fb974">utility::files::readFile</a> (std::ifstream &amp;file)</td></tr>
-<tr class="memdesc:a97296b4773d4727038ea0225f03fb974"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read entire file.  <br /></td></tr>
-<tr class="separator:a97296b4773d4727038ea0225f03fb974"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acddfe3ed3606a5decb0378d7d8bf9284" id="r_acddfe3ed3606a5decb0378d7d8bf9284"><td class="memTemplParams" colspan="2">template&lt;typename Path , typename... Args&gt; </td></tr>
+<tr class="memitem:ac9d2ffc96cdcd7ed796926d16e84b489" id="r_ac9d2ffc96cdcd7ed796926d16e84b489"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#ac9d2ffc96cdcd7ed796926d16e84b489">utility::files::readFile</a> (const std::filesystem::path &amp;pathToFile, std::ios::openmode mode=std::ios::in)</td></tr>
+<tr class="memdesc:ac9d2ffc96cdcd7ed796926d16e84b489"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read entire file.  <br /></td></tr>
+<tr class="separator:ac9d2ffc96cdcd7ed796926d16e84b489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7e8742e2524a6a6cc5e2725c55e1f36" id="r_ae7e8742e2524a6a6cc5e2725c55e1f36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#ae7e8742e2524a6a6cc5e2725c55e1f36">utility::files::readBinaryFile</a> (const std::filesystem::path &amp;pathToFile)</td></tr>
+<tr class="memdesc:ae7e8742e2524a6a6cc5e2725c55e1f36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read entire binary file.  <br /></td></tr>
+<tr class="separator:ae7e8742e2524a6a6cc5e2725c55e1f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9833f6b2f969fa60dbaa699c78bf2e9d" id="r_a9833f6b2f969fa60dbaa699c78bf2e9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#a9833f6b2f969fa60dbaa699c78bf2e9d">utility::files::readFileFromStream</a> (std::ifstream &amp;file)</td></tr>
+<tr class="memdesc:a9833f6b2f969fa60dbaa699c78bf2e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read entire file.  <br /></td></tr>
+<tr class="separator:a9833f6b2f969fa60dbaa699c78bf2e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acddfe3ed3606a5decb0378d7d8bf9284" id="r_acddfe3ed3606a5decb0378d7d8bf9284"><td class="memTemplParams" colspan="2">template&lt;concepts::StringViewConvertible Path, concepts::StringViewConvertible... Args&gt; </td></tr>
 <tr class="memitem:acddfe3ed3606a5decb0378d7d8bf9284"><td class="memTemplItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#acddfe3ed3606a5decb0378d7d8bf9284">utility::files::generatePath</a> (Path &amp;&amp;path, Args &amp;&amp;... args)</td></tr>
 <tr class="memdesc:acddfe3ed3606a5decb0378d7d8bf9284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate path from parameters.  <br /></td></tr>
 <tr class="separator:acddfe3ed3606a5decb0378d7d8bf9284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cbe9212b0d9ea99598073daa2a2b0b0" id="r_a4cbe9212b0d9ea99598073daa2a2b0b0"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename, typename... &gt; typename Container, typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:a4cbe9212b0d9ea99598073daa2a2b0b0"><td class="memTemplItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#a4cbe9212b0d9ea99598073daa2a2b0b0">utility::files::generatePathContainer</a> (const Container&lt; T, Args... &gt; &amp;paths)</td></tr>
-<tr class="memdesc:a4cbe9212b0d9ea99598073daa2a2b0b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate path from parameters.  <br /></td></tr>
-<tr class="separator:a4cbe9212b0d9ea99598073daa2a2b0b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89291cb03bd80571f170eff26a4cdbda" id="r_a89291cb03bd80571f170eff26a4cdbda"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename, typename... &gt; typename Container, typename T , typename... Args&gt; <br />
+requires (std::ranges::range&lt;Container&lt;T, Args...&gt;&gt; &amp;&amp; concepts::StringConvertible&lt;T&gt;)</td></tr>
+<tr class="memitem:a89291cb03bd80571f170eff26a4cdbda"><td class="memTemplItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#a89291cb03bd80571f170eff26a4cdbda">utility::files::generatePathContainer</a> (const Container&lt; T, Args... &gt; &amp;paths)</td></tr>
+<tr class="memdesc:a89291cb03bd80571f170eff26a4cdbda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate path from parameters.  <br /></td></tr>
+<tr class="separator:a89291cb03bd80571f170eff26a4cdbda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

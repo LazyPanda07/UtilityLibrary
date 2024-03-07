@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.27.0)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install-dir CACHE STRING "")
 option(BUILD_SHARED_LIBS "" OFF)
+option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
+option(NO_CSV_PARSER "Remove CSVParser" OFF)
+option(NO_TIMERS "Remove Timers" OFF)
 
 if (UNIX)
 	add_definitions(-D__LINUX__)
@@ -10,6 +13,18 @@ endif (UNIX)
 
 if (${BUILD_SHARED_LIBS})
 	add_definitions(-DUTILITY_LIBRARY_DLL)
+endif ()
+
+if(${NO_CONSOLE_ARGUMENT_PARSER})
+	add_definitions(-DNO_CONSOLE_ARGUMENT_PARSER)
+endif ()
+
+if(${NO_CSV_PARSER})
+	add_definitions(-DNO_CSV_PARSER)
+endif ()
+
+if (${NO_TIMERS})
+	add_definitions(-DNO_TIMERS)
 endif ()
 
 project(UtilityLibrary)

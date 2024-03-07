@@ -109,14 +109,15 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acddfe3ed3606a5decb0378d7d8bf9284" id="r_acddfe3ed3606a5decb0378d7d8bf9284"><td class="memTemplParams" colspan="2">template&lt;typename Path , typename... Args&gt; </td></tr>
+<tr class="memitem:acddfe3ed3606a5decb0378d7d8bf9284" id="r_acddfe3ed3606a5decb0378d7d8bf9284"><td class="memTemplParams" colspan="2">template&lt;concepts::StringViewConvertible Path, concepts::StringViewConvertible... Args&gt; </td></tr>
 <tr class="memitem:acddfe3ed3606a5decb0378d7d8bf9284"><td class="memTemplItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#acddfe3ed3606a5decb0378d7d8bf9284">utility::files::generatePath</a> (Path &amp;&amp;path, Args &amp;&amp;... args)</td></tr>
 <tr class="memdesc:acddfe3ed3606a5decb0378d7d8bf9284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate path from parameters.  <br /></td></tr>
 <tr class="separator:acddfe3ed3606a5decb0378d7d8bf9284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cbe9212b0d9ea99598073daa2a2b0b0" id="r_a4cbe9212b0d9ea99598073daa2a2b0b0"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename, typename... &gt; typename Container, typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:a4cbe9212b0d9ea99598073daa2a2b0b0"><td class="memTemplItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#a4cbe9212b0d9ea99598073daa2a2b0b0">utility::files::generatePathContainer</a> (const Container&lt; T, Args... &gt; &amp;paths)</td></tr>
-<tr class="memdesc:a4cbe9212b0d9ea99598073daa2a2b0b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate path from parameters.  <br /></td></tr>
-<tr class="separator:a4cbe9212b0d9ea99598073daa2a2b0b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89291cb03bd80571f170eff26a4cdbda" id="r_a89291cb03bd80571f170eff26a4cdbda"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename, typename... &gt; typename Container, typename T , typename... Args&gt; <br />
+requires (std::ranges::range&lt;Container&lt;T, Args...&gt;&gt; &amp;&amp; concepts::StringConvertible&lt;T&gt;)</td></tr>
+<tr class="memitem:a89291cb03bd80571f170eff26a4cdbda"><td class="memTemplItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html#a89291cb03bd80571f170eff26a4cdbda">utility::files::generatePathContainer</a> (const Container&lt; T, Args... &gt; &amp;paths)</td></tr>
+<tr class="memdesc:a89291cb03bd80571f170eff26a4cdbda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate path from parameters.  <br /></td></tr>
+<tr class="separator:a89291cb03bd80571f170eff26a4cdbda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

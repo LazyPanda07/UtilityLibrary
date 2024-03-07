@@ -7,7 +7,8 @@ var indexSectionsWithContent =
   4: "acfgorst~",
   5: "o",
   6: "hmns",
-  7: "u"
+  7: "u",
+  8: "u"
 };
 
 var indexSectionNames =
@@ -19,7 +20,8 @@ var indexSectionNames =
   4: "functions",
   5: "enums",
   6: "enumvalues",
-  7: "defines"
+  7: "defines",
+  8: "concepts"
 };
 
 var indexSectionLabels =
@@ -31,6 +33,7 @@ var indexSectionLabels =
   4: "Functions",
   5: "Enumerations",
   6: "Enumerator",
-  7: "Macros"
+  7: "Macros",
+  8: "Concepts"
 };
 
