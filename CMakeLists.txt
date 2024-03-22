@@ -51,5 +51,5 @@ install(
 )
 
 if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-	install(DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
+	install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
 endif ()
