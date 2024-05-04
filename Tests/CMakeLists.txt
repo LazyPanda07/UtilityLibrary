@@ -8,10 +8,12 @@ option(NO_TIMERS "Remove Timers" OFF)
 
 if (UNIX)
 	set(DLL ${DLL}/lib/libUtilityLibrary.so)
+	set(UUID_LIB uuid)
 
 	add_definitions(-D__LINUX__)
 else ()
 	set(DLL ${DLL}/dll/UtilityLibrary.dll)
+	set(UUID_LIB rpcrt4)
 endif (UNIX)
 
 if(EXISTS ${DLL})
@@ -31,6 +33,7 @@ add_executable(
 	TestCases/TestStrings.cpp
 	TestCases/TestFiles.cpp
 	TestCases/TestTimers.cpp
+	TestCases/TestUUID.cpp
 )
 
 target_include_directories(
@@ -49,6 +52,7 @@ target_link_directories(
 target_link_libraries(
 	${PROJECT_NAME} PRIVATE 
 	UtilityLibrary
+	${UUID_LIB}
 	gtest
 	gtest_main
 )

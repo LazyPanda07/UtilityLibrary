@@ -14,5 +14,6 @@ var namespaceutility =
       [ "replaceAllByRef", "namespaceutility_1_1strings.html#ab70f32407557a97d352cd6ceb5b495f0", null ],
       [ "split", "namespaceutility_1_1strings.html#a0360de5070fc28f9299c1a70111c79aa", null ]
     ] ],
-    [ "timers", "namespaceutility_1_1timers.html", "namespaceutility_1_1timers" ]
+    [ "timers", "namespaceutility_1_1timers.html", "namespaceutility_1_1timers" ],
+    [ "generateUUID", "namespaceutility.html#af031a1a17354cb111805395d9829285c", null ]
 ];

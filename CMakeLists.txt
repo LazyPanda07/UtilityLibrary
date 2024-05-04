@@ -9,6 +9,10 @@ option(NO_TIMERS "Remove Timers" OFF)
 
 if (UNIX)
 	add_definitions(-D__LINUX__)
+
+	set(UUID_LIB uuid)
+else ()
+	set(UUID_LIB rpcrt4)
 endif (UNIX)
 
 if (${BUILD_SHARED_LIBS})
@@ -39,8 +43,13 @@ add_library(
 )
 
 target_include_directories(
-	${PROJECT_NAME} PRIVATE
+	${PROJECT_NAME} PUBLIC
 	include
+)
+
+target_link_libraries(
+	${PROJECT_NAME} PUBLIC
+	${UUID_LIB}
 )
 
 install(
@@ -50,6 +59,4 @@ install(
 	RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/dll
 )
 
-if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-	install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
-endif ()
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
