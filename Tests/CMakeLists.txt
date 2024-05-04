@@ -2,18 +2,23 @@ cmake_minimum_required(VERSION 3.27.0)
 
 set(CMAKE_CXX_STANDARD "20" CACHE STRING "C++ version")
 set(DLL ${CMAKE_SOURCE_DIR}/../UtilityLibrary)
+
 option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
 option(NO_CSV_PARSER "Remove CSVParser" OFF)
 option(NO_TIMERS "Remove Timers" OFF)
 
 if (UNIX)
 	set(DLL ${DLL}/lib/libUtilityLibrary.so)
-	set(UUID_LIB uuid)
+	set(
+		LIBS
+		pthread
+		uuid
+	)
 
 	add_definitions(-D__LINUX__)
 else ()
 	set(DLL ${DLL}/dll/UtilityLibrary.dll)
-	set(UUID_LIB rpcrt4)
+	set(LIBS rpcrt4)
 endif (UNIX)
 
 if(EXISTS ${DLL})
@@ -52,7 +57,7 @@ target_link_directories(
 target_link_libraries(
 	${PROJECT_NAME} PRIVATE 
 	UtilityLibrary
-	${UUID_LIB}
+	${LIBS}
 	gtest
 	gtest_main
 )
