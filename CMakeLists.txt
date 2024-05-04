@@ -40,6 +40,7 @@ add_library(
 	src/Files.cpp
 	src/Strings.cpp
 	src/Timers.cpp
+	src/UUID.cpp
 )
 
 target_include_directories(
