@@ -5,7 +5,7 @@
 
 #include "UUID.h"
 
-static constexpr size_t uuidsSize = 10'000;
+static constexpr size_t uuidsSize = 100'000;
 
 TEST(UUID, Generate)
 {
