@@ -243,6 +243,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Base64.cpp" />
     <ClCompile Include="src\Timers.cpp" />
     <ClCompile Include="src\ConsoleArgumentParser.cpp" />
     <ClCompile Include="src\CSVParser.cpp" />
@@ -251,6 +252,7 @@
     <ClCompile Include="src\UUID.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Base64.h" />
     <ClInclude Include="include\ConsoleArgumentParser.h" />
     <ClInclude Include="include\Concepts.h" />
     <ClInclude Include="include\CSVParser.h" />

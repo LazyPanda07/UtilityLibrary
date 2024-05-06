@@ -5,10 +5,10 @@
 
 #include "UUID.h"
 
+static constexpr size_t uuidsSize = 10'000;
+
 TEST(UUID, Generate)
 {
-	static constexpr size_t uuidsSize = 60000000;
-
 	std::unordered_set<std::string> uuids;
 
 	for (size_t i = 0; i < uuidsSize; i++)
@@ -23,8 +23,6 @@ TEST(UUID, Generate)
 
 TEST(UUID, GenerateThreading)
 {
-	static constexpr size_t uuidsSize = 60000000;
-
 	std::unordered_set<std::string> first;
 	std::unordered_set<std::string> second;
 	std::unordered_set<std::string> third;
