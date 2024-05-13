@@ -1,5 +1,6 @@
 var dir_d44c64559bbebec7f509842c48db8b23 =
 [
+    [ "Base64.h", "_base64_8h.html", "_base64_8h" ],
     [ "Concepts.h", "_concepts_8h.html", "_concepts_8h" ],
     [ "ConsoleArgumentParser.h", "_console_argument_parser_8h.html", "_console_argument_parser_8h" ],
     [ "ConsoleArgumentParser.inl", "_console_argument_parser_8inl.html", null ],

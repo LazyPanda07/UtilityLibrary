@@ -5,7 +5,7 @@
 
 using namespace std;
 
-double calculateTime(const chrono::high_resolution_clock::time_point& start, utility::timers::OutputTimeType type);
+static double calculateTime(const chrono::high_resolution_clock::time_point& start, utility::timers::OutputTimeType type);
 
 namespace utility
 {

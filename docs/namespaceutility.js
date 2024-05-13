@@ -1,6 +1,12 @@
 var namespaceutility =
 [
     [ "concepts", "namespaceutility_1_1concepts.html", "namespaceutility_1_1concepts" ],
+    [ "conversion", "namespaceutility_1_1conversion.html", [
+      [ "decodeBase64", "namespaceutility_1_1conversion.html#accfa9382b5ea2a43b965fad966914a87", null ],
+      [ "decodeBase64", "namespaceutility_1_1conversion.html#a720bd66ce93cab42885fd193bb322d2f", null ],
+      [ "encodeBase64", "namespaceutility_1_1conversion.html#a3cb1b2b4a2d45346720d406d02ec9583", null ],
+      [ "encodeBase64", "namespaceutility_1_1conversion.html#acc53e3a69f5e2d3dd2b5cd09ca64f99f", null ]
+    ] ],
     [ "files", "namespaceutility_1_1files.html", [
       [ "generatePath", "namespaceutility_1_1files.html#acddfe3ed3606a5decb0378d7d8bf9284", null ],
       [ "generatePathContainer", "namespaceutility_1_1files.html#a89291cb03bd80571f170eff26a4cdbda", null ],
@@ -12,8 +18,8 @@ var namespaceutility =
     [ "strings", "namespaceutility_1_1strings.html", [
       [ "replaceAll", "namespaceutility_1_1strings.html#acfc024303d78b30370db7fd91fd7fe2b", null ],
       [ "replaceAllByRef", "namespaceutility_1_1strings.html#ab70f32407557a97d352cd6ceb5b495f0", null ],
-      [ "split", "namespaceutility_1_1strings.html#a0360de5070fc28f9299c1a70111c79aa", null ]
+      [ "split", "namespaceutility_1_1strings.html#a85623fc531a0ba3d3d34fac00e6f0405", null ]
     ] ],
     [ "timers", "namespaceutility_1_1timers.html", "namespaceutility_1_1timers" ],
-    [ "generateUUID", "namespaceutility.html#af031a1a17354cb111805395d9829285c", null ]
+    [ "generateUUID", "namespaceutility.html#a407b6d4ac00da47f61d4050d07fe05e1", null ]
 ];

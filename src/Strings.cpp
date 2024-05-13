@@ -35,15 +35,15 @@ namespace utility
 			return source;
 		}
 
-		vector<string> split(const string& source, string_view delimiter)
+		vector<string> split(string_view source, string_view delimiter)
 		{
 			boyer_moore_horspool_searcher searcher(delimiter.begin(), delimiter.end());
-			string::const_iterator right = source.begin();
+			string_view::const_iterator right = source.begin();
 			vector<string> result;
 
 			while (true)
 			{
-				string::const_iterator left = right;
+				string_view::const_iterator left = right;
 				right = search(right, source.end(), searcher);
 
 				if (right == source.end() && left == source.end())

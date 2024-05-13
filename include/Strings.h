@@ -34,9 +34,9 @@ namespace utility
 		 * @return 
 		*/
 #ifdef __LINUX__
-		UTILITY_LIBRARY_API_FUNCTION std::vector<std::string> split(const std::string& source, std::string_view delimiter);
+		UTILITY_LIBRARY_API_FUNCTION std::vector<std::string> split(std::string_view source, std::string_view delimiter);
 #else
-		UTILITY_LIBRARY_API std::vector<std::string> split(const std::string& source, std::string_view delimiter);
+		UTILITY_LIBRARY_API std::vector<std::string> split(std::string_view source, std::string_view delimiter);
 #endif
 		
 	}
