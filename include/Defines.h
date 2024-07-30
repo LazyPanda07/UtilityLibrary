@@ -3,7 +3,7 @@
 #include <string_view>
 
 #ifdef UTILITY_LIBRARY_DLL
-#ifdef __LINUX__
+#if defined(__LINUX__) || defined(__ANDROID__)
 #define UTILITY_LIBRARY_API __attribute__((visibility("default")))
 #else
 #define UTILITY_LIBRARY_API __declspec(dllexport)
@@ -23,4 +23,4 @@
 /**
  * @brief Current version of UtilityLibrary
 */
-static constexpr std::string_view utilityLibraryVersion = "0.5.2";
+static constexpr std::string_view utilityLibraryVersion = "0.5.3";
