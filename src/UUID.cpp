@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-#ifdef __ANDROID_
+#ifdef __ANDROID__
 #include <array>
 #include <random>
 #include <chrono>
