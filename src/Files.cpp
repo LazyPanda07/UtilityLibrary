@@ -1,6 +1,7 @@
 #include "Files.h"
 
 #include <format>
+#include <sstream>
 
 using namespace std;
 

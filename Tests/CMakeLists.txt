@@ -29,6 +29,13 @@ endif()
 
 project(Tests)
 
+find_package(GTest)
+
+if(NOT ${GTest_FOUND})
+	set(GTEST_BOTH_LIBRARIES gtest gtest_main)
+	set(GTEST_INCLUDE_DIRS gtest/include/)
+endif()
+
 add_executable(
 	${PROJECT_NAME} 
 	Main.cpp
@@ -45,7 +52,7 @@ target_include_directories(
 	${PROJECT_NAME} PRIVATE 
 	include 
 	${CMAKE_SOURCE_DIR}/../include
-	gtest/include
+	${GTEST_INCLUDE_DIRS}
 )
 
 target_link_directories(
@@ -58,8 +65,7 @@ target_link_libraries(
 	${PROJECT_NAME} PRIVATE 
 	UtilityLibrary
 	${LIBS}
-	gtest
-	gtest_main
+	${GTEST_BOTH_LIBRARIES}
 )
 
 if(${NO_CONSOLE_ARGUMENT_PARSER})
