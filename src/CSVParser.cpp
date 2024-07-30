@@ -2,6 +2,7 @@
 
 #ifndef NO_CSV_PARSER
 #include <format>
+#include <sstream>
 
 #include "Files.h"
 #include "Strings.h"
