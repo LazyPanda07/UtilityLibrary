@@ -165,6 +165,14 @@ jobs:
         name: ${{ matrix.configuration }}${{ matrix.shared[1] }}_Linux
         path: UtilityLibrary
         
+    - name: Build tests
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          mkdir build
+          cd build
+          cmake ..
+          make install -j $(nproc)
+
     - name: Tests
       working-directory: ${{ github.workspace }}/Tests
       run: |
@@ -236,6 +244,14 @@ jobs:
         name: ${{ matrix.configuration }}${{ matrix.shared[1] }}_Linux
         path: UtilityLibrary
         
+    - name: Build tests
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          mkdir build
+          cd build
+          cmake ..
+          make install -j $(nproc)
+
     - name: Tests
       uses: LazyPanda07/check-memory-leaks@v1
       with:

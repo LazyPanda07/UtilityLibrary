@@ -7,7 +7,11 @@ option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
 option(NO_CSV_PARSER "Remove CSVParser" OFF)
 option(NO_TIMERS "Remove Timers" OFF)
 
-if (UNIX)
+if (ANDROID)
+	add_definitions(-D__ANDROID__)
+
+	set(UUID_LIB)
+elseif (UNIX)
 	add_definitions(-D__LINUX__)
 
 	set(UUID_LIB uuid)
