@@ -17,7 +17,7 @@ elseif (UNIX)
 	set(UUID_LIB uuid)
 else ()
 	set(UUID_LIB rpcrt4)
-endif (UNIX)
+endif ()
 
 if (${BUILD_SHARED_LIBS})
 	add_definitions(-DUTILITY_LIBRARY_DLL)
