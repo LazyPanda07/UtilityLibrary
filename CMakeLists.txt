@@ -7,7 +7,7 @@ option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
 option(NO_CSV_PARSER "Remove CSVParser" OFF)
 option(NO_TIMERS "Remove Timers" OFF)
 
-if (${ANDROID})
+if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	add_definitions(-D__ANDROID__)
 
 	set(UUID_LIB)
