@@ -5,10 +5,11 @@ var indexSectionsWithContent =
   2: "u",
   3: "bcdfstu",
   4: "acdefgorst~",
-  5: "o",
-  6: "hmns",
-  7: "u",
-  8: "u"
+  5: "u",
+  6: "o",
+  7: "hmns",
+  8: "u",
+  9: "u"
 };
 
 var indexSectionNames =
@@ -18,10 +19,11 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "enums",
-  6: "enumvalues",
-  7: "defines",
-  8: "concepts"
+  5: "variables",
+  6: "enums",
+  7: "enumvalues",
+  8: "defines",
+  9: "concepts"
 };
 
 var indexSectionLabels =
@@ -31,9 +33,10 @@ var indexSectionLabels =
   2: "Namespaces",
   3: "Files",
   4: "Functions",
-  5: "Enumerations",
-  6: "Enumerator",
-  7: "Macros",
-  8: "Concepts"
+  5: "Variables",
+  6: "Enumerations",
+  7: "Enumerator",
+  8: "Macros",
+  9: "Concepts"
 };
 
