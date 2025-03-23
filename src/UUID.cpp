@@ -16,28 +16,11 @@ namespace utility
 {
 	std::string generateUUID()
 	{
-		static constexpr size_t uuidSize = 36;
+		constexpr size_t uuidSize = 36;
 
 		std::string result;
 
-		result.reserve(uuidSize);
-
-#ifdef __ANDROID__
-		static constexpr size_t alphabetSize = 16;
-		static constexpr std::array<char, alphabetSize> alphabet =
-		{
-			'0', '1', '2', '3',
-			'4', '5', '6', '7',
-			'8', '9', 'a', 'b',
-			'c', 'd', 'e', 'f'
-		};
-		static std::mt19937_64 random(time(nullptr));
-
-		for (size_t i = 0; i < uuidSize; i++)
-		{
-			result += alphabet[random() % alphabetSize];
-		}
-#elif __LINUX__
+#if defined(__ANDROID__) || defined(__LINUX__)
 		uuid_t uuid;
 
 		result.resize(uuidSize);

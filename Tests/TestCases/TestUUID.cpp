@@ -16,6 +16,7 @@ TEST(UUID, Generate)
 		std::string uuid = utility::generateUUID();
 
 		ASSERT_FALSE(uuids.contains(uuid));
+		ASSERT_EQUAL(uuids.size() == 36);
 
 		uuids.insert(std::move(uuid));
 	}
