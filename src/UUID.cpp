@@ -2,7 +2,9 @@
 
 #include <stdexcept>
 
-#if defined(__ANDROID__) || defined(__LINUX__)
+#ifdef __ANDROID__ 
+#include <android/uuid.h>
+#elif __LINUX__
 #include <uuid/uuid.h>
 #else
 #include <Rpc.h>
