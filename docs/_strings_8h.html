@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.5.7</span>
+   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.6.0</span>
    </div>
    <div id="projectbrief">Provides useful functions</div>
   </td>
@@ -98,23 +98,42 @@ $(function(){initNavTree('_strings_8h.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Strings.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &quot;<a class="el" href="_defines_8h_source.html">Defines.h</a>&quot;</code><br />
 </div>
 <p><a href="_strings_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structutility_1_1strings_1_1_string_view_hash.html">utility::strings::StringViewHash</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::string_view hash for std::unordered_map std::string key  <a href="structutility_1_1strings_1_1_string_view_hash.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structutility_1_1strings_1_1_string_view_equal.html">utility::strings::StringViewEqual</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::string_view equal operator for std::unordered_map std::string key  <a href="structutility_1_1strings_1_1_string_view_equal.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility.html">utility</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1strings.html">utility::strings</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a6c22ef8a10c321c74b714eff109758af" id="r_a6c22ef8a10c321c74b714eff109758af"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a6c22ef8a10c321c74b714eff109758af"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1strings.html#a6c22ef8a10c321c74b714eff109758af">utility::strings::string_based_unordered_map</a> = std::unordered_map&lt;std::string, T, <a class="el" href="structutility_1_1strings_1_1_string_view_hash.html">StringViewHash</a>, <a class="el" href="structutility_1_1strings_1_1_string_view_equal.html">StringViewEqual</a>&gt;</td></tr>
+<tr class="memdesc:a6c22ef8a10c321c74b714eff109758af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplify std::unordered_map with std::string key.  <br /></td></tr>
+<tr class="separator:a6c22ef8a10c321c74b714eff109758af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>

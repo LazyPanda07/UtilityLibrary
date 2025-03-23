@@ -23,4 +23,4 @@
 /**
  * @brief Current version of UtilityLibrary
 */
-inline constexpr std::string_view utilityLibraryVersion = "0.5.7";
+inline constexpr std::string_view utilityLibraryVersion = "0.6.0";

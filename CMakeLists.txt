@@ -23,7 +23,7 @@ if (${NO_TIMERS})
 	add_definitions(-DNO_TIMERS)
 endif ()
 
-project(UtilityLibrary VERSION 0.5.7)
+project(UtilityLibrary VERSION 0.6.0)
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	add_definitions(-D__ANDROID__)

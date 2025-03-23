@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.5.7</span>
+   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.6.0</span>
    </div>
    <div id="projectbrief">Provides useful functions</div>
   </td>
@@ -104,34 +104,57 @@ $(function(){initNavTree('_strings_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_defines_8h.html">Defines.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceutility.html">utility</a></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespaceutility_1_1strings.html">   10</a></span>    <span class="keyword">namespace </span>strings</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespaceutility_1_1strings.html#acfc024303d78b30370db7fd91fd7fe2b">   19</a></span>        <a class="code hl_define" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::string <a class="code hl_function" href="namespaceutility_1_1strings.html#acfc024303d78b30370db7fd91fd7fe2b">replaceAll</a>(<span class="keyword">const</span> std::string&amp; source, std::string_view oldValue, std::string_view newValue);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespaceutility_1_1strings.html#ab70f32407557a97d352cd6ceb5b495f0">   28</a></span>        <a class="code hl_define" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::string&amp; <a class="code hl_function" href="namespaceutility_1_1strings.html#ab70f32407557a97d352cd6ceb5b495f0">replaceAllByRef</a>(std::string&amp; source, std::string_view oldValue, std::string_view newValue);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#ifdef __LINUX__</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_define" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::vector&lt;std::string&gt; <a class="code hl_function" href="namespaceutility_1_1strings.html#a85623fc531a0ba3d3d34fac00e6f0405">split</a>(std::string_view source, std::string_view delimiter);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespaceutility_1_1strings.html#a85623fc531a0ba3d3d34fac00e6f0405">   39</a></span>        <a class="code hl_define" href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a> std::vector&lt;std::string&gt; <a class="code hl_function" href="namespaceutility_1_1strings.html#a85623fc531a0ba3d3d34fac00e6f0405">split</a>(std::string_view source, std::string_view delimiter);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="_defines_8h.html">Defines.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespaceutility_1_1strings.html">    9</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceutility_1_1strings.html">utility::strings</a></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespaceutility_1_1strings.html#acfc024303d78b30370db7fd91fd7fe2b">   18</a></span>    <a class="code hl_define" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::string <a class="code hl_function" href="namespaceutility_1_1strings.html#acfc024303d78b30370db7fd91fd7fe2b">replaceAll</a>(<span class="keyword">const</span> std::string&amp; source, std::string_view oldValue, std::string_view newValue);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespaceutility_1_1strings.html#ab70f32407557a97d352cd6ceb5b495f0">   27</a></span>    <a class="code hl_define" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::string&amp; <a class="code hl_function" href="namespaceutility_1_1strings.html#ab70f32407557a97d352cd6ceb5b495f0">replaceAllByRef</a>(std::string&amp; source, std::string_view oldValue, std::string_view newValue);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#ifdef __LINUX__</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_define" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::vector&lt;std::string&gt; <a class="code hl_function" href="namespaceutility_1_1strings.html#a85623fc531a0ba3d3d34fac00e6f0405">split</a>(std::string_view source, std::string_view delimiter);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespaceutility_1_1strings.html#a85623fc531a0ba3d3d34fac00e6f0405">   38</a></span>    <a class="code hl_define" href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a> std::vector&lt;std::string&gt; <a class="code hl_function" href="namespaceutility_1_1strings.html#a85623fc531a0ba3d3d34fac00e6f0405">split</a>(std::string_view source, std::string_view delimiter);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structutility_1_1strings_1_1_string_view_hash.html">   44</a></span>    <span class="keyword">struct </span><a class="code hl_define" href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a> <a class="code hl_struct" href="structutility_1_1strings_1_1_string_view_hash.html">StringViewHash</a></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structutility_1_1strings_1_1_string_view_hash.html#a7ce2e6d7a8beb2b1c53c36eefb2431a7">   46</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="structutility_1_1strings_1_1_string_view_hash.html#a7ce2e6d7a8beb2b1c53c36eefb2431a7">is_transparent</a> = void;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structutility_1_1strings_1_1_string_view_hash.html#a240bd3b2403637de48785ee15413d872">   48</a></span>        <span class="keywordtype">size_t</span> operator ()(std::string_view value) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    };</div>
 </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="};">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structutility_1_1strings_1_1_string_view_equal.html">   54</a></span>    <span class="keyword">struct </span><a class="code hl_define" href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a> <a class="code hl_struct" href="structutility_1_1strings_1_1_string_view_equal.html">StringViewEqual</a></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structutility_1_1strings_1_1_string_view_equal.html#af34027f3aa207cacf05509f4231f2a0e">   56</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="structutility_1_1strings_1_1_string_view_equal.html#af34027f3aa207cacf05509f4231f2a0e">is_transparent</a> = void;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structutility_1_1strings_1_1_string_view_equal.html#a02bfcdcde9bf0e3d3288b9881a5a4780">   58</a></span>        <span class="keywordtype">bool</span> operator ()(std::string_view left, std::string_view right) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    };</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="namespaceutility_1_1strings.html#a6c22ef8a10c321c74b714eff109758af">   66</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceutility_1_1strings.html#a6c22ef8a10c321c74b714eff109758af">string_based_unordered_map</a> = std::unordered_map&lt;std::string, T, StringViewHash, StringViewEqual&gt;;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+</div>
 <div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="_defines_8h.html">Defines.h</a></div></div>
 <div class="ttc" id="a_defines_8h_html_aa4f0bf78fc44f946edf1f5a13070ab6f"><div class="ttname"><a href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a></div><div class="ttdeci">#define UTILITY_LIBRARY_API</div><div class="ttdef"><b>Definition</b> <a href="_defines_8h_source.html#l00019">Defines.h:19</a></div></div>
 <div class="ttc" id="a_defines_8h_html_ac1ea28ed05618530e745a328fbf3a78b"><div class="ttname"><a href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a></div><div class="ttdeci">#define UTILITY_LIBRARY_API_FUNCTION</div><div class="ttdef"><b>Definition</b> <a href="_defines_8h_source.html#l00020">Defines.h:20</a></div></div>
+<div class="ttc" id="anamespaceutility_1_1strings_html"><div class="ttname"><a href="namespaceutility_1_1strings.html">utility::strings</a></div><div class="ttdef"><b>Definition</b> <a href="#l00009">Strings.h:10</a></div></div>
+<div class="ttc" id="anamespaceutility_1_1strings_html_a6c22ef8a10c321c74b714eff109758af"><div class="ttname"><a href="namespaceutility_1_1strings.html#a6c22ef8a10c321c74b714eff109758af">utility::strings::string_based_unordered_map</a></div><div class="ttdeci">std::unordered_map&lt; std::string, T, StringViewHash, StringViewEqual &gt; string_based_unordered_map</div><div class="ttdoc">Simplify std::unordered_map with std::string key.</div><div class="ttdef"><b>Definition</b> <a href="#l00066">Strings.h:66</a></div></div>
 <div class="ttc" id="anamespaceutility_1_1strings_html_a85623fc531a0ba3d3d34fac00e6f0405"><div class="ttname"><a href="namespaceutility_1_1strings.html#a85623fc531a0ba3d3d34fac00e6f0405">utility::strings::split</a></div><div class="ttdeci">UTILITY_LIBRARY_API std::vector&lt; std::string &gt; split(std::string_view source, std::string_view delimiter)</div><div class="ttdoc">Split source with delimiter into vector.</div></div>
 <div class="ttc" id="anamespaceutility_1_1strings_html_ab70f32407557a97d352cd6ceb5b495f0"><div class="ttname"><a href="namespaceutility_1_1strings.html#ab70f32407557a97d352cd6ceb5b495f0">utility::strings::replaceAllByRef</a></div><div class="ttdeci">UTILITY_LIBRARY_API_FUNCTION std::string &amp; replaceAllByRef(std::string &amp;source, std::string_view oldValue, std::string_view newValue)</div><div class="ttdoc">Replace all 'oldValue' substrings with 'newValue'.</div></div>
 <div class="ttc" id="anamespaceutility_1_1strings_html_acfc024303d78b30370db7fd91fd7fe2b"><div class="ttname"><a href="namespaceutility_1_1strings.html#acfc024303d78b30370db7fd91fd7fe2b">utility::strings::replaceAll</a></div><div class="ttdeci">UTILITY_LIBRARY_API_FUNCTION std::string replaceAll(const std::string &amp;source, std::string_view oldValue, std::string_view newValue)</div><div class="ttdoc">Replace all 'oldValue' substrings with 'newValue'.</div></div>
-<div class="ttc" id="anamespaceutility_html"><div class="ttname"><a href="namespaceutility.html">utility</a></div><div class="ttdef"><b>Definition</b> <a href="_base64_8h_source.html#l00008">Base64.h:9</a></div></div>
+<div class="ttc" id="astructutility_1_1strings_1_1_string_view_equal_html"><div class="ttname"><a href="structutility_1_1strings_1_1_string_view_equal.html">utility::strings::StringViewEqual</a></div><div class="ttdoc">std::string_view equal operator for std::unordered_map std::string key</div><div class="ttdef"><b>Definition</b> <a href="#l00054">Strings.h:55</a></div></div>
+<div class="ttc" id="astructutility_1_1strings_1_1_string_view_equal_html_af34027f3aa207cacf05509f4231f2a0e"><div class="ttname"><a href="structutility_1_1strings_1_1_string_view_equal.html#af34027f3aa207cacf05509f4231f2a0e">utility::strings::StringViewEqual::is_transparent</a></div><div class="ttdeci">void is_transparent</div><div class="ttdef"><b>Definition</b> <a href="#l00056">Strings.h:56</a></div></div>
+<div class="ttc" id="astructutility_1_1strings_1_1_string_view_hash_html"><div class="ttname"><a href="structutility_1_1strings_1_1_string_view_hash.html">utility::strings::StringViewHash</a></div><div class="ttdoc">std::string_view hash for std::unordered_map std::string key</div><div class="ttdef"><b>Definition</b> <a href="#l00044">Strings.h:45</a></div></div>
+<div class="ttc" id="astructutility_1_1strings_1_1_string_view_hash_html_a7ce2e6d7a8beb2b1c53c36eefb2431a7"><div class="ttname"><a href="structutility_1_1strings_1_1_string_view_hash.html#a7ce2e6d7a8beb2b1c53c36eefb2431a7">utility::strings::StringViewHash::is_transparent</a></div><div class="ttdeci">void is_transparent</div><div class="ttdef"><b>Definition</b> <a href="#l00046">Strings.h:46</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

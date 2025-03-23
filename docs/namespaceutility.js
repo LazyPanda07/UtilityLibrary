@@ -15,11 +15,7 @@ var namespaceutility =
       [ "readFileFromStream", "namespaceutility_1_1files.html#a9833f6b2f969fa60dbaa699c78bf2e9d", null ]
     ] ],
     [ "parsers", "namespaceutility_1_1parsers.html", "namespaceutility_1_1parsers" ],
-    [ "strings", "namespaceutility_1_1strings.html", [
-      [ "replaceAll", "namespaceutility_1_1strings.html#acfc024303d78b30370db7fd91fd7fe2b", null ],
-      [ "replaceAllByRef", "namespaceutility_1_1strings.html#ab70f32407557a97d352cd6ceb5b495f0", null ],
-      [ "split", "namespaceutility_1_1strings.html#a85623fc531a0ba3d3d34fac00e6f0405", null ]
-    ] ],
+    [ "strings", "namespaceutility_1_1strings.html", "namespaceutility_1_1strings" ],
     [ "timers", "namespaceutility_1_1timers.html", "namespaceutility_1_1timers" ],
     [ "generateUUID", "namespaceutility.html#a407b6d4ac00da47f61d4050d07fe05e1", null ]
 ];

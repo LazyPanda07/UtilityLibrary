@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Utility Library: utility Namespace Reference</title>
+<title>Utility Library: utility::strings::StringViewHash Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('namespaceutility.html',''); initResizable(true); });
+$(function(){initNavTree('structutility_1_1strings_1_1_string_view_hash.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -98,60 +98,76 @@ $(function(){initNavTree('namespaceutility.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">utility Namespace Reference</div></div>
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structutility_1_1strings_1_1_string_view_hash-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">utility::strings::StringViewHash Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>std::string_view hash for std::unordered_map std::string key  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_strings_8h_source.html">Strings.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1concepts.html">concepts</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1conversion.html">conversion</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1files.html">files</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1parsers.html">parsers</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1strings.html">strings</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1timers.html">timers</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a7ce2e6d7a8beb2b1c53c36eefb2431a7" id="r_a7ce2e6d7a8beb2b1c53c36eefb2431a7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ce2e6d7a8beb2b1c53c36eefb2431a7">is_transparent</a> = void</td></tr>
+<tr class="separator:a7ce2e6d7a8beb2b1c53c36eefb2431a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a407b6d4ac00da47f61d4050d07fe05e1" id="r_a407b6d4ac00da47f61d4050d07fe05e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a407b6d4ac00da47f61d4050d07fe05e1">generateUUID</a> ()</td></tr>
-<tr class="memdesc:a407b6d4ac00da47f61d4050d07fe05e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate UUID in format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.  <br /></td></tr>
-<tr class="separator:a407b6d4ac00da47f61d4050d07fe05e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a240bd3b2403637de48785ee15413d872" id="r_a240bd3b2403637de48785ee15413d872"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a240bd3b2403637de48785ee15413d872">operator()</a> (std::string_view value) const</td></tr>
+<tr class="separator:a240bd3b2403637de48785ee15413d872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a407b6d4ac00da47f61d4050d07fe05e1" name="a407b6d4ac00da47f61d4050d07fe05e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a407b6d4ac00da47f61d4050d07fe05e1">&#9670;&#160;</a></span>generateUUID()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>std::string_view hash for std::unordered_map std::string key </p>
+
+<p class="definition">Definition at line <a class="el" href="_strings_8h_source.html#l00044">44</a> of file <a class="el" href="_strings_8h_source.html">Strings.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a7ce2e6d7a8beb2b1c53c36eefb2431a7" name="a7ce2e6d7a8beb2b1c53c36eefb2431a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ce2e6d7a8beb2b1c53c36eefb2431a7">&#9670;&#160;</a></span>is_transparent</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_defines_8h.html#ac1ea28ed05618530e745a328fbf3a78b">UTILITY_LIBRARY_API_FUNCTION</a> std::string utility::generateUUID </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td class="memname">using <a class="el" href="#a7ce2e6d7a8beb2b1c53c36eefb2431a7">utility::strings::StringViewHash::is_transparent</a> = void</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generate UUID in format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx. </p>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p class="definition">Definition at line <a class="el" href="_strings_8h_source.html#l00046">46</a> of file <a class="el" href="_strings_8h_source.html">Strings.h</a>.</p>
 
 </div>
 </div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a240bd3b2403637de48785ee15413d872" name="a240bd3b2403637de48785ee15413d872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a240bd3b2403637de48785ee15413d872">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t utility::strings::StringViewHash::operator() </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>include/<a class="el" href="_strings_8h_source.html">Strings.h</a></li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceutility.html">utility</a></li>
+    <li class="navelem"><a class="el" href="namespaceutility.html">utility</a></li><li class="navelem"><a class="el" href="namespaceutility_1_1strings.html">strings</a></li><li class="navelem"><a class="el" href="structutility_1_1strings_1_1_string_view_hash.html">StringViewHash</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
