@@ -2,11 +2,7 @@
 
 #include <stdexcept>
 
-#ifdef __ANDROID__
-#include <array>
-#include <random>
-#include <chrono>
-#elif __LINUX__
+#if defined(__ANDROID_) || defined(__LINUX__)
 #include <uuid/uuid.h>
 #else
 #include <Rpc.h>
