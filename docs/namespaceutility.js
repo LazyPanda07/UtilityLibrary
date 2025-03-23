@@ -9,6 +9,7 @@ var namespaceutility =
     ] ],
     [ "files", "namespaceutility_1_1files.html", [
       [ "generatePath", "namespaceutility_1_1files.html#acddfe3ed3606a5decb0378d7d8bf9284", null ],
+      [ "generatePathContainer", "namespaceutility_1_1files.html#ae84be4b464154a99ed7c3b27044d35e7", null ],
       [ "generatePathContainer", "namespaceutility_1_1files.html#a89291cb03bd80571f170eff26a4cdbda", null ],
       [ "readBinaryFile", "namespaceutility_1_1files.html#ae7e8742e2524a6a6cc5e2725c55e1f36", null ],
       [ "readFile", "namespaceutility_1_1files.html#ac9d2ffc96cdcd7ed796926d16e84b489", null ],
@@ -17,5 +18,7 @@ var namespaceutility =
     [ "parsers", "namespaceutility_1_1parsers.html", "namespaceutility_1_1parsers" ],
     [ "strings", "namespaceutility_1_1strings.html", "namespaceutility_1_1strings" ],
     [ "timers", "namespaceutility_1_1timers.html", "namespaceutility_1_1timers" ],
-    [ "generateUUID", "namespaceutility.html#a407b6d4ac00da47f61d4050d07fe05e1", null ]
+    [ "uuid", "namespaceutility_1_1uuid.html", [
+      [ "generateUUID", "namespaceutility_1_1uuid.html#a488a483361cf2d320f98a17ef9b12db1", null ]
+    ] ]
 ];

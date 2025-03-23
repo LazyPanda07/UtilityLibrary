@@ -6,5 +6,6 @@ var searchData=
   ['utility_3a_3afiles_3',['files',['../namespaceutility_1_1files.html',1,'utility']]],
   ['utility_3a_3aparsers_4',['parsers',['../namespaceutility_1_1parsers.html',1,'utility']]],
   ['utility_3a_3astrings_5',['strings',['../namespaceutility_1_1strings.html',1,'utility']]],
-  ['utility_3a_3atimers_6',['timers',['../namespaceutility_1_1timers.html',1,'utility']]]
+  ['utility_3a_3atimers_6',['timers',['../namespaceutility_1_1timers.html',1,'utility']]],
+  ['utility_3a_3auuid_7',['uuid',['../namespaceutility_1_1uuid.html',1,'utility']]]
 ];

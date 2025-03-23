@@ -1,107 +1,104 @@
 #ifndef NO_CONSOLE_ARGUMENT_PARSER
-namespace utility
+namespace utility::parsers
 {
-	namespace parsers
+	template<typename T>
+	T ConsoleArgumentParser::getNumeric(std::string_view integralValue, const T& defaultValue, std::errc* errorCode) const
 	{
-		template<typename T>
-		T ConsoleArgumentParser::getNumeric(std::string_view integralValue, const T& defaultValue, std::errc* errorCode) const
+		T value = defaultValue;
+
+		std::from_chars_result result = std::from_chars(integralValue.data(), integralValue.data() + integralValue.size(), value);
+
+		if (errorCode)
 		{
-			T value = defaultValue;
-
-			std::from_chars_result result = std::from_chars(integralValue.data(), integralValue.data() + integralValue.size(), value);
-
-			if (errorCode)
-			{
-				*errorCode = result.ec;
-			}
-			else
-			{
-				if (result.ec != std::errc())
-				{
-					std::string errorMessage("Convert error code: ");
-					
-					errorMessage += std::to_string(static_cast<int>(result.ec));
-
-					warnings.push_back(std::move(errorMessage));
-				}
-			}
-
-			return value;
+			*errorCode = result.ec;
 		}
-
-		template<typename T>
-		T ConsoleArgumentParser::get(std::string_view argumentName, const T& defaultValue, std::errc* errorCode) const
+		else
 		{
-			std::optional<std::string_view> result = this->findValue(argumentName);
+			if (result.ec != std::errc())
+			{
+				std::string errorMessage("Convert error code: ");
 
-			if constexpr (std::is_same_v<int8_t, T> || std::is_same_v<uint8_t, T>)
-			{
-				if (!result)
-				{
-					return defaultValue;
-				}
+				errorMessage += std::to_string(static_cast<int>(result.ec));
 
-				return static_cast<T>(this->getNumeric<char>(*result, defaultValue, errorCode));
-			}
-			else if constexpr (std::is_integral_v<T> || std::is_floating_point_v<T>)
-			{
-				if (!result)
-				{
-					return defaultValue;
-				}
-
-				return this->getNumeric<T>(*result, defaultValue, errorCode);
-			}
-			else if constexpr (std::is_convertible_v<T, std::string>)
-			{
-				return result ? std::string(result->data()) : defaultValue;
-			}
-			else
-			{
-				[]<bool flag = false>()
-				{
-					static_assert(flag, "Wrong type");
-				}();
+				warnings.push_back(std::move(errorMessage));
 			}
 		}
 
-		template<typename T>
-		std::vector<T> ConsoleArgumentParser::getValues(std::string_view argumentName) const
-		{
-			std::vector<T> result;
+		return value;
+	}
 
-			if constexpr (!std::is_integral_v<T> && !std::is_floating_point_v<T> && !std::is_convertible_v<std::string, T>)
+	template<typename T>
+	T ConsoleArgumentParser::get(std::string_view argumentName, const T& defaultValue, std::errc* errorCode) const
+	{
+		std::optional<std::string_view> result = this->findValue(argumentName);
+
+		if constexpr (std::is_same_v<int8_t, T> || std::is_same_v<uint8_t, T>)
+		{
+			if (!result)
 			{
-				[]<bool flag = false>()
-				{
-					static_assert(flag, "Wrong type");
-				}();
+				return defaultValue;
 			}
 
-			for (auto it = values.begin(); it != values.end(); ++it)
+			return static_cast<T>(this->getNumeric<char>(*result, defaultValue, errorCode));
+		}
+		else if constexpr (std::is_integral_v<T> || std::is_floating_point_v<T>)
+		{
+			if (!result)
 			{
-				if (*it == argumentName)
+				return defaultValue;
+			}
+
+			return this->getNumeric<T>(*result, defaultValue, errorCode);
+		}
+		else if constexpr (std::is_convertible_v<T, std::string>)
+		{
+			return result ? std::string(result->data()) : defaultValue;
+		}
+		else
+		{
+			[] <bool flag = false>()
+			{
+				static_assert(flag, "Wrong type");
+			}();
+		}
+	}
+
+	template<typename T>
+	std::vector<T> ConsoleArgumentParser::getValues(std::string_view argumentName) const
+	{
+		std::vector<T> result;
+
+		if constexpr (!std::is_integral_v<T> && !std::is_floating_point_v<T> && !std::is_convertible_v<std::string, T>)
+		{
+			[] <bool flag = false>()
+			{
+				static_assert(flag, "Wrong type");
+			}();
+		}
+
+		for (auto it = values.begin(); it != values.end(); ++it)
+		{
+			if (*it == argumentName)
+			{
+				++it;
+
+				if (it == values.end())
 				{
-					++it;
+					break;
+				}
 
-					if (it == values.end())
-					{
-						break;
-					}
-
-					if constexpr (std::is_integral_v<T>)
-					{
-						result.push_back(this->getNumeric<T>(*it));
-					}
-					else if constexpr (std::is_convertible_v<std::string, T>)
-					{
-						result.emplace_back(std::string(it->data()));
-					}
+				if constexpr (std::is_integral_v<T>)
+				{
+					result.push_back(this->getNumeric<T>(*it));
+				}
+				else if constexpr (std::is_convertible_v<std::string, T>)
+				{
+					result.emplace_back(std::string(it->data()));
 				}
 			}
-
-			return result;
 		}
+
+		return result;
 	}
 }
 #endif // !NO_CONSOLE_ARGUMENT_PARSER

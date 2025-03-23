@@ -13,7 +13,7 @@ TEST(UUID, Generate)
 
 	for (size_t i = 0; i < uuidsSize; i++)
 	{
-		std::string uuid = utility::generateUUID();
+		std::string uuid = utility::uuid::generateUUID();
 
 		ASSERT_FALSE(uuids.contains(uuid));
 		ASSERT_EQ(uuid.size(), 36);
@@ -35,7 +35,7 @@ TEST(UUID, GenerateThreading)
 
 			for (size_t i = 0; i < launchSize; i++)
 			{
-				std::string uuid = utility::generateUUID();
+				std::string uuid = utility::uuid::generateUUID();
 
 				ASSERT_FALSE(data.contains(uuid));
 

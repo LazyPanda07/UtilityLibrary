@@ -5,73 +5,73 @@
 
 #include "Defines.h"
 
-namespace utility
+namespace utility::timers
 {
-	namespace timers
+	/**
+	 * @brief Output time units
+	 */
+	enum class OutputTimeType
 	{
-		enum class OutputTimeType
-		{
-			milliseconds,
-			seconds,
-			nanoseconds,
-			minutes,
-			hours
-		};
+		milliseconds,
+		seconds,
+		nanoseconds,
+		minutes,
+		hours
+	};
+
+	/**
+	 * @brief Calculate time
+	*/
+	class UTILITY_LIBRARY_API Timer
+	{
+	private:
+		std::ostream* output;
+		OutputTimeType type;
+		std::chrono::high_resolution_clock::time_point start;
+
+	public:
+		/**
+		 * @brief Return calculation time result into std::cout stream
+		 * @param type
+		*/
+		Timer(OutputTimeType type = OutputTimeType::milliseconds);
 
 		/**
-		 * @brief Calculate time
+		 * @brief Return calculation time result into output stream
+		 * @param output
+		 * @param type
 		*/
-		class UTILITY_LIBRARY_API Timer
-		{
-		private:
-			std::ostream* output;
-			OutputTimeType type;
-			std::chrono::high_resolution_clock::time_point start;
-
-		public:
-			/**
-			 * @brief Return calculation time result into std::cout stream
-			 * @param type 
-			*/
-			Timer(OutputTimeType type = OutputTimeType::milliseconds);
-
-			/**
-			 * @brief Return calculation time result into output stream
-			 * @param output 
-			 * @param type 
-			*/
-			Timer(std::ostream& output, OutputTimeType type = OutputTimeType::milliseconds);
-
-			/**
-			 * @brief Get current time
-			 * @return 
-			*/
-			double getCurrentTime() const;
-
-			~Timer();
-		};
+		Timer(std::ostream& output, OutputTimeType type = OutputTimeType::milliseconds);
 
 		/**
-		 * @brief Accumulate calculation time
+		 * @brief Get current time
+		 * @return
 		*/
-		class UTILITY_LIBRARY_API AccumulatingTimer
-		{
-		private:
-			double& accumulatedTime;
-			OutputTimeType type;
-			std::chrono::high_resolution_clock::time_point start;
+		double getCurrentTime() const;
 
-		public:
-			AccumulatingTimer(double& accumulatedTime, OutputTimeType type = OutputTimeType::milliseconds);
+		~Timer();
+	};
 
-			/**
-			 * @brief Get current time
-			 * @return 
-			*/
-			double getCurrentTime() const;
+	/**
+	 * @brief Accumulate calculation time
+	*/
+	class UTILITY_LIBRARY_API AccumulatingTimer
+	{
+	private:
+		double& accumulatedTime;
+		OutputTimeType type;
+		std::chrono::high_resolution_clock::time_point start;
 
-			~AccumulatingTimer();
-		};
-	}
+	public:
+		AccumulatingTimer(double& accumulatedTime, OutputTimeType type = OutputTimeType::milliseconds);
+
+		/**
+		 * @brief Get current time
+		 * @return
+		*/
+		double getCurrentTime() const;
+
+		~AccumulatingTimer();
+	};
 }
 #endif // !NO_TIMERS

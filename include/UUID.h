@@ -4,7 +4,7 @@
 
 #include "Defines.h"
 
-namespace utility
+namespace utility::uuid
 {
 	/**
 	 * @brief Generate UUID in format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx

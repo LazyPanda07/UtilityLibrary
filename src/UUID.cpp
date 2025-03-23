@@ -10,7 +10,7 @@
 #include <Rpc.h>
 #endif
 
-namespace utility
+namespace utility::uuid
 {
 	std::string generateUUID()
 	{

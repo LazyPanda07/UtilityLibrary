@@ -5,20 +5,23 @@
 #include <concepts>
 #include <ranges>
 
-namespace utility
+namespace utility::concepts
 {
-	namespace concepts
+	/**
+	 * @brief Provides static_cast<std::string>
+	 */
+	template<typename T>
+	concept StringConvertible = requires(T && value)
 	{
-		template<typename T>
-		concept StringConvertible = requires(T&& value)
-		{
-			static_cast<std::string>(value);
-		};
+		static_cast<std::string>(value);
+	};
 
-		template<typename T>
-		concept StringViewConvertible = requires(T&& value)
-		{
-			static_cast<std::string_view>(value);
-		};
-	}
+	/**
+	 * @brief Provides static_cast<std::string_view>
+	 */
+	template<typename T>
+	concept StringViewConvertible = requires(T && value)
+	{
+		static_cast<std::string_view>(value);
+	};
 }
