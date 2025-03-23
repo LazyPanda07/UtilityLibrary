@@ -28,7 +28,7 @@ project(UtilityLibrary VERSION 0.6.0)
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	add_definitions(-D__ANDROID__)
 
-	set(UUID_LIB uuid)
+	set(UUID_LIB)
 elseif (UNIX)
 	add_definitions(-D__LINUX__)
 
