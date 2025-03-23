@@ -2,9 +2,9 @@
 
 #include <stdexcept>
 
-#ifdef __ANDROID__ 
-#include <android/uuid.h>
-#elif __LINUX__
+#ifdef __ANDROID__
+#include <fstream>
+#elif defined(__LINUX__)
 #include <uuid/uuid.h>
 #else
 #include <Rpc.h>
@@ -18,7 +18,11 @@ namespace utility
 
 		std::string result;
 
-#if defined(__ANDROID__) || defined(__LINUX__)
+#ifdef __ANDROID__
+		std::ifstream uuidFile("/proc/sys/kernel/random/uuid");
+
+		std::getline(uuidFile, result);
+#elif defined(__LINUX__)
 		uuid_t uuid;
 
 		result.resize(uuidSize);
