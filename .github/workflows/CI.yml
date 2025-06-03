@@ -6,6 +6,10 @@ on:
     branches: [master, dev]
   
 
+permissions:
+  contents: write
+
+
 jobs:
   windows-build:
     runs-on: windows-latest
@@ -484,30 +488,9 @@ jobs:
       if: ${{ env.CURRENT_BRANCH == 'master' }}
       run: zip -r android.zip Release_Android
 
-    - name: Publish Windows
+    - name: Publish
       if: ${{ env.CURRENT_BRANCH == 'master' }}
-      uses: svenstaro/upload-release-action@master
-      with:
-        tag: v${{ env.VERSION }}
-        file: windows.zip
-
-    - name: Publish Linux
-      if: ${{ env.CURRENT_BRANCH == 'master' }}
-      uses: svenstaro/upload-release-action@master
-      with:
-        tag: v${{ env.VERSION }}
-        file: linux.zip
+      run: gh release create v${{ env.VERSION }} *.zip --title v${{ env.VERSION }} --generate-notes
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
-    - name: Publish LinuxARM
-      if: ${{ env.CURRENT_BRANCH == 'master' }}
-      uses: svenstaro/upload-release-action@master
-      with:
-        tag: v${{ env.VERSION }}
-        file: linux_aarch64.zip
-
-    - name: Publish Android
-      if: ${{ env.CURRENT_BRANCH == 'master' }}
-      uses: svenstaro/upload-release-action@master
-      with:
-        tag: v${{ env.VERSION }}
-        file: android.zip
