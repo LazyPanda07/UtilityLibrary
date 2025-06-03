@@ -23,7 +23,7 @@ if (${NO_TIMERS})
 	add_definitions(-DNO_TIMERS)
 endif ()
 
-project(UtilityLibrary VERSION 0.6.0)
+project(UtilityLibrary VERSION 0.7.0)
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	add_definitions(-D__ANDROID__)
@@ -31,6 +31,10 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	set(UUID_LIB)
 elseif (UNIX)
 	add_definitions(-D__LINUX__)
+
+	if (DEFINED ENV{MARCH} AND NOT "$ENV{MARCH}" STREQUAL "")
+	    target_compile_options(${PROJECT_NAME} PRIVATE -march=$ENV{MY_ENV_VAR})
+	endif()
 
 	set(UUID_LIB uuid)
 else ()
