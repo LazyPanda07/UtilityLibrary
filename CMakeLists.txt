@@ -32,10 +32,6 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 elseif (UNIX)
 	add_definitions(-D__LINUX__)
 
-	if (DEFINED ENV{MARCH} AND NOT "$ENV{MARCH}" STREQUAL "")
-	    target_compile_options(${PROJECT_NAME} PRIVATE -march=$ENV{MY_ENV_VAR})
-	endif()
-
 	set(UUID_LIB uuid)
 else ()
 	set(UUID_LIB rpcrt4)
@@ -50,6 +46,10 @@ add_library(
 	src/Timers.cpp
 	src/UUID.cpp
 )
+
+if (DEFINED ENV{MARCH} AND NOT "$ENV{MARCH}" STREQUAL "")
+	target_compile_options(${PROJECT_NAME} PRIVATE -march=$ENV{MY_ENV_VAR})
+endif()
 
 target_include_directories(
 	${PROJECT_NAME} PUBLIC
