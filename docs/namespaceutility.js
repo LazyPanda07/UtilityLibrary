@@ -20,5 +20,6 @@ var namespaceutility =
     [ "timers", "namespaceutility_1_1timers.html", "namespaceutility_1_1timers" ],
     [ "uuid", "namespaceutility_1_1uuid.html", [
       [ "generateUUID", "namespaceutility_1_1uuid.html#a488a483361cf2d320f98a17ef9b12db1", null ]
-    ] ]
+    ] ],
+    [ "utilityLibraryVersion", "namespaceutility.html#a32fb699c84a324180a2c52ff2f344371", null ]
 ];

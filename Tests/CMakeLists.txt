@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.27.0)
 
 set(CMAKE_CXX_STANDARD "20" CACHE STRING "C++ version")
 set(DLL ${CMAKE_SOURCE_DIR}/../UtilityLibrary)
+set(GTEST_VERSION 1.17.0)
 
 option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
 option(NO_CSV_PARSER "Remove CSVParser" OFF)
@@ -29,12 +30,15 @@ endif()
 
 project(Tests)
 
-find_package(GTest)
+include(FetchContent)
 
-if(NOT ${GTest_FOUND})
-	set(GTEST_BOTH_LIBRARIES gtest gtest_main)
-	set(GTEST_INCLUDE_DIRS gtest/include/)
-endif()
+FetchContent_Declare(
+	gtest
+	GIT_REPOSITORY https://github.com/google/googletest.git
+	GIT_TAG v${GTEST_VERSION}
+)
+
+FetchContent_MakeAvailable(gtest)
 
 add_executable(
 	${PROJECT_NAME} 
@@ -52,20 +56,19 @@ target_include_directories(
 	${PROJECT_NAME} PRIVATE 
 	include 
 	${CMAKE_SOURCE_DIR}/../include
-	${GTEST_INCLUDE_DIRS}
 )
 
 target_link_directories(
 	${PROJECT_NAME} PRIVATE
 	${CMAKE_SOURCE_DIR}/../UtilityLibrary/lib
-	gtest/lib
 )
 
 target_link_libraries(
 	${PROJECT_NAME} PRIVATE 
 	UtilityLibrary
 	${LIBS}
-	${GTEST_BOTH_LIBRARIES}
+	gtest
+	gtest_main
 )
 
 if(${NO_CONSOLE_ARGUMENT_PARSER})

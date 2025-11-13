@@ -20,7 +20,10 @@
 #define UTILITY_LIBRARY_API_FUNCTION
 #endif // UTILITY_LIBRARY_DLL
 
-/**
- * @brief Current version of UtilityLibrary
-*/
-inline constexpr std::string_view utilityLibraryVersion = "0.7.0";
+namespace utility
+{
+	/**
+	 * @brief Current version of UtilityLibrary
+	*/
+	inline constexpr std::string_view utilityLibraryVersion = "0.7.1";
+}
