@@ -9,7 +9,20 @@
 namespace utility::parsers
 {
 	/**
-	 * @brief Parse values from predefined pattern string
+	 * @brief Must be specialized for each parsed type
+	 * @tparam T 
+	 */
+	template<typename T>
+	struct Converter
+	{
+		constexpr void convert(std::string_view data, T& result)
+		{
+			static_assert(false, "Wrong type");
+		}
+	};
+
+	/**
+	 * @brief Parse values from predefined pattern string. For each parsed value Converter must be specialized
 	 * @tparam ...Args 
 	 */
 	template<typename... Args>
@@ -34,8 +47,8 @@ namespace utility::parsers
 		constexpr PatternParser(std::string_view format);
 
 		/**
-		 * @brief 
-		 * @param data 
+		 * @brief Get values from specific string
+		 * @param data Result values
 		 * @param ...args 
 		 */
 		void parse(std::string_view data, Args&... args) const;

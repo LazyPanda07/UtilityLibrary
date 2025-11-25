@@ -6,7 +6,7 @@
 #include "CSVParser.h"
 #include "Files.h"
 
-#ifndef WITHOUT_CSV_PARSER
+#ifndef __WITHOUT_CSV_PARSER__
 TEST(CSVParser, Constructors)
 {
     std::ifstream file("test.csv");

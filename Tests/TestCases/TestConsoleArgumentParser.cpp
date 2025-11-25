@@ -3,7 +3,7 @@
 #include "ConsoleArgumentParser.h"
 #include "Arguments.h"
 
-#ifndef WITHOUT_CONSOLE_ARGUMENT_PARSER
+#ifndef __WITHOUT_CONSOLE_ARGUMENT_PARSER__
 TEST(ConsoleArgumentParser, GetWarnings)
 {
     static constexpr size_t warnings = 4;

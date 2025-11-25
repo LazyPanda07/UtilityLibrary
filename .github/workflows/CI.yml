@@ -28,7 +28,7 @@ jobs:
       run: |
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DBUILD_SHARED_LIBS=${{ matrix.shared[0] }} -G "Ninja" ..
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DCMAKE_INSTALL_PREFIX=install-dir -DBUILD_SHARED_LIBS=${{ matrix.shared[0] }} -G "Ninja" ..
           cmake --build . -j && cmake --install .
 
     - name: Upload artifacts
@@ -54,7 +54,7 @@ jobs:
       run: |
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DBUILD_SHARED_LIBS=${{ matrix.shared[0] }} -G "Ninja" ..
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DCMAKE_INSTALL_PREFIX=install-dir -DBUILD_SHARED_LIBS=${{ matrix.shared[0] }} -G "Ninja" ..
           cmake --build . -j
           cmake --install .
 
@@ -81,7 +81,7 @@ jobs:
       run: |
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DBUILD_SHARED_LIBS=${{ matrix.shared[0] }} -G "Ninja" ..
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DCMAKE_INSTALL_PREFIX=install-dir -DBUILD_SHARED_LIBS=${{ matrix.shared[0] }} -G "Ninja" ..
           cmake --build . -j
           cmake --install .
 
@@ -107,7 +107,7 @@ jobs:
       run: |
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DBUILD_SHARED_LIBS=ON ${ANDROID_CMAKE_BUILD_ARGUMENTS} -G "Ninja" ..
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DCMAKE_INSTALL_PREFIX=install-dir -DBUILD_SHARED_LIBS=ON ${ANDROID_CMAKE_BUILD_ARGUMENTS} -G "Ninja" ..
           cmake --build . -j
           cmake --install .
 

@@ -6,7 +6,7 @@
 
 #include "Timers.h"
 
-#ifndef WITHOUT_TIMERS
+#ifndef __WITHOUT_TIMERS__
 TEST(Timers, Timer)
 {
 	using namespace std::chrono_literals;

@@ -53,7 +53,7 @@ namespace utility::parsers
 	template<typename... Args>
 	inline void PatternParser<Args...>::parse(std::string_view data, Args&... args) const
 	{
-		static_assert(sizeof...(args), nextCharacter.size());
+		static_assert(sizeof...(args) == nextCharacter.size());
 
 		this->parseValue(data, 0, args...);
 	}

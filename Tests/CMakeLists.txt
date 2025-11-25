@@ -7,6 +7,7 @@ set(GTEST_VERSION 1.17.0)
 option(WITHOUT_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
 option(WITHOUT_CSV_PARSER "Remove CSVParser" OFF)
 option(WITHOUT_TIMERS "Remove Timers" OFF)
+option(WITHOUT_PATTERN_PARSER "Remove PatternParser" OFF)
 
 if (UNIX)
 	set(DLL ${DLL}/lib/libUtilityLibrary.so)
@@ -50,6 +51,7 @@ add_executable(
 	TestCases/TestFiles.cpp
 	TestCases/TestTimers.cpp
 	TestCases/TestUUID.cpp
+	TestCases/TestPatternParser.cpp
 )
 
 target_include_directories(
@@ -72,15 +74,19 @@ target_link_libraries(
 )
 
 if(${WITHOUT_CONSOLE_ARGUMENT_PARSER})
-	add_definitions(-DWITHOUT_CONSOLE_ARGUMENT_PARSER)
+	add_definitions(-D__WITHOUT_CONSOLE_ARGUMENT_PARSER__)
 endif()
 
 if(${WITHOUT_CSV_PARSER})
-	add_definitions(-DWITHOUT_CSV_PARSER)
+	add_definitions(-D__WITHOUT_CSV_PARSER__)
 endif()
 
 if (${WITHOUT_TIMERS})
-	add_definitions(-DWITHOUT_TIMERS)
+	add_definitions(-D__WITHOUT_TIMERS__)
+endif()
+
+if (${WITHOUT_PATTERN_PARSER})
+	add_definitions(-D__WITHOUT_PATTERN_PARSER__)
 endif()
 
 install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_BINARY_DIR}/bin)
