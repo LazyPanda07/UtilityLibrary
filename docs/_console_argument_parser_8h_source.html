@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.7.1</span>
+   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.8.0</span>
    </div>
    <div id="projectbrief">Provides useful functions</div>
   </td>
@@ -102,7 +102,7 @@ $(function(){initNavTree('_console_argument_parser_8h_source.html',''); initResi
 <div class="contents">
 <a href="_console_argument_parser_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#ifndef NO_CONSOLE_ARGUMENT_PARSER</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#ifndef __WITHOUT_CONSOLE_ARGUMENT_PARSER__</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
@@ -142,25 +142,16 @@ $(function(){initNavTree('_console_argument_parser_8h_source.html',''); initResi
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a9e6f85492a5e06317575faed802fa60c">   60</a></span>        <a class="code hl_function" href="classutility_1_1parsers_1_1_console_argument_parser.html#a9e6f85492a5e06317575faed802fa60c">~ConsoleArgumentParser</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    };</div>
 </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">template</span>&lt;&gt;</div>
-<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#ad80597751a6a20b670ed9fcdf8b44178">   64</a></span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classutility_1_1parsers_1_1_console_argument_parser.html#a56e95e5d9157d4912edc4828aa1c18c6">ConsoleArgumentParser::get&lt;bool&gt;</a>(std::string_view argumentName, <span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; defaultValue, std::errc* errorCode)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">return</span> std::ranges::find(values, argumentName) != values.end() || defaultValue;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
 </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
-</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif </span><span class="comment">// !NO_CONSOLE_ARGUMENT_PARSER</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#include &quot;<a class="code" href="_console_argument_parser_8inl.html">ConsoleArgumentParser.inl</a>&quot;</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#include &quot;<a class="code" href="_console_argument_parser_8inl.html">ConsoleArgumentParser.inl</a>&quot;</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_console_argument_parser_8inl_html"><div class="ttname"><a href="_console_argument_parser_8inl.html">ConsoleArgumentParser.inl</a></div></div>
 <div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="_defines_8h.html">Defines.h</a></div></div>
 <div class="ttc" id="a_defines_8h_html_aa4f0bf78fc44f946edf1f5a13070ab6f"><div class="ttname"><a href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a></div><div class="ttdeci">#define UTILITY_LIBRARY_API</div><div class="ttdef"><b>Definition</b> <a href="_defines_8h_source.html#l00019">Defines.h:19</a></div></div>
 <div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_html"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser.html">utility::parsers::ConsoleArgumentParser</a></div><div class="ttdoc">Console argument parser.</div><div class="ttdef"><b>Definition</b> <a href="#l00018">ConsoleArgumentParser.h:19</a></div></div>
 <div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_html_a17c13123fe289906c7054d4b2247eafa"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser.html#a17c13123fe289906c7054d4b2247eafa">utility::parsers::ConsoleArgumentParser::ConsoleArgumentParser</a></div><div class="ttdeci">ConsoleArgumentParser(int argc, char **argv)</div></div>
-<div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_html_a56e95e5d9157d4912edc4828aa1c18c6"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser.html#a56e95e5d9157d4912edc4828aa1c18c6">utility::parsers::ConsoleArgumentParser::get</a></div><div class="ttdeci">T get(std::string_view argumentName, const T &amp;defaultValue=T(), std::errc *errorCode=nullptr) const</div><div class="ttdoc">Get command line value.</div><div class="ttdef"><b>Definition</b> <a href="_console_argument_parser_8inl_source.html#l00031">ConsoleArgumentParser.inl:31</a></div></div>
 <div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_html_a9e6f85492a5e06317575faed802fa60c"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser.html#a9e6f85492a5e06317575faed802fa60c">utility::parsers::ConsoleArgumentParser::~ConsoleArgumentParser</a></div><div class="ttdeci">~ConsoleArgumentParser()=default</div></div>
 <div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_html_ac9d026a84663a7934254ea51bca9ea0a"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a">utility::parsers::ConsoleArgumentParser::getWarnings</a></div><div class="ttdeci">std::vector&lt; std::string &gt; getWarnings(bool clearWarnings=true) const</div><div class="ttdoc">Get warnings from get and getValues.</div></div>
 <div class="ttc" id="anamespaceutility_1_1parsers_html"><div class="ttname"><a href="namespaceutility_1_1parsers.html">utility::parsers</a></div><div class="ttdef"><b>Definition</b> <a href="#l00013">ConsoleArgumentParser.h:14</a></div></div>

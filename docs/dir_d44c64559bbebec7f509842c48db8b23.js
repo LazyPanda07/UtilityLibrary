@@ -8,6 +8,8 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "Defines.h", "_defines_8h.html", "_defines_8h" ],
     [ "Files.h", "_files_8h.html", "_files_8h" ],
     [ "Files.inl", "_files_8inl.html", "_files_8inl" ],
+    [ "PatternParser.h", "_pattern_parser_8h.html", "_pattern_parser_8h" ],
+    [ "PatternParser.inl", "_pattern_parser_8inl.html", null ],
     [ "Strings.h", "_strings_8h.html", "_strings_8h" ],
     [ "Timers.h", "_timers_8h.html", "_timers_8h" ],
     [ "UUID.h", "_u_u_i_d_8h.html", "_u_u_i_d_8h" ]

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['stringviewequal_0',['StringViewEqual',['../structutility_1_1strings_1_1_string_view_equal.html',1,'utility::strings']]],
-  ['stringviewhash_1',['StringViewHash',['../structutility_1_1strings_1_1_string_view_hash.html',1,'utility::strings']]]
+  ['patternparser_0',['PatternParser',['../classutility_1_1parsers_1_1_pattern_parser.html',1,'utility::parsers']]]
 ];

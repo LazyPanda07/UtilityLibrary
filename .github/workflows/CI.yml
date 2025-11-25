@@ -412,7 +412,7 @@ jobs:
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
-          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} qemu-aarch64 ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
 
   memory-leak-tests:
