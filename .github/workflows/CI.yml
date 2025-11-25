@@ -201,6 +201,22 @@ jobs:
           cd build/bin
           .\Tests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
+    - name: Build tests without PatternParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm build -r -force
+          mkdir build
+          cd build
+          cmake  -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DWITHOUT_PATTERN_PARSER=ON -G "Ninja" ..
+          cmake --build . -j
+          cmake --install .
+
+    - name: Tests without PatternParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          cd build/bin
+          .\Tests.exe --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
 
   linux-tests:
     runs-on: ubuntu-latest
@@ -279,6 +295,22 @@ jobs:
           cmake --install .
 
     - name: Tests without Timers
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          cd build/bin
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
+    - name: Build tests without PatternParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake  -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DWITHOUT_PATTERN_PARSER=ON -G "Ninja" ..
+          cmake --build . -j
+          cmake --install .
+
+    - name: Tests without PatternParser
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
@@ -366,6 +398,22 @@ jobs:
           cd build/bin
           LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} qemu-aarch64 ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
+    - name: Build tests without PatternParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake  -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DWITHOUT_PATTERN_PARSER=ON -G "Ninja" ..
+          cmake --build . -j
+          cmake --install .
+
+    - name: Tests without PatternParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          cd build/bin
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
 
   memory-leak-tests:
     runs-on: ubuntu-latest
@@ -450,6 +498,24 @@ jobs:
           cmake --install .
 
     - name: Tests without Timers
+      uses: LazyPanda07/check-memory-leaks@v1
+      with:
+        path: Tests/build/bin
+        name: Tests
+        pre-execute: export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$(pwd)
+        args: --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+
+    - name: Build tests without PatternParser
+      working-directory: ${{ github.workspace }}/Tests
+      run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake  -DCMAKE_BUILD_TYPE=${{ matrix.configuration }} -DWITHOUT_PATTERN_PARSER=ON -G "Ninja" ..
+          cmake --build . -j
+          cmake --install .
+
+    - name: Tests without PatternParser
       uses: LazyPanda07/check-memory-leaks@v1
       with:
         path: Tests/build/bin
