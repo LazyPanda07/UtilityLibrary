@@ -1,8 +1,7 @@
-#ifndef NO_CONSOLE_ARGUMENT_PARSER
 namespace utility::parsers
 {
 	template<typename T>
-	T ConsoleArgumentParser::getNumeric(std::string_view integralValue, const T& defaultValue, std::errc* errorCode) const
+	inline T ConsoleArgumentParser::getNumeric(std::string_view integralValue, const T& defaultValue, std::errc* errorCode) const
 	{
 		T value = defaultValue;
 
@@ -28,7 +27,7 @@ namespace utility::parsers
 	}
 
 	template<typename T>
-	T ConsoleArgumentParser::get(std::string_view argumentName, const T& defaultValue, std::errc* errorCode) const
+	inline T ConsoleArgumentParser::get(std::string_view argumentName, const T& defaultValue, std::errc* errorCode) const
 	{
 		std::optional<std::string_view> result = this->findValue(argumentName);
 
@@ -64,7 +63,7 @@ namespace utility::parsers
 	}
 
 	template<typename T>
-	std::vector<T> ConsoleArgumentParser::getValues(std::string_view argumentName) const
+	inline std::vector<T> ConsoleArgumentParser::getValues(std::string_view argumentName) const
 	{
 		std::vector<T> result;
 
@@ -100,5 +99,10 @@ namespace utility::parsers
 
 		return result;
 	}
+
+	template<>
+	inline bool ConsoleArgumentParser::get<bool>(std::string_view argumentName, const bool& defaultValue, std::errc* errorCode) const
+	{
+		return std::ranges::find(values, argumentName) != values.end() || defaultValue;
+	}
 }
-#endif // !NO_CONSOLE_ARGUMENT_PARSER

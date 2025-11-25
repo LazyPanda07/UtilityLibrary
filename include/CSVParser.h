@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef NO_CSV_PARSER
+#ifndef __WITHOUT_CSV_PARSER__
 #include <filesystem>
 #include <fstream>
 #include <vector>
@@ -79,4 +79,4 @@ namespace utility::parsers
 		~CSVParser() = default;
 	};
 }
-#endif // NO_CSV_PARSER
+#endif

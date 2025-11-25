@@ -1,65 +1,60 @@
 #include "Timers.h"
 
-#ifndef NO_TIMERS
+#ifndef __WITHOUT_TIMERS__
 #include <iostream>
 
-using namespace std;
+static double calculateTime(const std::chrono::high_resolution_clock::time_point& start, utility::timers::OutputTimeType type);
 
-static double calculateTime(const chrono::high_resolution_clock::time_point& start, utility::timers::OutputTimeType type);
-
-namespace utility
+namespace utility::timers
 {
-	namespace timers
+	Timer::Timer(OutputTimeType type) :
+		output(nullptr),
+		type(type),
+		start(std::chrono::high_resolution_clock::now())
 	{
-		Timer::Timer(OutputTimeType type) :
-			output(nullptr),
-			type(type),
-			start(chrono::high_resolution_clock::now())
-		{
-			
-		}
 
-		Timer::Timer(ostream& output, OutputTimeType type) :
-			Timer(type)
-		{
-			this->output = &output;
-		}
+	}
 
-		double Timer::getCurrentTime() const
-		{
-			return calculateTime(start, type);
-		}
+	Timer::Timer(std::ostream& output, OutputTimeType type) :
+		Timer(type)
+	{
+		this->output = &output;
+	}
 
-		Timer::~Timer()
-		{
-			double result = calculateTime(start, type);
+	double Timer::getCurrentTime() const
+	{
+		return calculateTime(start, type);
+	}
 
-			(output ? *output : cout) << result;
-		}
+	Timer::~Timer()
+	{
+		double result = calculateTime(start, type);
 
-		AccumulatingTimer::AccumulatingTimer(double& accumulatedTime, OutputTimeType type) :
-			accumulatedTime(accumulatedTime),
-			type(type),
-			start(chrono::high_resolution_clock::now())
-		{
+		(output ? *output : std::cout) << result;
+	}
 
-		}
+	AccumulatingTimer::AccumulatingTimer(double& accumulatedTime, OutputTimeType type) :
+		accumulatedTime(accumulatedTime),
+		type(type),
+		start(std::chrono::high_resolution_clock::now())
+	{
 
-		double AccumulatingTimer::getCurrentTime() const
-		{
-			return calculateTime(start, type);
-		}
+	}
 
-		AccumulatingTimer::~AccumulatingTimer()
-		{
-			accumulatedTime += calculateTime(start, type);
-		}
+	double AccumulatingTimer::getCurrentTime() const
+	{
+		return calculateTime(start, type);
+	}
+
+	AccumulatingTimer::~AccumulatingTimer()
+	{
+		accumulatedTime += calculateTime(start, type);
 	}
 }
 
-inline double calculateTime(const chrono::high_resolution_clock::time_point& start, utility::timers::OutputTimeType type)
+inline double calculateTime(const std::chrono::high_resolution_clock::time_point& start, utility::timers::OutputTimeType type)
 {
-	chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::now();
+	std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
 
 	double resultTime = static_cast<double>((end - start).count());
 	intmax_t coeffficient;
@@ -67,36 +62,36 @@ inline double calculateTime(const chrono::high_resolution_clock::time_point& sta
 	switch (type)
 	{
 	case utility::timers::OutputTimeType::milliseconds:
-		coeffficient = chrono::milliseconds::period::den;
+		coeffficient = std::chrono::milliseconds::period::den;
 
 		break;
 
 	case utility::timers::OutputTimeType::seconds:
-		coeffficient = chrono::seconds::period::den;
+		coeffficient = std::chrono::seconds::period::den;
 
 		break;
 
 	case utility::timers::OutputTimeType::nanoseconds:
-		coeffficient = chrono::nanoseconds::period::den;
+		coeffficient = std::chrono::nanoseconds::period::den;
 
 		break;
 
 	case utility::timers::OutputTimeType::minutes:
-		coeffficient = chrono::minutes::period::den;
+		coeffficient = std::chrono::minutes::period::den;
 
 		break;
 
 	case utility::timers::OutputTimeType::hours:
-		coeffficient = chrono::hours::period::den;
+		coeffficient = std::chrono::hours::period::den;
 
 		break;
 
 	default:
-		cerr << "Wrong OutputTimeType" << endl;
+		std::cerr << "Wrong OutputTimeType" << std::endl;
 
 		return 0.0;
 	}
 
-	return resultTime / chrono::high_resolution_clock::period::den * coeffficient;
+	return resultTime / std::chrono::high_resolution_clock::period::den * coeffficient;
 }
-#endif // !NO_TIMERS
+#endif

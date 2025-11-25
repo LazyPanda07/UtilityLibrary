@@ -1,110 +1,105 @@
 #include "CSVParser.h"
 
-#ifndef NO_CSV_PARSER
+#ifndef __WITHOUT_CSV_PARSER__
 #include <format>
 #include <sstream>
 
 #include "Files.h"
 #include "Strings.h"
 
-using namespace std;
-
-namespace utility
+namespace utility::parsers
 {
-	namespace parsers
+	void CSVParser::parse(const std::string& data, std::string_view delimiter)
 	{
-		void CSVParser::parse(const string& data, string_view delimiter)
+		std::istringstream os(data);
+		std::string line;
+
+		std::getline(os, line);
+
+		if (line.empty())
 		{
-			istringstream os(data);
-			string line;
+			throw std::runtime_error("No columns");
+		}
 
-			getline(os, line);
+		for (const std::string& columnName : strings::split(line, delimiter))
+		{
+			csvData.emplace_back(columnName, std::vector<std::string>());
+		}
 
+		while (std::getline(os, line))
+		{
 			if (line.empty())
 			{
-				throw runtime_error("No columns");
+				continue;
 			}
 
-			for (const string& columnName : strings::split(line, delimiter))
+			std::vector<std::string> columns = strings::split(line, delimiter);
+
+			for (size_t i = 0; i < csvData.size(); i++)
 			{
-				csvData.emplace_back(columnName, vector<string>());
-			}
-
-			while (getline(os, line))
-			{
-				if (line.empty())
-				{
-					continue;
-				}
-
-				vector<string> columns = strings::split(line, delimiter);
-
-				for (size_t i = 0; i < csvData.size(); i++)
-				{
-					csvData[i].second.push_back(move(columns.at(i)));
-				}
+				csvData[i].second.emplace_back(std::move(columns.at(i)));
 			}
 		}
+	}
 
-		CSVParser CSVParser::fromString(const string& csvData, string_view delimiter)
+	CSVParser CSVParser::fromString(const std::string& csvData, std::string_view delimiter)
+	{
+		CSVParser result;
+
+		result.parse(csvData, delimiter);
+
+		return result;
+	}
+
+	CSVParser::CSVParser(const std::filesystem::path& pathToCSVFile, std::string_view delimiter)
+	{
+		this->parse(files::readFile(pathToCSVFile), delimiter);
+	}
+
+	CSVParser::CSVParser(std::ifstream& csvFile, std::string_view delimiter)
+	{
+		this->parse(files::readFileFromStream(csvFile), delimiter);
+	}
+
+	size_t CSVParser::size() const
+	{
+		return csvData.back().second.size();
+	}
+	
+	std::vector<std::string> CSVParser::getColumnNames() const
+	{
+		std::vector<std::string> result;
+
+		for (const auto& [columnName, _] : csvData)
 		{
-			CSVParser result;
-
-			result.parse(csvData, delimiter);
-
-			return result;
+			result.push_back(columnName);
 		}
 
-		CSVParser::CSVParser(const filesystem::path& pathToCSVFile, string_view delimiter)
+		return result;
+	}
+
+	const std::vector<std::string>& CSVParser::operator[](const std::string& columnName) const
+	{
+		auto it = std::ranges::find_if(csvData, [&columnName](const std::pair<std::string, std::vector<std::string>>& data) { return data.first == columnName; });
+
+		if (it == csvData.end())
 		{
-			this->parse(files::readFile(pathToCSVFile), delimiter);
+			throw std::runtime_error(format("Wrong column name: {}", columnName));
 		}
 
-		CSVParser::CSVParser(ifstream& csvFile, string_view delimiter)
+		return it->second;
+	}
+
+	std::vector<std::string> CSVParser::operator[](size_t index) const
+	{
+		std::vector<std::string> result;
+
+		for (const auto& [_, csv] : csvData)
 		{
-			this->parse(files::readFileFromStream(csvFile), delimiter);
+			result.emplace_back(csv.at(index));
 		}
 
-		size_t CSVParser::size() const
-		{
-			return csvData.back().second.size();
-		}
-
-		vector<string> CSVParser::getColumnNames() const
-		{
-			vector<string> result;
-
-			for (const auto& [columnName, _] : csvData)
-			{
-				result.push_back(columnName);
-			}
-
-			return result;
-		}
-
-		const vector<string>& CSVParser::operator[](const string& columnName) const
-		{
-			auto it = ranges::find_if(csvData, [&columnName](const pair<string, vector<string>>& data) { return data.first == columnName; });
-
-			if (it == csvData.end())
-			{
-				throw runtime_error(format("Wrong column name: {}", columnName));
-			}
-
-			return it->second;
-		}
-
-		vector<string> CSVParser::operator[](size_t index) const
-		{
-			vector<string> result;
-
-			for (const auto& [_, csv] : csvData)
-			{
-				result.push_back(csv.at(index));
-			}
-
-			return result;
-		}
+		return result;
 	}
 }
 #endif

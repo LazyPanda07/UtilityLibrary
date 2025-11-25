@@ -3,42 +3,37 @@
 #include <format>
 #include <sstream>
 
-using namespace std;
-
-namespace utility
+namespace utility::files
 {
-	namespace files
+	std::string readFile(const std::filesystem::path& pathToFile, std::ios::openmode mode)
 	{
-		string readFile(const filesystem::path& pathToFile, ios::openmode mode)
+		if (!std::filesystem::exists(pathToFile))
 		{
-			if (!filesystem::exists(pathToFile))
-			{
-				throw runtime_error(format("File {} doesn't exist", pathToFile.string()));
-			}
-
-			ifstream file(pathToFile, mode);
-
-			return readFileFromStream(file);
+			throw std::runtime_error(format("File {} doesn't exist", pathToFile.string()));
 		}
 
-		string readBinaryFile(const filesystem::path& pathToFile)
+		std::ifstream file(pathToFile, mode);
+
+		return readFileFromStream(file);
+	}
+
+	std::string readBinaryFile(const std::filesystem::path& pathToFile)
+	{
+		return readFile(pathToFile, std::ios::binary);
+	}
+
+	std::string readFileFromStream(std::ifstream& file)
+	{
+		if (!file.good())
 		{
-			return readFile(pathToFile, ios::binary);
+			throw std::runtime_error("Input file stream error");
 		}
 
-		string readFileFromStream(ifstream& file)
+		if (!file.is_open())
 		{
-			if (!file.good())
-			{
-				throw runtime_error("Input file stream error");
-			}
-
-			if (!file.is_open())
-			{
-				throw runtime_error("Input file stream is closed");
-			}
-
-			return (ostringstream() << file.rdbuf()).str();
+			throw std::runtime_error("Input file stream is closed");
 		}
+
+		return (std::ostringstream() << file.rdbuf()).str();
 	}
 }

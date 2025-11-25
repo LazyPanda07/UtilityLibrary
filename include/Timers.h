@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef NO_TIMERS
+#ifndef __WITHOUT_TIMERS__
 #include <chrono>
 
 #include "Defines.h"
@@ -74,4 +74,4 @@ namespace utility::timers
 		~AccumulatingTimer();
 	};
 }
-#endif // !NO_TIMERS
+#endif

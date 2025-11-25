@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef NO_CONSOLE_ARGUMENT_PARSER
+#ifndef __WITHOUT_CONSOLE_ARGUMENT_PARSER__
 #include <vector>
 #include <string>
 #include <optional>
@@ -59,13 +59,7 @@ namespace utility::parsers
 
 		~ConsoleArgumentParser() = default;
 	};
-
-	template<>
-	inline bool ConsoleArgumentParser::get<bool>(std::string_view argumentName, const bool& defaultValue, std::errc* errorCode) const
-	{
-		return std::ranges::find(values, argumentName) != values.end() || defaultValue;
-	}
 }
-#endif // !NO_CONSOLE_ARGUMENT_PARSER
 
 #include "ConsoleArgumentParser.inl"
+#endif

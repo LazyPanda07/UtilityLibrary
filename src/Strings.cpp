@@ -3,24 +3,22 @@
 #include <functional>
 #include <algorithm>
 
-using namespace std;
-
 namespace utility::strings
 {
-	string replaceAll(const string& source, string_view oldValue, string_view newValue)
+	std::string replaceAll(const std::string& source, std::string_view oldValue, std::string_view newValue)
 	{
-		string result(source);
+		std::string result(source);
 
 		return replaceAllByRef(result, oldValue, newValue);
 	}
 
-	string& replaceAllByRef(string& source, string_view oldValue, string_view newValue)
+	std::string& replaceAllByRef(std::string& source, std::string_view oldValue, std::string_view newValue)
 	{
-		boyer_moore_horspool_searcher searcher(oldValue.begin(), oldValue.end());
+		std::boyer_moore_horspool_searcher searcher(oldValue.begin(), oldValue.end());
 
 		while (true)
 		{
-			string::iterator it = search(source.begin(), source.end(), searcher);
+			std::string::iterator it = std::search(source.begin(), source.end(), searcher);
 
 			if (it == source.end())
 			{
@@ -33,16 +31,16 @@ namespace utility::strings
 		return source;
 	}
 
-	vector<string> split(string_view source, string_view delimiter)
+	std::vector<std::string> split(std::string_view source, std::string_view delimiter)
 	{
-		boyer_moore_horspool_searcher searcher(delimiter.begin(), delimiter.end());
-		string_view::const_iterator right = source.begin();
-		vector<string> result;
+		std::boyer_moore_horspool_searcher searcher(delimiter.begin(), delimiter.end());
+		std::string_view::const_iterator right = source.begin();
+		std::vector<std::string> result;
 
 		while (true)
 		{
-			string_view::const_iterator left = right;
-			right = search(right, source.end(), searcher);
+			std::string_view::const_iterator left = right;
+			right = std::search(right, source.end(), searcher);
 
 			if (right == source.end() && left == source.end())
 			{
@@ -60,12 +58,12 @@ namespace utility::strings
 		return result;
 	}
 
-	size_t StringViewHash::operator()(string_view value) const
+	size_t StringViewHash::operator()(std::string_view value) const
 	{
-		return hash<string_view>()(value);
+		return std::hash<std::string_view>()(value);
 	}
 
-	bool StringViewEqual::operator ()(string_view left, string_view right) const
+	bool StringViewEqual::operator ()(std::string_view left, std::string_view right) const
 	{
 		return left == right;
 	}

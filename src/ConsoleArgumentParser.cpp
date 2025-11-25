@@ -1,59 +1,54 @@
 #include "ConsoleArgumentParser.h"
 
-#ifndef NO_CONSOLE_ARGUMENT_PARSER
+#ifndef __WITHOUT_CONSOLE_ARGUMENT_PARSER__
 #include <format>
 
-using namespace std;
-
-namespace utility
+namespace utility::parsers
 {
-	namespace parsers
+	std::optional<std::string_view> ConsoleArgumentParser::findValue(std::string_view argumentName) const
 	{
-		optional<string_view> ConsoleArgumentParser::findValue(string_view argumentName) const
+		std::vector<std::string_view>::const_iterator it = std::ranges::find(values, argumentName);
+		std::optional<std::string_view> result;
+
+		if (it == values.end())
 		{
-			vector<string_view>::const_iterator it = ranges::find(values, argumentName);
-			optional<string_view> result;
-
-			if (it == values.end())
-			{
-				warnings.emplace_back(format("Warning: no value for {}", argumentName));
-
-				return result;
-			}
-
-			++it;
-
-			if (it != values.end())
-			{
-				result = *it;
-			}
-			else
-			{
-				warnings.emplace_back(format("Warning: no value for {}", argumentName));
-			}
+			warnings.emplace_back(format("Warning: no value for {}", argumentName));
 
 			return result;
 		}
 
-		ConsoleArgumentParser::ConsoleArgumentParser(int argc, char** argv)
+		++it;
+
+		if (it != values.end())
 		{
-			for (int i = 1; i < argc; i++)
-			{
-				values.emplace_back(argv[i]);
-			}
+			result = *it;
+		}
+		else
+		{
+			warnings.emplace_back(format("Warning: no value for {}", argumentName));
 		}
 
-		vector<string> ConsoleArgumentParser::getWarnings(bool clearWarnings) const
+		return result;
+	}
+
+	ConsoleArgumentParser::ConsoleArgumentParser(int argc, char** argv)
+	{
+		for (int i = 1; i < argc; i++)
 		{
-			vector<string> result(warnings);
-
-			if (clearWarnings)
-			{
-				warnings.clear();
-			}
-
-			return result;
+			values.emplace_back(argv[i]);
 		}
 	}
+
+	std::vector<std::string> ConsoleArgumentParser::getWarnings(bool clearWarnings) const
+	{
+		std::vector<std::string> result(warnings);
+
+		if (clearWarnings)
+		{
+			warnings.clear();
+		}
+
+		return result;
+	}
 }
-#endif // !NO_CONSOLE_ARGUMENT_PARSER
+#endif

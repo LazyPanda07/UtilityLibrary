@@ -52,8 +52,8 @@ namespace utility::files
 	 * @param paths
 	 * @return
 	*/
-	template<template<typename, typename...> typename Container, typename T, typename... Args> requires (std::ranges::range<Container<T, Args...>>&& concepts::StringConvertible<T>)
-		std::filesystem::path generatePathContainer(const Container<T, Args...>& paths);
+	template<template<typename, typename...> typename Container, typename T, typename... Args> 
+	std::filesystem::path generatePathContainer(const Container<T, Args...>& paths) requires (std::ranges::range<Container<T, Args...>>&& concepts::StringConvertible<T>);
 }
 
 #include "Files.inl"

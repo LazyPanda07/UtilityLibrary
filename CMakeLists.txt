@@ -1,29 +1,33 @@
 cmake_minimum_required(VERSION 3.27.0)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install-dir CACHE STRING "")
 option(BUILD_SHARED_LIBS "" OFF)
-option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
-option(NO_CSV_PARSER "Remove CSVParser" OFF)
-option(NO_TIMERS "Remove Timers" OFF)
+option(WITHOUT_CONSOLE_ARGUMENT_PARSER "Include ConsoleArgumentParser" OFF)
+option(WITHOUT_CSV_PARSER "Include CSVParser" OFF)
+option(WITHOUT_TIMERS "Include Timers" OFF)
+option(WITHOUT_PATTERN_PARSER "Include PatternParser" OFF)
 
 if (${BUILD_SHARED_LIBS})
 	add_definitions(-DUTILITY_LIBRARY_DLL)
 endif ()
 
-if(${NO_CONSOLE_ARGUMENT_PARSER})
-	add_definitions(-DNO_CONSOLE_ARGUMENT_PARSER)
+if(${WITHOUT_CONSOLE_ARGUMENT_PARSER})
+	add_definitions(-D__WITHOUT_CONSOLE_ARGUMENT_PARSER__)
 endif ()
 
-if(${NO_CSV_PARSER})
-	add_definitions(-DNO_CSV_PARSER)
+if(${WITHOUT_CSV_PARSER})
+	add_definitions(-D__WITHOUT_CSV_PARSER__)
 endif ()
 
-if (${NO_TIMERS})
-	add_definitions(-DNO_TIMERS)
+if (${WITHOUT_TIMERS})
+	add_definitions(-D__WITHOUT_TIMERS__)
 endif ()
 
-project(UtilityLibrary VERSION 0.7.1)
+if (${WITHOUT_PATTERN_PARSER})
+	add_definitions(-D__WITHOUT_PATTERN_PARSER__)
+endif()
+
+project(UtilityLibrary VERSION 0.8.0)
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	add_definitions(-D__ANDROID__)
@@ -63,9 +67,9 @@ target_link_libraries(
 
 install(
 	TARGETS ${PROJECT_NAME} 
-	ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-	LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-	RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/dll
+	ARCHIVE DESTINATION lib
+	LIBRARY DESTINATION lib
+	RUNTIME DESTINATION dll
 )
 
-install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
+install(DIRECTORY include DESTINATION .)
