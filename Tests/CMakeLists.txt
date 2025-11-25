@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.27.0)
 
 set(CMAKE_CXX_STANDARD "20" CACHE STRING "C++ version")
+set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR})
 set(DLL ${CMAKE_SOURCE_DIR}/../UtilityLibrary)
 set(GTEST_VERSION 1.17.0)
 
@@ -89,5 +90,5 @@ if (${WITHOUT_PATTERN_PARSER})
 	add_definitions(-D__WITHOUT_PATTERN_PARSER__)
 endif()
 
-install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_BINARY_DIR}/bin)
-install(FILES data/test.csv DESTINATION ${CMAKE_BINARY_DIR}/bin)
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+install(FILES data/test.csv DESTINATION bin)
