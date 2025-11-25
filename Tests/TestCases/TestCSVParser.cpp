@@ -6,12 +6,10 @@
 #include "CSVParser.h"
 #include "Files.h"
 
-using namespace std;
-
-#ifndef NO_CSV_PARSER
+#ifndef WITHOUT_CSV_PARSER
 TEST(CSVParser, Constructors)
 {
-    ifstream file("test.csv");
+    std::ifstream file("test.csv");
 
     ASSERT_NO_THROW(utility::parsers::CSVParser("test.csv"));
     ASSERT_NO_THROW(utility::parsers::CSVParser parser(file));
@@ -22,7 +20,7 @@ TEST(CSVParser, Functionality)
 {
     utility::parsers::CSVParser parser("test.csv");
 
-    for (const string& columnName : parser.getColumnNames())
+    for (const std::string& columnName : parser.getColumnNames())
     {
         ASSERT_TRUE(parser[columnName].size());
 

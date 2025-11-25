@@ -4,9 +4,9 @@ set(CMAKE_CXX_STANDARD "20" CACHE STRING "C++ version")
 set(DLL ${CMAKE_SOURCE_DIR}/../UtilityLibrary)
 set(GTEST_VERSION 1.17.0)
 
-option(NO_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
-option(NO_CSV_PARSER "Remove CSVParser" OFF)
-option(NO_TIMERS "Remove Timers" OFF)
+option(WITHOUT_CONSOLE_ARGUMENT_PARSER "Remove ConsoleArgumentParser" OFF)
+option(WITHOUT_CSV_PARSER "Remove CSVParser" OFF)
+option(WITHOUT_TIMERS "Remove Timers" OFF)
 
 if (UNIX)
 	set(DLL ${DLL}/lib/libUtilityLibrary.so)
@@ -71,17 +71,17 @@ target_link_libraries(
 	gtest_main
 )
 
-if(${NO_CONSOLE_ARGUMENT_PARSER})
-	add_definitions(-DNO_CONSOLE_ARGUMENT_PARSER)
-endif ()
+if(${WITHOUT_CONSOLE_ARGUMENT_PARSER})
+	add_definitions(-DWITHOUT_CONSOLE_ARGUMENT_PARSER)
+endif()
 
-if(${NO_CSV_PARSER})
-	add_definitions(-DNO_CSV_PARSER)
-endif ()
+if(${WITHOUT_CSV_PARSER})
+	add_definitions(-DWITHOUT_CSV_PARSER)
+endif()
 
-if (${NO_TIMERS})
-	add_definitions(-DNO_TIMERS)
-endif ()
+if (${WITHOUT_TIMERS})
+	add_definitions(-DWITHOUT_TIMERS)
+endif()
 
 install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_BINARY_DIR}/bin)
 install(FILES data/test.csv DESTINATION ${CMAKE_BINARY_DIR}/bin)

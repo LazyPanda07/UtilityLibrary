@@ -2,11 +2,9 @@
 
 #include "Strings.h"
 
-using namespace std;
-
 TEST(Strings, Replace)
 {
-    string data = "aaabbbcccaaabbbccc";
+    std::string data = "aaabbbcccaaabbbccc";
 
     ASSERT_EQ(utility::strings::replaceAll(data, "aaa", "x"), "xbbbcccxbbbccc");
     ASSERT_EQ(utility::strings::replaceAll(data, "bbb", "x"), "aaaxcccaaaxccc");

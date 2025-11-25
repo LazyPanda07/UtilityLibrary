@@ -6,108 +6,110 @@
 
 #include "Timers.h"
 
-using namespace std;
-
-#ifndef NO_TIMERS
+#ifndef WITHOUT_TIMERS
 TEST(Timers, Timer)
 {
-    double result;
-    stringbuf buffer;
-    iostream out(&buffer);
+	using namespace std::chrono_literals;
 
-    {
-        utility::timers::Timer timer(out, utility::timers::OutputTimeType::milliseconds);
+	double result;
+	std::stringbuf buffer;
+	std::iostream out(&buffer);
 
-        this_thread::sleep_for(1000ms);
-    }
+	{
+		utility::timers::Timer timer(out, utility::timers::OutputTimeType::milliseconds);
 
-    out >> result;
+		std::this_thread::sleep_for(1000ms);
+	}
 
-    ASSERT_TRUE(result >= 1.0);
+	out >> result;
 
-    {
-        utility::timers::Timer timer(out, utility::timers::OutputTimeType::seconds);
+	ASSERT_TRUE(result >= 1.0);
 
-        this_thread::sleep_for(1s);
-    }
+	{
+		utility::timers::Timer timer(out, utility::timers::OutputTimeType::seconds);
 
-    out >> result;
+		std::this_thread::sleep_for(1s);
+	}
 
-    ASSERT_TRUE(result >= 1.0);
+	out >> result;
 
-    {
-        utility::timers::Timer timer(out, utility::timers::OutputTimeType::nanoseconds);
+	ASSERT_TRUE(result >= 1.0);
 
-        this_thread::sleep_for(1'000'000'000ns);
-    }
+	{
+		utility::timers::Timer timer(out, utility::timers::OutputTimeType::nanoseconds);
 
-    out >> result;
+		std::this_thread::sleep_for(1'000'000'000ns);
+	}
 
-    ASSERT_TRUE(result >= 1.0);
+	out >> result;
 
-    {
-        utility::timers::Timer timer(out, utility::timers::OutputTimeType::minutes);
+	ASSERT_TRUE(result >= 1.0);
 
-        this_thread::sleep_for(0.1min);
-    }
+	{
+		utility::timers::Timer timer(out, utility::timers::OutputTimeType::minutes);
 
-    out >> result;
+		std::this_thread::sleep_for(0.1min);
+	}
 
-    ASSERT_TRUE(result >= 6.0);
-    
-    {
-        utility::timers::Timer timer(out, utility::timers::OutputTimeType::hours);
+	out >> result;
 
-        this_thread::sleep_for(0.001h);
-    }
+	ASSERT_TRUE(result >= 6.0);
 
-    out >> result;
+	{
+		utility::timers::Timer timer(out, utility::timers::OutputTimeType::hours);
 
-    ASSERT_TRUE(result >= 3.6);
+		std::this_thread::sleep_for(0.001h);
+	}
+
+	out >> result;
+
+	ASSERT_TRUE(result >= 3.6);
 }
 
 TEST(Timers, AccumulatingTimer)
 {
-    double result = 0.0;
+	using namespace std::chrono_literals;
 
-    {
-        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::milliseconds);
+	double result = 0.0;
 
-        this_thread::sleep_for(1000ms);
-    }
+	{
+		utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::milliseconds);
 
-    ASSERT_TRUE(result >= 1.0);
+		std::this_thread::sleep_for(1000ms);
+	}
 
-    {
-        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::seconds);
+	ASSERT_TRUE(result >= 1.0);
 
-        this_thread::sleep_for(1s);
-    }
+	{
+		utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::seconds);
 
-    ASSERT_TRUE(result >= 2.0);
+		std::this_thread::sleep_for(1s);
+	}
 
-    {
-        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::nanoseconds);
+	ASSERT_TRUE(result >= 2.0);
 
-        this_thread::sleep_for(1'000'000'000ns);
-    }
+	{
+		utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::nanoseconds);
 
-    ASSERT_TRUE(result >= 3.0);
+		std::this_thread::sleep_for(1'000'000'000ns);
+	}
 
-    {
-        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::minutes);
+	ASSERT_TRUE(result >= 3.0);
 
-        this_thread::sleep_for(0.1min);
-    }
+	{
+		utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::minutes);
 
-    ASSERT_TRUE(result >= 9.0);
+		std::this_thread::sleep_for(0.1min);
+	}
 
-    {
-        utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::hours);
+	ASSERT_TRUE(result >= 9.0);
 
-        this_thread::sleep_for(0.001h);
-    }
+	{
+		utility::timers::AccumulatingTimer timer(result, utility::timers::OutputTimeType::hours);
 
-    ASSERT_TRUE(result >= 12.6);
+		std::this_thread::sleep_for(0.001h);
+	}
+
+	ASSERT_TRUE(result >= 12.6);
 }
 #endif

@@ -7,12 +7,10 @@
 #include "Files.h"
 #include "Utility.h"
 
-using namespace std;
-
 TEST(Files, ReadFile)
 {
-    string data = utility::testing::createRandomFile("test.txt");
-    ifstream file("test.txt");
+    std::string data = utility::testing::createRandomFile("test.txt");
+    std::ifstream file("test.txt");
 
     ASSERT_EQ(data, utility::files::readFile("test.txt"));
 
@@ -25,28 +23,28 @@ TEST(Files, ReadFile)
 
 TEST(Files, GeneratePath)
 {
-    vector<string> vectorPaths = 
+    std::vector<std::string> vectorPaths = 
     {
         "/usr",
         "stranger",
         "home",
         "Downloads"
     };
-    list<string> listPaths = 
+    std::list<std::string> listPaths = 
     {
         "/usr",
         "stranger",
         "home",
         "Downloads"
     };
-    deque<string> dequeuePaths = 
+    std::deque<std::string> dequeuePaths = 
     {
         "/usr",
         "stranger",
         "home",
         "Downloads"
     };
-    filesystem::path reference = filesystem::path() / "/usr" / "stranger" / "home" / "Downloads";
+    std::filesystem::path reference = std::filesystem::path() / "/usr" / "stranger" / "home" / "Downloads";
    
     ASSERT_EQ(utility::files::generatePath("/usr", "stranger", "home", "Downloads"), reference);
 

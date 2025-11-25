@@ -3,9 +3,7 @@
 #include "ConsoleArgumentParser.h"
 #include "Arguments.h"
 
-using namespace std;
-
-#ifndef NO_CONSOLE_ARGUMENT_PARSER
+#ifndef WITHOUT_CONSOLE_ARGUMENT_PARSER
 TEST(ConsoleArgumentParser, GetWarnings)
 {
     static constexpr size_t warnings = 4;
@@ -44,7 +42,7 @@ TEST(ConsoleArgumentParser, Get)
     ASSERT_TRUE(parser.get<float>("--float"));
     ASSERT_TRUE(parser.get<double>("--float"));
 
-    ASSERT_TRUE(parser.get<string>("--string") == "data");
+    ASSERT_TRUE(parser.get<std::string>("--string") == "data");
 
     ASSERT_TRUE(parser.get<bool>("--bool"));
 
@@ -63,7 +61,7 @@ TEST(ConsoleArgumentParser, Get)
     ASSERT_TRUE(parser.get<float>("--wrong_parameter", 5.5f) == 5.5f);
     ASSERT_TRUE(parser.get<double>("--wrong_parameter", 5.5) == 5.5);
 
-    ASSERT_TRUE(parser.get<string>("--wrong_parameter", "data") == "data");
+    ASSERT_TRUE(parser.get<std::string>("--wrong_parameter", "data") == "data");
 
     ASSERT_TRUE(parser.get<bool>("--wrong_parameter", true));
 }
@@ -74,4 +72,4 @@ TEST(ConsoleArgumentParser, GetValues)
 
     ASSERT_EQ(parser.getValues<int32_t>("--values").size(), 6);
 }
-#endif // !NO_CONSOLE_ARGUMENT_PARSER
+#endif // !WITHOUT_CONSOLE_ARGUMENT_PARSER
