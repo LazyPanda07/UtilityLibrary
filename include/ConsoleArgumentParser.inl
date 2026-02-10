@@ -1,6 +1,46 @@
 namespace utility::parsers
 {
 	template<typename T>
+	inline T ConsoleArgumentParser::ConstIterator::value() const
+	{
+		std::string_view value = *(begin + 1);
+
+		if constexpr (std::same_as<bool, T>)
+		{
+			return this->isBool();
+		}
+		else if constexpr (std::same_as<std::string, T>)
+		{
+			if (this->isBool())
+			{
+				return "";
+			}
+
+			return std::string(value);
+		}
+		
+		if (this->isBool())
+		{
+			throw std::runtime_error(std::format("Can't convert bool value to {}", typeid(T).name()));
+		}
+
+		if constexpr (std::unsigned_integral<T>)
+		{
+			return static_cast<T>(std::stoull(value.data()));
+		}
+		else if constexpr (std::integral<T>)
+		{
+			return static_cast<T>(std::stoll(value.data()));
+		}
+		else if constexpr (std::floating_point<T>)
+		{
+			return static_cast<T>(std::stod(value.data()));
+		}
+		
+		throw std::runtime_error(std::format("Wrong type: {}", typeid(T).name()));
+	}
+
+	template<typename T>
 	inline T ConsoleArgumentParser::getNumeric(std::string_view integralValue, const T& defaultValue, std::errc* errorCode) const
 	{
 		T value = defaultValue;
@@ -29,45 +69,42 @@ namespace utility::parsers
 	template<typename T>
 	inline T ConsoleArgumentParser::get(std::string_view argumentName, const T& defaultValue, std::errc* errorCode) const
 	{
-		std::optional<std::string_view> result = this->findValue(argumentName);
-
-		if constexpr (std::is_same_v<int8_t, T> || std::is_same_v<uint8_t, T>)
+		if constexpr (!std::same_as<bool, T>)
 		{
-			if (!result)
+			std::optional<std::string_view> result = this->findValue(std::format("--{}", argumentName));
+
+			if constexpr (std::integral<T> || std::floating_point<T>)
 			{
-				return defaultValue;
+				return result ? this->getNumeric<T>(*result, defaultValue, errorCode) : defaultValue;
 			}
-
-			return static_cast<T>(this->getNumeric<char>(*result, defaultValue, errorCode));
-		}
-		else if constexpr (std::is_integral_v<T> || std::is_floating_point_v<T>)
-		{
-			if (!result)
+			else if constexpr (std::same_as<T, std::string>)
 			{
-				return defaultValue;
+				return result ? std::string(*result) : defaultValue;
 			}
-
-			return this->getNumeric<T>(*result, defaultValue, errorCode);
-		}
-		else if constexpr (std::is_convertible_v<T, std::string>)
-		{
-			return result ? std::string(result->data()) : defaultValue;
+			else
+			{
+				[] <bool flag = false>()
+				{
+					static_assert(flag, "Wrong type");
+				}();
+			}
 		}
 		else
 		{
-			[] <bool flag = false>()
-			{
-				static_assert(flag, "Wrong type");
-			}();
+			std::vector<std::string_view>::const_iterator it = std::ranges::find(values, std::format("--{}", argumentName));
+
+			return it == values.end() ? defaultValue : true;
 		}
 	}
 
 	template<typename T>
-	inline std::vector<T> ConsoleArgumentParser::getValues(std::string_view argumentName) const
+	inline std::vector<T> ConsoleArgumentParser::getValues(std::string argumentName) const
 	{
 		std::vector<T> result;
 
-		if constexpr (!std::is_integral_v<T> && !std::is_floating_point_v<T> && !std::is_convertible_v<std::string, T>)
+		argumentName = std::format("--{}", argumentName);
+
+		if constexpr (!std::integral<T> && !std::floating_point<T> && !std::same_as<T, std::string>)
 		{
 			[] <bool flag = false>()
 			{
@@ -86,23 +123,17 @@ namespace utility::parsers
 					break;
 				}
 
-				if constexpr (std::is_integral_v<T>)
+				if constexpr (std::integral<T>)
 				{
 					result.push_back(this->getNumeric<T>(*it));
 				}
-				else if constexpr (std::is_convertible_v<std::string, T>)
+				else if constexpr (std::same_as<T, std::string>)
 				{
-					result.emplace_back(std::string(it->data()));
+					result.emplace_back(std::string(*it));
 				}
 			}
 		}
 
 		return result;
-	}
-
-	template<>
-	inline bool ConsoleArgumentParser::get<bool>(std::string_view argumentName, const bool& defaultValue, std::errc* errorCode) const
-	{
-		return std::ranges::find(values, argumentName) != values.end() || defaultValue;
 	}
 }

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.8.0</span>
+   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.9.0</span>
    </div>
    <div id="projectbrief">Provides useful functions</div>
   </td>
@@ -109,52 +109,90 @@ $(function(){initNavTree('_console_argument_parser_8h_source.html',''); initResi
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;charconv&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="_defines_8h.html">Defines.h</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="namespaceutility_1_1parsers.html">   13</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceutility_1_1parsers.html">utility::parsers</a></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html">   18</a></span>    <span class="keyword">class </span><a class="code hl_define" href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a> <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser.html">ConsoleArgumentParser</a></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        std::vector&lt;std::string_view&gt; values;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keyword">mutable</span> std::vector&lt;std::string&gt; warnings;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        std::optional&lt;std::string_view&gt; findValue(std::string_view argumentName) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;format&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_defines_8h.html">Defines.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespaceutility_1_1parsers.html">   14</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceutility_1_1parsers.html">utility::parsers</a></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html">   19</a></span>    <span class="keyword">class </span><a class="code hl_define" href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a> <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser.html">ConsoleArgumentParser</a></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">   22</a></span>        <span class="keyword">class </span><a class="code hl_define" href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a> <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordtype">bool</span> isBool() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        T getNumeric(std::string_view integralValue, <span class="keyword">const</span> T&amp; defaultValue = T(), std::errc* errorCode = <span class="keyword">nullptr</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a17c13123fe289906c7054d4b2247eafa">   31</a></span>        <a class="code hl_function" href="classutility_1_1parsers_1_1_console_argument_parser.html#a17c13123fe289906c7054d4b2247eafa">ConsoleArgumentParser</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a">   38</a></span>        std::vector&lt;std::string&gt; <a class="code hl_function" href="classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a">getWarnings</a>(<span class="keywordtype">bool</span> clearWarnings = <span class="keyword">true</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        T get(std::string_view argumentName, <span class="keyword">const</span> T&amp; defaultValue = T(), std::errc* errorCode = <span class="keyword">nullptr</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        std::vector&lt;T&gt; getValues(std::string_view argumentName) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a9e6f85492a5e06317575faed802fa60c">   60</a></span>        <a class="code hl_function" href="classutility_1_1parsers_1_1_console_argument_parser.html#a9e6f85492a5e06317575faed802fa60c">~ConsoleArgumentParser</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    };</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            std::vector&lt;std::string_view&gt;::const_iterator begin;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            std::vector&lt;std::string_view&gt;::const_iterator end;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#a5ca3e3a610888528457c022186b8bdde">   32</a></span>            <a class="code hl_function" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#a5ca3e3a610888528457c022186b8bdde">ConstIterator</a>(std::vector&lt;std::string_view&gt;::const_iterator begin, std::vector&lt;std::string_view&gt;::const_iterator end);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#af230fc2f6636d68a284a4a96e0b25c64">   34</a></span>            std::string_view <a class="code hl_function" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#af230fc2f6636d68a284a4a96e0b25c64">key</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T = std::<span class="keywordtype">string</span>&gt;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            T value() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#a526ec6adf2a55566bd8ea44dc44d22e7">   39</a></span>            <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a> operator *() const noexcept;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#a8fc205fbe8e0ac77017bcc2fa2d1f9ee">   41</a></span>            <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a>&amp; operator ++();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#a90864a3c7a0ee65bd74a7b49ecc52df6">   43</a></span>            <span class="keywordtype">bool</span> operator !=(const <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a>&amp; other) const noexcept;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#a13c27edf7016bcfb78946474b00b29a5">   45</a></span>            <span class="keywordtype">bool</span> operator ==(const <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a>&amp; other) const noexcept = default;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#aea552d5ba8a8360111211dc37dcb278e">   47</a></span>            ~<a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a>() = default;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        };</div>
 </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
-</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    private:</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        std::string_view currentExecutable;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        std::vector&lt;std::string_view&gt; values;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        mutable std::vector&lt;std::<span class="keywordtype">string</span>&gt; warnings;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    private:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        std::optional&lt;std::string_view&gt; findValue(std::string_view argumentName) const;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        template&lt;typename T&gt;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        T getNumeric(std::string_view integralValue, const T&amp; defaultValue = T(), std::errc* errorCode = <span class="keywordtype">nullptr</span>) const;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    public:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a17c13123fe289906c7054d4b2247eafa">   62</a></span>        <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser.html">ConsoleArgumentParser</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#include &quot;<a class="code" href="_console_argument_parser_8inl.html">ConsoleArgumentParser.inl</a>&quot;</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a_console_argument_parser_8inl_html"><div class="ttname"><a href="_console_argument_parser_8inl.html">ConsoleArgumentParser.inl</a></div></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a7893e81b514417e6e0d73dea477098da">   68</a></span>        std::string_view getCurrentExecutable() const;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a">   75</a></span>        std::vector&lt;std::<span class="keywordtype">string</span>&gt; getWarnings(<span class="keywordtype">bool</span> clearWarnings = true) const;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        template&lt;typename T&gt;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        T get(std::string_view argumentName, const T&amp; defaultValue = T(), std::errc* errorCode = <span class="keywordtype">nullptr</span>) const;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        template&lt;typename T&gt;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        std::vector&lt;T&gt; getValues(std::<span class="keywordtype">string</span> argumentName) const;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a5180f8ae2137ca013dbf1bc2a65d9be7">   97</a></span>        <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a> begin() const noexcept;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#af5805cec99ebc76bd25cefdcea8c812c">   99</a></span>        <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a> end() const noexcept;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a9e6f85492a5e06317575faed802fa60c">  101</a></span>        ~<a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser.html">ConsoleArgumentParser</a>() = default;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    };</div>
+</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
+</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">#include &quot;ConsoleArgumentParser.inl&quot;</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="_defines_8h.html">Defines.h</a></div></div>
 <div class="ttc" id="a_defines_8h_html_aa4f0bf78fc44f946edf1f5a13070ab6f"><div class="ttname"><a href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a></div><div class="ttdeci">#define UTILITY_LIBRARY_API</div><div class="ttdef"><b>Definition</b> <a href="_defines_8h_source.html#l00019">Defines.h:19</a></div></div>
-<div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_html"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser.html">utility::parsers::ConsoleArgumentParser</a></div><div class="ttdoc">Console argument parser.</div><div class="ttdef"><b>Definition</b> <a href="#l00018">ConsoleArgumentParser.h:19</a></div></div>
-<div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_html_a17c13123fe289906c7054d4b2247eafa"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser.html#a17c13123fe289906c7054d4b2247eafa">utility::parsers::ConsoleArgumentParser::ConsoleArgumentParser</a></div><div class="ttdeci">ConsoleArgumentParser(int argc, char **argv)</div></div>
-<div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_html_a9e6f85492a5e06317575faed802fa60c"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser.html#a9e6f85492a5e06317575faed802fa60c">utility::parsers::ConsoleArgumentParser::~ConsoleArgumentParser</a></div><div class="ttdeci">~ConsoleArgumentParser()=default</div></div>
-<div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_html_ac9d026a84663a7934254ea51bca9ea0a"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a">utility::parsers::ConsoleArgumentParser::getWarnings</a></div><div class="ttdeci">std::vector&lt; std::string &gt; getWarnings(bool clearWarnings=true) const</div><div class="ttdoc">Get warnings from get and getValues.</div></div>
-<div class="ttc" id="anamespaceutility_1_1parsers_html"><div class="ttname"><a href="namespaceutility_1_1parsers.html">utility::parsers</a></div><div class="ttdef"><b>Definition</b> <a href="#l00013">ConsoleArgumentParser.h:14</a></div></div>
+<div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator_html"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">utility::parsers::ConsoleArgumentParser::ConstIterator</a></div><div class="ttdef"><b>Definition</b> <a href="#l00022">ConsoleArgumentParser.h:23</a></div></div>
+<div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator_html_a5ca3e3a610888528457c022186b8bdde"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#a5ca3e3a610888528457c022186b8bdde">utility::parsers::ConsoleArgumentParser::ConstIterator::ConstIterator</a></div><div class="ttdeci">ConstIterator(std::vector&lt; std::string_view &gt;::const_iterator begin, std::vector&lt; std::string_view &gt;::const_iterator end)</div></div>
+<div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator_html_af230fc2f6636d68a284a4a96e0b25c64"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html#af230fc2f6636d68a284a4a96e0b25c64">utility::parsers::ConsoleArgumentParser::ConstIterator::key</a></div><div class="ttdeci">std::string_view key() const</div></div>
+<div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_html"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser.html">utility::parsers::ConsoleArgumentParser</a></div><div class="ttdoc">Console argument parser.</div><div class="ttdef"><b>Definition</b> <a href="#l00019">ConsoleArgumentParser.h:20</a></div></div>
+<div class="ttc" id="anamespaceutility_1_1parsers_html"><div class="ttname"><a href="namespaceutility_1_1parsers.html">utility::parsers</a></div><div class="ttdef"><b>Definition</b> <a href="#l00014">ConsoleArgumentParser.h:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

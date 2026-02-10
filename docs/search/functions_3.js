@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['encodebase64_0',['encodeBase64',['../namespaceutility_1_1conversion.html#a3cb1b2b4a2d45346720d406d02ec9583',1,'utility::conversion::encodeBase64(std::span&lt; uint8_t &gt; data)'],['../namespaceutility_1_1conversion.html#acc53e3a69f5e2d3dd2b5cd09ca64f99f',1,'utility::conversion::encodeBase64(std::string_view data)']]]
+  ['decodebase64_0',['decodeBase64',['../namespaceutility_1_1conversion.html#accfa9382b5ea2a43b965fad966914a87',1,'utility::conversion::decodeBase64(std::span&lt; uint8_t &gt; data)'],['../namespaceutility_1_1conversion.html#a720bd66ce93cab42885fd193bb322d2f',1,'utility::conversion::decodeBase64(std::string_view data)']]]
 ];

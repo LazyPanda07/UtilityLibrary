@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.8.0</span>
+   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.9.0</span>
    </div>
    <div id="projectbrief">Provides useful functions</div>
   </td>
@@ -98,6 +98,7 @@ $(function(){initNavTree('classutility_1_1parsers_1_1_console_argument_parser.ht
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classutility_1_1parsers_1_1_console_argument_parser-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">utility::parsers::ConsoleArgumentParser Class Reference</div></div>
@@ -109,10 +110,18 @@ $(function(){initNavTree('classutility_1_1parsers_1_1_console_argument_parser.ht
 
 <p><code>#include &lt;<a class="el" href="_console_argument_parser_8h_source.html">ConsoleArgumentParser.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a17c13123fe289906c7054d4b2247eafa" id="r_a17c13123fe289906c7054d4b2247eafa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17c13123fe289906c7054d4b2247eafa">ConsoleArgumentParser</a> (int argc, char **argv)</td></tr>
 <tr class="separator:a17c13123fe289906c7054d4b2247eafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7893e81b514417e6e0d73dea477098da" id="r_a7893e81b514417e6e0d73dea477098da"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7893e81b514417e6e0d73dea477098da">getCurrentExecutable</a> () const</td></tr>
+<tr class="memdesc:a7893e81b514417e6e0d73dea477098da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the path or filename of the current executable.  <br /></td></tr>
+<tr class="separator:a7893e81b514417e6e0d73dea477098da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9d026a84663a7934254ea51bca9ea0a" id="r_ac9d026a84663a7934254ea51bca9ea0a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9d026a84663a7934254ea51bca9ea0a">getWarnings</a> (bool clearWarnings=true) const</td></tr>
 <tr class="memdesc:ac9d026a84663a7934254ea51bca9ea0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get warnings from get and getValues.  <br /></td></tr>
 <tr class="separator:ac9d026a84663a7934254ea51bca9ea0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,20 +129,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a56e95e5d9157d4912edc4828aa1c18c6"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a56e95e5d9157d4912edc4828aa1c18c6">get</a> (std::string_view argumentName, const T &amp;defaultValue=T(), std::errc *errorCode=nullptr) const</td></tr>
 <tr class="memdesc:a56e95e5d9157d4912edc4828aa1c18c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get command line value.  <br /></td></tr>
 <tr class="separator:a56e95e5d9157d4912edc4828aa1c18c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae703b5fde8980798c35f2819cede7d1e" id="r_ae703b5fde8980798c35f2819cede7d1e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ae703b5fde8980798c35f2819cede7d1e"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae703b5fde8980798c35f2819cede7d1e">getValues</a> (std::string_view argumentName) const</td></tr>
-<tr class="memdesc:ae703b5fde8980798c35f2819cede7d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all command line values with same argument name.  <br /></td></tr>
-<tr class="separator:ae703b5fde8980798c35f2819cede7d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a68b20fcde9d23664b4e13d2dd87b5" id="r_a37a68b20fcde9d23664b4e13d2dd87b5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a37a68b20fcde9d23664b4e13d2dd87b5"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a37a68b20fcde9d23664b4e13d2dd87b5">getValues</a> (std::string argumentName) const</td></tr>
+<tr class="memdesc:a37a68b20fcde9d23664b4e13d2dd87b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all command line values with same argument name.  <br /></td></tr>
+<tr class="separator:a37a68b20fcde9d23664b4e13d2dd87b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5180f8ae2137ca013dbf1bc2a65d9be7" id="r_a5180f8ae2137ca013dbf1bc2a65d9be7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5180f8ae2137ca013dbf1bc2a65d9be7">begin</a> () const noexcept</td></tr>
+<tr class="separator:a5180f8ae2137ca013dbf1bc2a65d9be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5805cec99ebc76bd25cefdcea8c812c" id="r_af5805cec99ebc76bd25cefdcea8c812c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5805cec99ebc76bd25cefdcea8c812c">end</a> () const noexcept</td></tr>
+<tr class="separator:af5805cec99ebc76bd25cefdcea8c812c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e6f85492a5e06317575faed802fa60c" id="r_a9e6f85492a5e06317575faed802fa60c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e6f85492a5e06317575faed802fa60c">~ConsoleArgumentParser</a> ()=default</td></tr>
 <tr class="separator:a9e6f85492a5e06317575faed802fa60c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad80597751a6a20b670ed9fcdf8b44178" id="r_ad80597751a6a20b670ed9fcdf8b44178"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
-<tr class="memitem:ad80597751a6a20b670ed9fcdf8b44178"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad80597751a6a20b670ed9fcdf8b44178">get</a> (std::string_view argumentName, const bool &amp;defaultValue, std::errc *errorCode) const</td></tr>
-<tr class="separator:ad80597751a6a20b670ed9fcdf8b44178"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Console argument parser. </p>
 
-<p class="definition">Definition at line <a class="el" href="_console_argument_parser_8h_source.html#l00018">18</a> of file <a class="el" href="_console_argument_parser_8h_source.html">ConsoleArgumentParser.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_console_argument_parser_8h_source.html#l00019">19</a> of file <a class="el" href="_console_argument_parser_8h_source.html">ConsoleArgumentParser.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a17c13123fe289906c7054d4b2247eafa" name="a17c13123fe289906c7054d4b2247eafa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a17c13123fe289906c7054d4b2247eafa">&#9670;&#160;</a></span>ConsoleArgumentParser()</h2>
@@ -182,46 +192,58 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad80597751a6a20b670ed9fcdf8b44178" name="ad80597751a6a20b670ed9fcdf8b44178"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad80597751a6a20b670ed9fcdf8b44178">&#9670;&#160;</a></span>get() <span class="overload">[1/2]</span></h2>
+<a id="a5180f8ae2137ca013dbf1bc2a65d9be7" name="a5180f8ae2137ca013dbf1bc2a65d9be7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5180f8ae2137ca013dbf1bc2a65d9be7">&#9670;&#160;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool utility::parsers::ConsoleArgumentParser::get </td>
+          <td class="memname"><a class="el" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a> utility::parsers::ConsoleArgumentParser::begin </td>
           <td>(</td>
-          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>argumentName</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const bool &amp;</td>          <td class="paramname"><span class="paramname"><em>defaultValue</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::errc *</td>          <td class="paramname"><span class="paramname"><em>errorCode</em></span>&#160;) const</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_console_argument_parser_8inl_source.html#l00104">104</a> of file <a class="el" href="_console_argument_parser_8inl_source.html">ConsoleArgumentParser.inl</a>.</p>
+</div>
+</div>
+<a id="af5805cec99ebc76bd25cefdcea8c812c" name="af5805cec99ebc76bd25cefdcea8c812c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5805cec99ebc76bd25cefdcea8c812c">&#9670;&#160;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a> utility::parsers::ConsoleArgumentParser::end </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <a id="a56e95e5d9157d4912edc4828aa1c18c6" name="a56e95e5d9157d4912edc4828aa1c18c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56e95e5d9157d4912edc4828aa1c18c6">&#9670;&#160;</a></span>get() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a56e95e5d9157d4912edc4828aa1c18c6">&#9670;&#160;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -271,12 +293,32 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_console_argument_parser_8inl_source.html#l00030">30</a> of file <a class="el" href="_console_argument_parser_8inl_source.html">ConsoleArgumentParser.inl</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_console_argument_parser_8inl_source.html#l00070">70</a> of file <a class="el" href="_console_argument_parser_8inl_source.html">ConsoleArgumentParser.inl</a>.</p>
 
 </div>
 </div>
-<a id="ae703b5fde8980798c35f2819cede7d1e" name="ae703b5fde8980798c35f2819cede7d1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae703b5fde8980798c35f2819cede7d1e">&#9670;&#160;</a></span>getValues()</h2>
+<a id="a7893e81b514417e6e0d73dea477098da" name="a7893e81b514417e6e0d73dea477098da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7893e81b514417e6e0d73dea477098da">&#9670;&#160;</a></span>getCurrentExecutable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string_view utility::parsers::ConsoleArgumentParser::getCurrentExecutable </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the path or filename of the current executable. </p>
+<dl class="section return"><dt>Returns</dt><dd>A std::string_view referencing the current executable's path or name. The view's validity is tied to the lifetime and state of the object providing it. </dd></dl>
+
+</div>
+</div>
+<a id="a37a68b20fcde9d23664b4e13d2dd87b5" name="a37a68b20fcde9d23664b4e13d2dd87b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a68b20fcde9d23664b4e13d2dd87b5">&#9670;&#160;</a></span>getValues()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -289,7 +331,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">std::vector&lt; T &gt; utility::parsers::ConsoleArgumentParser::getValues </td>
           <td>(</td>
-          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>argumentName</em></span></td><td>)</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>argumentName</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -315,7 +357,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_console_argument_parser_8inl_source.html#l00066">66</a> of file <a class="el" href="_console_argument_parser_8inl_source.html">ConsoleArgumentParser.inl</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_console_argument_parser_8inl_source.html#l00101">101</a> of file <a class="el" href="_console_argument_parser_8inl_source.html">ConsoleArgumentParser.inl</a>.</p>
 
 </div>
 </div>
