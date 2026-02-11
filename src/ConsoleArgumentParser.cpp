@@ -74,12 +74,23 @@ namespace utility::parsers
 	}
 
 	ConsoleArgumentParser::ConsoleArgumentParser(int argc, char** argv) :
-		currentExecutable(argv[0])
+		currentExecutable(argv[0]),
+		argc(argc)
 	{
 		for (int i = 1; i < argc; i++)
 		{
 			values.emplace_back(argv[i]);
 		}
+	}
+
+	int ConsoleArgumentParser::argcSize() const
+	{
+		return argc;
+	}
+
+	size_t ConsoleArgumentParser::size() const
+	{
+		return std::ranges::count_if(values, [](std::string_view value) { return value.starts_with("--"); });
 	}
 
 	std::string_view ConsoleArgumentParser::getCurrentExecutable() const

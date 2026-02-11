@@ -61,6 +61,8 @@ TEST(ConsoleArgumentParser, Get)
 	ASSERT_EQ(parser.get<float>("wrong_parameter", 5.5f), 5.5f);
 	ASSERT_EQ(parser.get<double>("wrong_parameter", 5.5), 5.5);
 
+	ASSERT_THROW(parser.getRequired<std::string>("wrong_parameter"), std::runtime_error);
+
 	ASSERT_EQ(parser.get<std::string>("wrong_parameter", "data"), "data");
 
 	ASSERT_TRUE(parser.get<bool>("wrong_parameter", true));
@@ -123,5 +125,13 @@ TEST(ConsoleArgumentParser, Iterators)
 	}
 
 	ASSERT_EQ(it, end);
+}
+
+TEST(ConsoleArgumentParser, Size)
+{
+	utility::parsers::ConsoleArgumentParser parser(globalArgc, globalArgv);
+
+	ASSERT_EQ(parser.argcSize(), 20);
+	ASSERT_EQ(parser.size(), 10);
 }
 #endif // !WITHOUT_CONSOLE_ARGUMENT_PARSER

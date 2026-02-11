@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.9.0</span>
+   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.10.0</span>
    </div>
    <div id="projectbrief">Provides useful functions</div>
   </td>
@@ -119,6 +119,12 @@ Classes</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a17c13123fe289906c7054d4b2247eafa" id="r_a17c13123fe289906c7054d4b2247eafa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17c13123fe289906c7054d4b2247eafa">ConsoleArgumentParser</a> (int argc, char **argv)</td></tr>
 <tr class="separator:a17c13123fe289906c7054d4b2247eafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc8feaf7cd70088d5b1761bbd449b42f" id="r_afc8feaf7cd70088d5b1761bbd449b42f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc8feaf7cd70088d5b1761bbd449b42f">argcSize</a> () const</td></tr>
+<tr class="memdesc:afc8feaf7cd70088d5b1761bbd449b42f"><td class="mdescLeft">&#160;</td><td class="mdescRight">All arguments size.  <br /></td></tr>
+<tr class="separator:afc8feaf7cd70088d5b1761bbd449b42f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf2762cca3d1fffb709a8bfcfc6e9c16" id="r_abf2762cca3d1fffb709a8bfcfc6e9c16"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf2762cca3d1fffb709a8bfcfc6e9c16">size</a> () const</td></tr>
+<tr class="memdesc:abf2762cca3d1fffb709a8bfcfc6e9c16"><td class="mdescLeft">&#160;</td><td class="mdescRight">All keys.  <br /></td></tr>
+<tr class="separator:abf2762cca3d1fffb709a8bfcfc6e9c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7893e81b514417e6e0d73dea477098da" id="r_a7893e81b514417e6e0d73dea477098da"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7893e81b514417e6e0d73dea477098da">getCurrentExecutable</a> () const</td></tr>
 <tr class="memdesc:a7893e81b514417e6e0d73dea477098da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the path or filename of the current executable.  <br /></td></tr>
 <tr class="separator:a7893e81b514417e6e0d73dea477098da"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,6 +135,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a56e95e5d9157d4912edc4828aa1c18c6"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a56e95e5d9157d4912edc4828aa1c18c6">get</a> (std::string_view argumentName, const T &amp;defaultValue=T(), std::errc *errorCode=nullptr) const</td></tr>
 <tr class="memdesc:a56e95e5d9157d4912edc4828aa1c18c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get command line value.  <br /></td></tr>
 <tr class="separator:a56e95e5d9157d4912edc4828aa1c18c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae119e08bb38c1958b41e8b00e717626b" id="r_ae119e08bb38c1958b41e8b00e717626b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae119e08bb38c1958b41e8b00e717626b"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae119e08bb38c1958b41e8b00e717626b">getRequired</a> (std::string_view argumentName) const</td></tr>
+<tr class="memdesc:ae119e08bb38c1958b41e8b00e717626b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get commnad line value.  <br /></td></tr>
+<tr class="separator:ae119e08bb38c1958b41e8b00e717626b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37a68b20fcde9d23664b4e13d2dd87b5" id="r_a37a68b20fcde9d23664b4e13d2dd87b5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a37a68b20fcde9d23664b4e13d2dd87b5"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a37a68b20fcde9d23664b4e13d2dd87b5">getValues</a> (std::string argumentName) const</td></tr>
 <tr class="memdesc:a37a68b20fcde9d23664b4e13d2dd87b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all command line values with same argument name.  <br /></td></tr>
@@ -192,6 +202,26 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="afc8feaf7cd70088d5b1761bbd449b42f" name="afc8feaf7cd70088d5b1761bbd449b42f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc8feaf7cd70088d5b1761bbd449b42f">&#9670;&#160;</a></span>argcSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int utility::parsers::ConsoleArgumentParser::argcSize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>All arguments size. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <a id="a5180f8ae2137ca013dbf1bc2a65d9be7" name="a5180f8ae2137ca013dbf1bc2a65d9be7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5180f8ae2137ca013dbf1bc2a65d9be7">&#9670;&#160;</a></span>begin()</h2>
 
@@ -317,6 +347,50 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="ae119e08bb38c1958b41e8b00e717626b" name="ae119e08bb38c1958b41e8b00e717626b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae119e08bb38c1958b41e8b00e717626b">&#9670;&#160;</a></span>getRequired()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T utility::parsers::ConsoleArgumentParser::getRequired </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>argumentName</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get commnad line value. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argumentName</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If can't find throw std::runtime_error </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_argument_parser_8inl_source.html#l00101">101</a> of file <a class="el" href="_console_argument_parser_8inl_source.html">ConsoleArgumentParser.inl</a>.</p>
+
+</div>
+</div>
 <a id="a37a68b20fcde9d23664b4e13d2dd87b5" name="a37a68b20fcde9d23664b4e13d2dd87b5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37a68b20fcde9d23664b4e13d2dd87b5">&#9670;&#160;</a></span>getValues()</h2>
 
@@ -357,7 +431,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_console_argument_parser_8inl_source.html#l00101">101</a> of file <a class="el" href="_console_argument_parser_8inl_source.html">ConsoleArgumentParser.inl</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_console_argument_parser_8inl_source.html#l00112">112</a> of file <a class="el" href="_console_argument_parser_8inl_source.html">ConsoleArgumentParser.inl</a>.</p>
 
 </div>
 </div>
@@ -383,6 +457,26 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="abf2762cca3d1fffb709a8bfcfc6e9c16" name="abf2762cca3d1fffb709a8bfcfc6e9c16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf2762cca3d1fffb709a8bfcfc6e9c16">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t utility::parsers::ConsoleArgumentParser::size </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>All keys. </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>

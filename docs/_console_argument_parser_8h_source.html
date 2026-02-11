@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.9.0</span>
+   <div id="projectname">Utility Library<span id="projectnumber">&#160;v0.10.0</span>
    </div>
    <div id="projectbrief">Provides useful functions</div>
   </td>
@@ -152,40 +152,48 @@ $(function(){initNavTree('_console_argument_parser_8h_source.html',''); initResi
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    private:</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        std::string_view currentExecutable;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        std::vector&lt;std::string_view&gt; values;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        mutable std::vector&lt;std::<span class="keywordtype">string</span>&gt; warnings;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    private:</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        std::optional&lt;std::string_view&gt; findValue(std::string_view argumentName) const;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        template&lt;typename T&gt;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        T getNumeric(std::string_view integralValue, const T&amp; defaultValue = T(), std::errc* errorCode = <span class="keywordtype">nullptr</span>) const;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    public:</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a17c13123fe289906c7054d4b2247eafa">   62</a></span>        <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser.html">ConsoleArgumentParser</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a7893e81b514417e6e0d73dea477098da">   68</a></span>        std::string_view getCurrentExecutable() const;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a">   75</a></span>        std::vector&lt;std::<span class="keywordtype">string</span>&gt; getWarnings(<span class="keywordtype">bool</span> clearWarnings = true) const;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordtype">int</span> argc;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        std::vector&lt;std::string_view&gt; values;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        mutable std::vector&lt;std::<span class="keywordtype">string</span>&gt; warnings;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    private:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        std::optional&lt;std::string_view&gt; findValue(std::string_view argumentName) const;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        template&lt;typename T&gt;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        T getNumeric(std::string_view integralValue, const T&amp; defaultValue = T(), std::errc* errorCode = <span class="keywordtype">nullptr</span>) const;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    public:</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a17c13123fe289906c7054d4b2247eafa">   63</a></span>        <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser.html">ConsoleArgumentParser</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#afc8feaf7cd70088d5b1761bbd449b42f">   69</a></span>        <span class="keywordtype">int</span> argcSize() const;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#abf2762cca3d1fffb709a8bfcfc6e9c16">   75</a></span>        <span class="keywordtype">size_t</span> size() const;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        template&lt;typename T&gt;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        T get(std::string_view argumentName, const T&amp; defaultValue = T(), std::errc* errorCode = <span class="keywordtype">nullptr</span>) const;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        template&lt;typename T&gt;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        std::vector&lt;T&gt; getValues(std::<span class="keywordtype">string</span> argumentName) const;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a5180f8ae2137ca013dbf1bc2a65d9be7">   97</a></span>        <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a> begin() const noexcept;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#af5805cec99ebc76bd25cefdcea8c812c">   99</a></span>        <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a> end() const noexcept;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a7893e81b514417e6e0d73dea477098da">   81</a></span>        std::string_view getCurrentExecutable() const;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a">   88</a></span>        std::vector&lt;std::<span class="keywordtype">string</span>&gt; getWarnings(<span class="keywordtype">bool</span> clearWarnings = true) const;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        template&lt;typename T&gt;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        T get(std::string_view argumentName, const T&amp; defaultValue = T(), std::errc* errorCode = <span class="keywordtype">nullptr</span>) const;</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a9e6f85492a5e06317575faed802fa60c">  101</a></span>        ~<a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser.html">ConsoleArgumentParser</a>() = default;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    };</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        template&lt;typename T&gt;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        T getRequired(std::string_view argumentName) const;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        template&lt;typename T&gt;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        std::vector&lt;T&gt; getValues(std::<span class="keywordtype">string</span> argumentName) const;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a5180f8ae2137ca013dbf1bc2a65d9be7">  119</a></span>        <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a> begin() const noexcept;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#af5805cec99ebc76bd25cefdcea8c812c">  121</a></span>        <a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">ConstIterator</a> end() const noexcept;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classutility_1_1parsers_1_1_console_argument_parser.html#a9e6f85492a5e06317575faed802fa60c">  123</a></span>        ~<a class="code hl_class" href="classutility_1_1parsers_1_1_console_argument_parser.html">ConsoleArgumentParser</a>() = default;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    };</div>
 </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>}</div>
 </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">#include &quot;ConsoleArgumentParser.inl&quot;</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#include &quot;ConsoleArgumentParser.inl&quot;</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="_defines_8h.html">Defines.h</a></div></div>
 <div class="ttc" id="a_defines_8h_html_aa4f0bf78fc44f946edf1f5a13070ab6f"><div class="ttname"><a href="_defines_8h.html#aa4f0bf78fc44f946edf1f5a13070ab6f">UTILITY_LIBRARY_API</a></div><div class="ttdeci">#define UTILITY_LIBRARY_API</div><div class="ttdef"><b>Definition</b> <a href="_defines_8h_source.html#l00019">Defines.h:19</a></div></div>
 <div class="ttc" id="aclassutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator_html"><div class="ttname"><a href="classutility_1_1parsers_1_1_console_argument_parser_1_1_const_iterator.html">utility::parsers::ConsoleArgumentParser::ConstIterator</a></div><div class="ttdef"><b>Definition</b> <a href="#l00022">ConsoleArgumentParser.h:23</a></div></div>

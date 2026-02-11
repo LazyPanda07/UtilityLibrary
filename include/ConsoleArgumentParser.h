@@ -49,6 +49,7 @@ namespace utility::parsers
 
 	private:
 		std::string_view currentExecutable;
+		int argc;
 		std::vector<std::string_view> values;
 		mutable std::vector<std::string> warnings;
 
@@ -60,6 +61,18 @@ namespace utility::parsers
 
 	public:
 		ConsoleArgumentParser(int argc, char** argv);
+
+		/**
+		 * @brief All arguments size
+		 * @return 
+		 */
+		int argcSize() const;
+
+		/**
+		 * @brief All keys
+		 * @return 
+		 */
+		size_t size() const;
 
 		/**
 		 * @brief Returns the path or filename of the current executable.
@@ -84,6 +97,15 @@ namespace utility::parsers
 		*/
 		template<typename T>
 		T get(std::string_view argumentName, const T& defaultValue = T(), std::errc* errorCode = nullptr) const;
+
+		/**
+		 * @brief Get commnad line value
+		 * @tparam T 
+		 * @param argumentName 
+		 * @return If can't find throw std::runtime_error
+		 */
+		template<typename T>
+		T getRequired(std::string_view argumentName) const;
 
 		/**
 		 * @brief Get all command line values with same argument name
