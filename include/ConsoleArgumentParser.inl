@@ -151,7 +151,7 @@ namespace utility::parsers
 	template<typename T>
 	inline std::vector<T> ConsoleArgumentParser::getValuesRequired(std::string argumentName) const
 	{
-		std::vector<T> result = this->getValues(argumentName);
+		std::vector<T> result = this->getValues<T>(argumentName);
 
 		if (result.empty())
 		{
