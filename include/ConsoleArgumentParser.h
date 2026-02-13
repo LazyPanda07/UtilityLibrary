@@ -116,6 +116,15 @@ namespace utility::parsers
 		template<typename T>
 		std::vector<T> getValues(std::string argumentName) const;
 
+		/**
+		 * @brief Get all command line values with same argument name. If can't find throw std::runtime_error
+		 * @tparam T
+		 * @param argumentName
+		 * @return
+		*/
+		template<typename T>
+		std::vector<T> getValuesRequired(std::string argumentName) const;
+
 		ConstIterator begin() const noexcept;
 
 		ConstIterator end() const noexcept;

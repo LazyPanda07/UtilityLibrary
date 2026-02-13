@@ -9,5 +9,6 @@ var searchData=
   ['getcurrenttime_6',['getCurrentTime',['../classutility_1_1timers_1_1_timer.html#a6ba1f8f3ed68a9632dcfd22abe5163a5',1,'utility::timers::Timer::getCurrentTime()'],['../classutility_1_1timers_1_1_accumulating_timer.html#af313d1493802f7ba8a2ebfa50ea729cb',1,'utility::timers::AccumulatingTimer::getCurrentTime()']]],
   ['getrequired_7',['getRequired',['../classutility_1_1parsers_1_1_console_argument_parser.html#ae119e08bb38c1958b41e8b00e717626b',1,'utility::parsers::ConsoleArgumentParser']]],
   ['getvalues_8',['getValues',['../classutility_1_1parsers_1_1_console_argument_parser.html#a37a68b20fcde9d23664b4e13d2dd87b5',1,'utility::parsers::ConsoleArgumentParser']]],
-  ['getwarnings_9',['getWarnings',['../classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a',1,'utility::parsers::ConsoleArgumentParser']]]
+  ['getvaluesrequired_9',['getValuesRequired',['../classutility_1_1parsers_1_1_console_argument_parser.html#ab6267974e75d9b38f7195bac3a16b490',1,'utility::parsers::ConsoleArgumentParser']]],
+  ['getwarnings_10',['getWarnings',['../classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a',1,'utility::parsers::ConsoleArgumentParser']]]
 ];

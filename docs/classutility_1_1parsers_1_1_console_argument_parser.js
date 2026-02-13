@@ -10,6 +10,7 @@ var classutility_1_1parsers_1_1_console_argument_parser =
     [ "getCurrentExecutable", "classutility_1_1parsers_1_1_console_argument_parser.html#a7893e81b514417e6e0d73dea477098da", null ],
     [ "getRequired", "classutility_1_1parsers_1_1_console_argument_parser.html#ae119e08bb38c1958b41e8b00e717626b", null ],
     [ "getValues", "classutility_1_1parsers_1_1_console_argument_parser.html#a37a68b20fcde9d23664b4e13d2dd87b5", null ],
+    [ "getValuesRequired", "classutility_1_1parsers_1_1_console_argument_parser.html#ab6267974e75d9b38f7195bac3a16b490", null ],
     [ "getWarnings", "classutility_1_1parsers_1_1_console_argument_parser.html#ac9d026a84663a7934254ea51bca9ea0a", null ],
     [ "size", "classutility_1_1parsers_1_1_console_argument_parser.html#abf2762cca3d1fffb709a8bfcfc6e9c16", null ]
 ];
