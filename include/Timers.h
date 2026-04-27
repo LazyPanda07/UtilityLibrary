@@ -22,7 +22,7 @@ namespace utility::timers
 	/**
 	 * @brief Calculate time
 	*/
-	class UTILITY_LIBRARY_API Timer
+	class Timer
 	{
 	private:
 		std::ostream* output;
@@ -55,7 +55,7 @@ namespace utility::timers
 	/**
 	 * @brief Accumulate calculation time
 	*/
-	class UTILITY_LIBRARY_API AccumulatingTimer
+	class AccumulatingTimer
 	{
 	private:
 		double& accumulatedTime;

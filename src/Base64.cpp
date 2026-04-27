@@ -3,6 +3,7 @@
 #include <array>
 #include <cmath>
 #include <stdexcept>
+#include <cstdint>
 
 static constexpr std::array<uint8_t, 64> table =
 {

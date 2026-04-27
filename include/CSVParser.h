@@ -12,7 +12,7 @@ namespace utility::parsers
 	/**
 	 * @brief CSV files parser
 	*/
-	class UTILITY_LIBRARY_API CSVParser
+	class CSVParser
 	{
 	private:
 		std::vector<std::pair<std::string, std::vector<std::string>>> csvData;

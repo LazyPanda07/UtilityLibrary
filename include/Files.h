@@ -16,7 +16,7 @@ namespace utility::files
 	 * @return
 	 * @exception std::runtime_error
 	*/
-	UTILITY_LIBRARY_API_FUNCTION std::string readFile(const std::filesystem::path& pathToFile, std::ios::openmode mode = std::ios::in);
+	std::string readFile(const std::filesystem::path& pathToFile, std::ios::openmode mode = std::ios::in);
 
 	/**
 	 * @brief Read entire binary file
@@ -24,7 +24,7 @@ namespace utility::files
 	 * @return
 	 * @exception std::runtime_error
 	*/
-	UTILITY_LIBRARY_API_FUNCTION std::string readBinaryFile(const std::filesystem::path& pathToFile);
+	std::string readBinaryFile(const std::filesystem::path& pathToFile);
 
 	/**
 	 * @brief Read entire file
@@ -32,7 +32,7 @@ namespace utility::files
 	 * @return
 	 * @exception std::runtime_error
 	*/
-	UTILITY_LIBRARY_API_FUNCTION std::string readFileFromStream(std::ifstream& file);
+	std::string readFileFromStream(std::ifstream& file);
 
 	/**
 	 * @brief Generate path from parameters

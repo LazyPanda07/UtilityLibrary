@@ -16,10 +16,10 @@ namespace utility::parsers
 	/**
 	 * @brief Console argument parser
 	*/
-	class UTILITY_LIBRARY_API ConsoleArgumentParser
+	class ConsoleArgumentParser
 	{
 	public:
-		class UTILITY_LIBRARY_API ConstIterator
+		class ConstIterator
 		{
 		private:
 			bool isBool() const;

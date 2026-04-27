@@ -1,15 +1,10 @@
 cmake_minimum_required(VERSION 3.27.0)
 
 set(CMAKE_CXX_STANDARD 20)
-option(BUILD_SHARED_LIBS "" OFF)
 option(WITHOUT_CONSOLE_ARGUMENT_PARSER "Include ConsoleArgumentParser" OFF)
 option(WITHOUT_CSV_PARSER "Include CSVParser" OFF)
 option(WITHOUT_TIMERS "Include Timers" OFF)
 option(WITHOUT_PATTERN_PARSER "Include PatternParser" OFF)
-
-if (${BUILD_SHARED_LIBS})
-	add_definitions(-DUTILITY_LIBRARY_DLL)
-endif ()
 
 if(${WITHOUT_CONSOLE_ARGUMENT_PARSER})
 	add_definitions(-D__WITHOUT_CONSOLE_ARGUMENT_PARSER__)
@@ -27,12 +22,12 @@ if (${WITHOUT_PATTERN_PARSER})
 	add_definitions(-D__WITHOUT_PATTERN_PARSER__)
 endif()
 
-project(UtilityLibrary VERSION 0.11.1)
+project(UtilityLibrary VERSION 0.12.0)
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	add_definitions(-D__ANDROID__)
 
-	set(UUID_LIB)
+	set(UUID_LIB "")
 elseif (UNIX)
 	add_definitions(-D__LINUX__)
 
@@ -66,11 +61,5 @@ target_link_libraries(
 	${UUID_LIB}
 )
 
-install(
-	TARGETS ${PROJECT_NAME} 
-	ARCHIVE DESTINATION lib
-	LIBRARY DESTINATION lib
-	RUNTIME DESTINATION dll
-)
-
+install(TARGETS ${PROJECT_NAME} DESTINATION lib)
 install(DIRECTORY include DESTINATION .)

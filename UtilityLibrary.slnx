@@ -1,12 +1,11 @@
 <Solution>
   <Configurations>
     <BuildType Name="Debug" />
-    <BuildType Name="DebugDLL" />
     <BuildType Name="ProductionRelease" />
-    <BuildType Name="ProductionReleaseDLL" />
     <BuildType Name="Release" />
-    <BuildType Name="ReleaseDLL" />
     <Platform Name="x64" />
   </Configurations>
-  <Project Path="UtilityLibrary.vcxproj" />
+  <Project Path="UtilityLibrary.vcxproj" Id="f71a5e4a-5242-4fa9-b614-5c0603adc678">
+    <BuildType Solution="Release|*" Project="Debug" />
+  </Project>
 </Solution>

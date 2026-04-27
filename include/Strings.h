@@ -15,7 +15,7 @@ namespace utility::strings
 	 * @param newValue
 	 * @return New string after replacing
 	*/
-	UTILITY_LIBRARY_API_FUNCTION std::string replaceAll(const std::string& source, std::string_view oldValue, std::string_view newValue);
+	std::string replaceAll(const std::string& source, std::string_view oldValue, std::string_view newValue);
 
 	/**
 	 * @brief Replace all 'oldValue' substrings with 'newValue'
@@ -24,7 +24,7 @@ namespace utility::strings
 	 * @param newValue
 	 * @return Modified source string
 	*/
-	UTILITY_LIBRARY_API_FUNCTION std::string& replaceAllByRef(std::string& source, std::string_view oldValue, std::string_view newValue);
+	std::string& replaceAllByRef(std::string& source, std::string_view oldValue, std::string_view newValue);
 
 	/**
 	 * @brief Split source with delimiter into vector
@@ -32,16 +32,12 @@ namespace utility::strings
 	 * @param delimiter
 	 * @return
 	*/
-#ifdef __LINUX__
-	UTILITY_LIBRARY_API_FUNCTION std::vector<std::string> split(std::string_view source, std::string_view delimiter);
-#else
-	UTILITY_LIBRARY_API std::vector<std::string> split(std::string_view source, std::string_view delimiter);
-#endif
+	std::vector<std::string> split(std::string_view source, std::string_view delimiter);
 
 	/**
 	 * @brief std::string_view hash for std::unordered_map std::string key
 	 */
-	struct UTILITY_LIBRARY_API StringViewHash
+	struct StringViewHash
 	{
 		using is_transparent = void;
 
@@ -51,7 +47,7 @@ namespace utility::strings
 	/**
 	 * @brief std::string_view equal operator for std::unordered_map std::string key
 	 */
-	struct UTILITY_LIBRARY_API StringViewEqual
+	struct StringViewEqual
 	{
 		using is_transparent = void;
 
