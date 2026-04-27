@@ -39,9 +39,7 @@ jobs:
 
 
   linux-build:
-    runs-on: ubuntu-latest
-    container:
-      image: lazypanda07/ubuntu_cxx20:24.04
+    runs-on: ubuntu-24.04-arm
     strategy:
       matrix:
         configuration: [Debug, Release]
@@ -66,9 +64,7 @@ jobs:
 
 
   linux-aarch64-build:
-    runs-on: ubuntu-latest
-    container:
-      image: lazypanda07/ubuntu_cxx20:aarch64
+    runs-on: ubuntu-24.04-arm
     strategy:
       matrix:
         configuration: [Debug, Release]
@@ -318,10 +314,8 @@ jobs:
 
 
   linux-aarch64-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     needs: linux-aarch64-build
-    container:
-      image: lazypanda07/ubuntu_cxx20:aarch64
     strategy:
       matrix:
         configuration: [Debug, Release]
@@ -348,7 +342,7 @@ jobs:
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
-          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} qemu-aarch64 ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
     - name: Build tests without ConsoleArgumentParser
       working-directory: ${{ github.workspace }}/Tests
@@ -364,7 +358,7 @@ jobs:
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
-          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} qemu-aarch64 ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
     - name: Build tests without CSVParser
       working-directory: ${{ github.workspace }}/Tests
@@ -380,7 +374,7 @@ jobs:
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
-          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} qemu-aarch64 ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
     
     - name: Build tests without Timers
       working-directory: ${{ github.workspace }}/Tests
@@ -396,7 +390,7 @@ jobs:
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
-          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} qemu-aarch64 ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
     - name: Build tests without PatternParser
       working-directory: ${{ github.workspace }}/Tests
@@ -412,7 +406,7 @@ jobs:
       working-directory: ${{ github.workspace }}/Tests
       run: |
           cd build/bin
-          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} qemu-aarch64 ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
+          LD_LIBRARY_PATH=$(pwd):${LD_LIBRARY_PATH} ./Tests --int 1 --string data --bool --float 5.5 --values 1 --values 2 --values 3 --values 4 --values 5 --values 6
 
 
   memory-leak-tests:

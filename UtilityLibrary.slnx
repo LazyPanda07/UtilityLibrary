@@ -1,0 +1,12 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="DebugDLL" />
+    <BuildType Name="ProductionRelease" />
+    <BuildType Name="ProductionReleaseDLL" />
+    <BuildType Name="Release" />
+    <BuildType Name="ReleaseDLL" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="UtilityLibrary.vcxproj" />
+</Solution>

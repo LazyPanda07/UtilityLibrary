@@ -27,7 +27,7 @@ if (${WITHOUT_PATTERN_PARSER})
 	add_definitions(-D__WITHOUT_PATTERN_PARSER__)
 endif()
 
-project(UtilityLibrary VERSION 0.11.0)
+project(UtilityLibrary VERSION 0.11.1)
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	add_definitions(-D__ANDROID__)
@@ -49,6 +49,7 @@ add_library(
 	src/Strings.cpp
 	src/Timers.cpp
 	src/UUID.cpp
+	src/Base64.cpp
 )
 
 if (DEFINED ENV{MARCH} AND NOT "$ENV{MARCH}" STREQUAL "")
