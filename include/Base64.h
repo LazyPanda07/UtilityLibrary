@@ -2,6 +2,7 @@
 
 #include <span>
 #include <string>
+#include <cstdint>
 
 #include <Defines.h>
 
