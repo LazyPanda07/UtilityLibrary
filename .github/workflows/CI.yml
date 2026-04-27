@@ -325,6 +325,11 @@ jobs:
     steps:
     - uses: actions/checkout@v6
   
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y uuid-dev
+
     - name: Download artifacts
       uses: actions/download-artifact@v6
       with: 
@@ -550,11 +555,11 @@ jobs:
 
     - name: Create Linux zip
       if: ${{ env.CURRENT_BRANCH == 'main' }}
-      run: zip -r linux.zip Release_Linux ReleaseDLL_Linux
+      run: zip -r linux.zip Release_Linux
 
     - name: Create Linux ARM zip
       if: ${{ env.CURRENT_BRANCH == 'main' }}
-      run: zip -r linux_aarch64.zip Release_LinuxARM ReleaseDLL_LinuxARM
+      run: zip -r linux_aarch64.zip Release_LinuxARM
 
     - name: Create Android zip
       if: ${{ env.CURRENT_BRANCH == 'main' }}
