@@ -39,7 +39,9 @@ jobs:
 
 
   linux-build:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
+    container:
+      image: lazypanda07/ubuntu_cxx20:24.04
     strategy:
       matrix:
         configuration: [Debug, Release]
@@ -73,6 +75,11 @@ jobs:
     steps:
     - uses: actions/checkout@v6
   
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y uuid-dev
+
     - name: Build
       run: |
           mkdir build
