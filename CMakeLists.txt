@@ -22,7 +22,7 @@ if (${WITHOUT_PATTERN_PARSER})
 	add_definitions(-D__WITHOUT_PATTERN_PARSER__)
 endif()
 
-project(UtilityLibrary VERSION 0.12.0)
+project(UtilityLibrary VERSION 0.12.1)
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	add_definitions(-D__ANDROID__)
@@ -37,7 +37,7 @@ else ()
 endif ()
 
 add_library(
-	${PROJECT_NAME}
+	${PROJECT_NAME} STATIC
 	src/ConsoleArgumentParser.cpp
 	src/CSVParser.cpp
 	src/Files.cpp
