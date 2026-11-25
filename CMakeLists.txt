@@ -22,7 +22,7 @@ if (${WITHOUT_PATTERN_PARSER})
 	add_definitions(-D__WITHOUT_PATTERN_PARSER__)
 endif()
 
-project(UtilityLibrary VERSION 0.12.1)
+project(UtilityLibrary VERSION 0.13.0)
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Android")
 	add_definitions(-D__ANDROID__)
