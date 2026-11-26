@@ -5,13 +5,6 @@
 
 namespace utility::strings
 {
-	std::string replaceAll(const std::string& source, std::string_view oldValue, std::string_view newValue)
-	{
-		std::string result(source);
-
-		return replaceAllByRef(result, oldValue, newValue);
-	}
-
 	std::string replaceAll(std::string_view source, std::string_view oldValue, std::string_view newValue)
 	{
 		std::string result(source);

@@ -7,5 +7,5 @@ namespace utility
 	/**
 	 * @brief Current version of UtilityLibrary
 	*/
-	inline constexpr std::string_view utilityLibraryVersion = "0.13.0";
+	inline constexpr std::string_view utilityLibraryVersion = "0.13.1";
 }
